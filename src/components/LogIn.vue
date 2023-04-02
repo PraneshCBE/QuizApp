@@ -63,15 +63,15 @@ export default{
     margin-bottom: 30px;
     margin-right: auto;
     margin-left: auto;
-    border: 1px solid skyblue;
+    border: 1px solid #8B0304;
     text-align: center;
 }
 .register button{
     width: 320px;
     height: 40px;
-    background: skyblue;
+    background: #8B0304;
     color: white;
-    border-color: skyblue;
+    border-color: #8B0304;
 }
 
 </style>
