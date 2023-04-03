@@ -20,9 +20,12 @@ export default{
     },
     methods:{
         async login(){
+            
             try {
+                let uri="http://13.127.127.139/getStudDetails";
+             //uri="api/getStudDetails";
         const result = await axios.get(
-            'api/getStudDetails',
+            uri,
             { params: { studEmail: this.email, password: this.password } }
         )
         // Check if email and password match with the data on the server
