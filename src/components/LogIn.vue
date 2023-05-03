@@ -1,10 +1,18 @@
 <template>
+    <div class="container">
     <img class="logo" src="../assets/clipboard.png">
+    <div class="right-container">
     <h1>Log in</h1>
     <div class="register">
-        <input type="text" v-model="email" placeholder="Enter your University Email"/>
-        <input type="password" v-model="password" placeholder="Enter Password"/>
-        <button v-on:click="login">Log in</button>
+        <form @submit.prevent=onSubmit>
+        <input  class ="inp" type="text" v-model="email"  required placeholder="Enter your University Email"/>
+        <p v-if="errorEmail.length!=0" class="error">{{ errorEmail }}</p>
+        <input class = "inp" type="password" v-model="password" placeholder="Enter Password"/>
+        <input id ="loginBtn" type="submit" value="Log-in"/>
+    </form>
+    <p v-if="errorLogin.length!=0" class="error">{{ errorLogin }}</p>
+    </div>
+</div>
     </div>
 </template>
 <script>
@@ -15,36 +23,70 @@ export default{
     {       
         return{
             email:'',
-            password:''
+            password:'',
+            errorEmail:'',
+            errorLogin:''
         }
     },
     methods:{
         async login(){
-            
             try {
-                let uri="http://13.127.127.139/getStudDetails";
-             //uri="api/getStudDetails";
-        const result = await axios.get(
-            uri,
-            { params: { studEmail: this.email, password: this.password } }
+               // let uri="http://13.127.127.139/getStudDetails";
+             //let uri="api/getStudDetails";
+             //temp url
+            //  let uri="http://13.235.176.78:4202/users";
+            let uri="api/users"
+        const result = await axios.get(uri,
+            // { params: { studEmail: this.email, password: this.password } }
         )
+        console.log(result.data)
         // Check if email and password match with the data on the server
-        const match = result.data.some(obj => obj.studEmail === this.email && obj.password === this.password)
-        console.warn(match);
-        if (match) {
-            localStorage.setItem("user-info", JSON.stringify({ "email": this.email }))
-            this.$router.push({ name: 'HomeScreen' })
-        } else {
+        const matchUser = result.data.some(obj => obj.email === this.email)
+        console.log(matchUser);
+        if (matchUser)
+        {
+            const matchPass=result.data.some(obj => obj.password === this.password)
+            console.log(matchPass);
+            if (matchPass)
+            {
+                localStorage.setItem("user-info", JSON.stringify({ "email": this.email }))
+                this.$router.push({ name: 'HomeScreen' })
+            }
+            else {
             // Display error message
-            alert('Invalid email or password.')
+            this.errorLogin='Invalid password.'
+            }
         }
+        else{
+            this.errorLogin='User not Found'
+        }
+        
     } catch (error) {
         console.error(error)
         // Display error message
-        alert('Error logging in. Please try again later.')
+        this.errorLogin='Error logging in. Please try again later.'
     }
-        }
+        },
+        onSubmit(event)
+        {
+            console.log(event)
+            this.login()
+        },
+        validateEmail(email) {
+            if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+                this.errorEmail=""
+             return
+            } else {
+                 this.errorEmail="Enter a proper Mail Id"
+            }
+        },
     },
+    watch: {
+            email(value){
+            this.email = value;
+            this.validateEmail(value);
+            }
+        },
     mounted()
     {
         let user= localStorage.getItem('user-info');
@@ -55,26 +97,43 @@ export default{
     }
 }
 </script>
-<style>
+<style scoped>
 .logo{
-  width: 150px;
+  height: 40vh;
+  margin-top: 50px;
+  margin-right: 20px;
 }
-.register input{
+.inp{
     width: 300px;
     height: 40px;
     display: block;
-    margin-bottom: 30px;
+    margin-top: 30px;
     margin-right: auto;
     margin-left: auto;
     border: 1px solid #8B0304;
     text-align: center;
 }
-.register button{
+#loginBtn{
     width: 320px;
     height: 40px;
+    margin-top: 30px;
     background: #8B0304;
     color: white;
     border-color: #8B0304;
+}
+.error{
+    color: red;
+    font-size: small;
+}
+.container{
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+.right-container{
+    display: flex;
+  flex-direction: column;
 }
 
 </style>
