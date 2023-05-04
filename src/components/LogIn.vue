@@ -12,7 +12,7 @@
     </form>
     <p v-if="errorLogin.length!=0" class="error">{{ errorLogin }}</p>
     </div>
-    <span class="fgpass"><a href="HomeScreen.vue">Forget password</a></span>
+    <span class="fgpass"><a href="ForgetPassword">Forget password</a></span>
 </div>
     </div>
 </template>
