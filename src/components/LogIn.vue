@@ -2,16 +2,17 @@
     <div class="container">
     <img class="logo" src="../assets/clipboard.png">
     <div class="right-container">
-    <h1>Log in</h1>
+    <h1>Login</h1>
     <div class="register">
         <form @submit.prevent=onSubmit>
         <input  class ="inp" type="text" v-model="email"  required placeholder="Enter your University Email"/>
         <p v-if="errorEmail.length!=0" class="error">{{ errorEmail }}</p>
         <input class = "inp" type="password" v-model="password" placeholder="Enter Password"/>
-        <input id ="loginBtn" type="submit" value="Log-in"/>
+        <input id ="loginBtn" type="submit" value="Login"/>
     </form>
     <p v-if="errorLogin.length!=0" class="error">{{ errorLogin }}</p>
     </div>
+    <span class="fgpass"><a href="HomeScreen.vue">Forget password</a></span>
 </div>
     </div>
 </template>
@@ -77,7 +78,7 @@ export default{
                 this.errorEmail=""
              return
             } else {
-                 this.errorEmail="Enter a proper Mail Id"
+                 this.errorEmail="Enter a valid Email"
             }
         },
     },
@@ -111,15 +112,17 @@ export default{
     margin-right: auto;
     margin-left: auto;
     border: 1px solid #8B0304;
+    border-radius: 15px;
     text-align: center;
 }
 #loginBtn{
-    width: 320px;
+    width: 120px;
     height: 40px;
     margin-top: 30px;
     background: #8B0304;
     color: white;
     border-color: #8B0304;
+    border-radius: 15px;
 }
 .error{
     color: red;
@@ -134,6 +137,11 @@ export default{
 .right-container{
     display: flex;
   flex-direction: column;
+}
+
+.fgpass{
+    font-size: 10px;
+    margin-top: 10px;
 }
 
 </style>
