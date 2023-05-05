@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HomeScreen from './components/HomeScreen.vue';
 import LogIn from './components/LogIn.vue';
 import ForgetPassword from './components/ForgetPassword.vue';
-
+import SpaceP404 from './components/space404.vue';
 const routes=[
     {
         name:'HomeScreen',
@@ -18,6 +18,14 @@ const routes=[
         name:'ForgetPassword',
         component:ForgetPassword,
         path:'/ForgetPassword'
+    },
+    {
+        path:'/:pathMatch(.*)*',
+        component:SpaceP404
+    },
+    {
+        path:'/:pathMatch(.*)',
+        component:SpaceP404
     }
 ];
 

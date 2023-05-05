@@ -24,7 +24,7 @@ export default({
         sent(){
             //  this.errorEmail="Link sent"
              alert('Reset link sent to the Email');
-             this.$router.push({ name: 'LogIn' })
+             this.$router.replace({ name: 'LogIn' })
         },
         validateEmail(email) {
             if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
