@@ -4,8 +4,13 @@
             <div class="card">
                 <img class="logo" src="../assets/clipboard.png">
                 <div class="right-container">
-                    <h1>{{ UserMsg }}</h1>
-                    <img class="userlogo" :src=imgSrc @click="toggleImage">
+
+                    <h1>
+                        <img v-if="!isAdmin" class="userlogo" src="../assets/stud1.png" @click="toggleImage">
+                        <img v-else class="userlogo" src="../assets/admin1.png" @click="toggleImage">
+                        <h3>{{ UserMsg }}</h3>
+                    </h1>
+
                     <div class="register">
                         <form @submit.prevent=onSubmit>
                             <input class="inp" type="text" v-model="email" required
@@ -34,7 +39,7 @@ export default {
             errorEmail: '',
             errorLogin: '',
             UserMsg: 'Login | Student',
-            imgSrc: '../assets/stud.png',
+            imgSrc: "../assets/logo.png",
             isAdmin: false
         }
     },
@@ -42,43 +47,54 @@ export default {
         toggleImage() {
             this.isAdmin = !this.isAdmin;
             this.UserMsg = this.isAdmin ? 'Login | Faculty' : 'Login | Student'
-            this.imgSrc=this.isAdmin ? '../assets/admin.png' : '../assets/stud.png'
+            this.imgSrc = this.isAdmin ? '../assets/admin1.png' : '../assets/stud1.png'
 
         },
         async login() {
-            try {
-                // let uri="http://13.127.127.139/getStudDetails";
-                //let uri="api/getStudDetails";
-                //temp url
-                //  let uri="http://13.235.176.78:4202/users";
-                let uri = "api/users"
-                const result = await axios.get(uri,
-                    // { params: { studEmail: this.email, password: this.password } }
-                )
-                console.log(result.data)
-                // Check if email and password match with the data on the server
-                const matchUser = result.data.some(obj => obj.email === this.email)
-                console.log(matchUser);
-                if (matchUser) {
-                    const matchPass = result.data.some(obj => obj.password === this.password)
-                    console.log(matchPass);
-                    if (matchPass) {
-                        localStorage.setItem("user-info", JSON.stringify({ "email": this.email }))
-                        this.$router.push({ name: 'HomeScreen' })
+            if (this.isAdmin) {
+                //Admin Http request
+            }
+            else {
+                //user http request
+                try {
+
+
+
+
+                    // let uri="http://13.127.127.139/getStudDetails";
+                    //let uri="api/getStudDetails";
+                    //temp url
+                    //  let uri="http://13.235.176.78:4202/users";
+                    let uri = "api/users"
+                    const result = await axios.get(uri,
+                        // { params: { studEmail: this.email, password: this.password } }
+                    )
+                    console.log(result.data)
+                    // Check if email and password match with the data on the server
+                    const matchUser = result.data.some(obj => obj.email === this.email)
+                    console.log(matchUser);
+                    if (matchUser) {
+                        const matchPass = result.data.some(obj => obj.password === this.password)
+                        console.log(matchPass);
+                        if (matchPass) {
+                            localStorage.setItem("user-info", JSON.stringify({ "email": this.email }))
+                            this.$router.push({ name: 'HomeScreen' })
+                        }
+                        else {
+                            // Display error message
+                            this.errorLogin = 'Invalid password.'
+                        }
                     }
                     else {
-                        // Display error message
-                        this.errorLogin = 'Invalid password.'
+                        this.errorLogin = 'User not Found'
                     }
-                }
-                else {
-                    this.errorLogin = 'User not Found'
-                }
 
-            } catch (error) {
-                console.error(error)
-                // Display error message
-                this.errorLogin = 'Error logging in. Please try again later.'
+                } catch (error) {
+                    console.error(error)
+                    // Display error message
+
+                    this.errorLogin = 'Error logging in. Please try again later.'
+                }
             }
         },
         onSubmit(event) {
@@ -94,7 +110,7 @@ export default {
             }
         },
     },
-    
+
     watch: {
         email(value) {
             this.email = value;
@@ -110,6 +126,10 @@ export default {
 }
 </script>
 <style scoped>
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+}
+
 @keyframes gradient {
     0% {
         background-position: 0% 50%;
@@ -129,23 +149,24 @@ export default {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
-    height: 100vh;
-    /* background: linear-gradient(to right, #333333, #dd1818); */
 }
 
 h1 {
     margin-top: 0;
+    margin-bottom: 1rem;
+    padding: 0;
+    margin-right: 2vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 4dvh;
+    font-size: 3.5vh;
 }
 
 .card {
     border: rgba(255, 255, 255, 0.3);
-    border-radius: 10px;
+    border-radius: 2vh;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    margin: 20px auto;
+    margin: 5vh;
     max-width: 80%;
-    padding: 20px;
+    padding: 3vh;
     display: flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
@@ -153,20 +174,27 @@ h1 {
 
 .logo {
     height: 40vh;
-    margin-top: 40px;
-    margin-bottom: 40px;
-    margin-right: 20px;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    margin-right: 5vh;
+}
+
+.userlogo {
+    height: 4vh;
+    width: 4vh;
+    float: right
 }
 
 .inp {
-    width: 350px;
-    height: 45px;
+    width: 30vh;
+    height: 5vh;
     display: block;
-    margin-top: 30px;
+    margin-top: 3vh;
     margin-right: auto;
     margin-left: auto;
+    font-size: 1.5vh;
     border: 1px solid #8B0304;
-    border-radius: 15px;
+    border-radius: 1vh;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.5);
 }
@@ -176,15 +204,16 @@ h1 {
 }
 
 #loginBtn {
-    width: 125px;
-    height: 45px;
-    margin-top: 30px;
+    width: 12vh;
+    height: 5vh;
+    margin-top: 3vh;
     background: #8B0304;
     color: white;
     font-size: large;
+    font-size: 2vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border-color: #8B0304;
-    border-radius: 15px;
+    border-radius: 2vh;
 }
 
 #loginBtn :hover {
@@ -212,4 +241,5 @@ h1 {
     font-size: 10px;
     margin-top: 10px;
     text-decoration: none;
-}</style>
+}
+</style>
