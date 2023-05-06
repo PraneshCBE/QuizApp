@@ -12,10 +12,10 @@
         <img class="lock-icon" src="../assets/key.svg">
         <h2>Forgot Password?</h2>
         <p>You can reset your Password here</p>
-        <form>
+        <form @submit.prevent="sent">
         <input type="text" class="passInput" placeholder="Email address" v-model="email" required>
         <p v-if="errorEmail.length!=0" class="errormsg">{{errorEmail}}</p>
-        <button  v-on:submit="sent" type="submit">Reset Password</button>
+        <button type="submit">Reset Password</button>
     </form>
         </div>
     </div>
@@ -34,8 +34,7 @@ export default({
     methods:{
 
         sent(){
-            //  this.errorEmail="Link sent"
-             alert('Reset link sent to the Email');
+            this.errorEmail="Link sent"
              this.$router.replace({ name: 'LogIn' })
         },
         validateEmail(email) {

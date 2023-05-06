@@ -11,9 +11,15 @@ export default {
 </script>
 
 <style>
+html {
+    height: 100%;
+    overflow: auto;
+}
 body{
         padding: 0;
         margin: 0;
+        height: 100%;
+    overflow: auto;
     }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

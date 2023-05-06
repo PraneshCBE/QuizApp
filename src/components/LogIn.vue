@@ -67,7 +67,7 @@ export default {
 
 
 
-                    // let uri="http://13.127.127.139/getStudDetails";
+                    // let uri="    ";
                     //let uri="api/getStudDetails";
                     //temp url
                     //  let uri="http://13.235.176.78:4202/users";
