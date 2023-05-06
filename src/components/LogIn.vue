@@ -2,18 +2,23 @@
     <div class="outer-container">
         <div class="container">
             <div class="card">
+                <kinesis-container>
+                    <KinesisElement :strength="20">
                 <img class="logo" src="../assets/clipboard.png">
+            </KinesisElement>
+            </kinesis-container>
                 <div class="right-container">
 
                     <h1 id="select">
-
-                        <span class="usermsg">Login | </span>
-                        <Transition name="fade" mode="out-in">
-                            <span class="usermsg1" :key="UserMsg" style="display: inline-block; width:max-content;height:max-content" >{{ UserMsg }}</span>
-                        </Transition>
+                        
+                                <span class="usermsg">Login | </span>
+                                <Transition name="fade" mode="out-in">
+                                    <span class="usermsg1" :key="UserMsg"
+                                        style="display: inline-block; width:max-content;height:max-content">{{ UserMsg }}</span>
+                                </Transition>
+                          
                         <img v-if="!isAdmin" class="userlogo" src="../assets/stud1.png" @click="toggleImage">
                         <img v-else class="userlogo" src="../assets/admin1.png" @click="toggleImage">
-
                     </h1>
 
                     <div class="register">
@@ -22,7 +27,11 @@
                                 placeholder="Enter your University Email" />
                             <p v-if="errorEmail.length != 0" class="error">{{ errorEmail }}</p>
                             <input class="inp" type="password" v-model="password" placeholder="Enter Password" />
-                            <input id="loginBtn" type="submit" value="Login" />
+                            <kinesis-container>
+                                <kinesis-element :strength="10">
+                                    <input id="loginBtn" type="submit" value="Login" />
+                                </kinesis-element>
+                            </kinesis-container>
                         </form>
                         <p v-if="errorLogin.length != 0" class="error">{{ errorLogin }}</p>
                     </div>
@@ -34,6 +43,7 @@
     </div>
 </template>
 <script>
+import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import axios from 'axios'
 export default {
     name: 'LogIn',
@@ -48,6 +58,10 @@ export default {
             isAdmin: false
         }
     },
+    components: {
+        KinesisContainer,
+        KinesisElement,
+    },
     methods: {
         toggleImage() {
             this.isAdmin = !this.isAdmin;
@@ -55,7 +69,7 @@ export default {
             this.imgSrc = this.isAdmin ? '../assets/admin1.png' : '../assets/stud1.png'
 
         },
-       
+
         async login() {
             if (this.isAdmin) {
                 //Admin Http request
@@ -84,7 +98,7 @@ export default {
                         console.log(matchPass);
                         if (matchPass) {
                             localStorage.setItem("role", this.isAdmin)
-                            localStorage.setItem("user-info", JSON.stringify({ "email": this.email, "pwd":this.password }))
+                            localStorage.setItem("user-info", JSON.stringify({ "email": this.email, "pwd": this.password }))
                             this.$router.push({ name: 'HomeScreen' })
                         }
                         else {
@@ -165,12 +179,16 @@ body {
     animation: gradient 15s ease infinite;
 }
 
-.fade-enter-active, .fade-leave-active {
-  transition: opacity 1s;
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 1s;
 }
-.fade-enter, .fade-leave-to {
-  opacity: 0;
+
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
 }
+
 h1 {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -178,7 +196,7 @@ h1 {
     margin-right: 2vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3.5vh;
-    display:block;
+    display: block;
     align-items: left;
 }
 
@@ -220,6 +238,7 @@ h1 {
     margin-left: 1rem;
     flex: 1;
 }
+
 .usermsg1 {
     font-size: 1.5rem;
     margin-right: 1rem;
