@@ -77,7 +77,7 @@ export default({
     align-items: center;
     justify-content: center;
     background-size: cover;
-    padding: 17rem 0;
+    padding: 33vh 0;
 }
 
 .card {
@@ -89,44 +89,44 @@ export default({
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30rem 40rem;
+    padding: 30px 40px;
     margin: 0.5vh
 }
 
 .lock-icon {
     width: 6vh;
     height: 5vh;
-    margin: 1rem;
+    margin: 1px;
     color: white;
 }
 
 h2 {
     font-size: 1.5rem;
-    margin-top: 10rem;
+    margin-top: 10px;
     text-transform: uppercase;
 }
 
 p {
-    font-size: 12rem;
+    font-size: 12px;
 }
 
 .passInput {
-    margin-top: 15rem;
+    margin-top: 15px;
     width: 80%;
     background: transparent;
     border: none;
-    border-bottom: 2rem solid deepskyblue;
-    font-size: 15rem;
+    border-bottom: 2px solid deepskyblue;
+    font-size: 15px;
     color: white;
     outline: none;
 }
 
 button {
-    margin-top: 15rem;
+    margin-top: 15px;
     width: 80%;
     background-color: deepskyblue;
     color: white;
-    padding: 10rem;
+    padding: 10px;
     text-transform: uppercase;
 }
 </style>
