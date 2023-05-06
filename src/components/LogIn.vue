@@ -5,10 +5,15 @@
                 <img class="logo" src="../assets/clipboard.png">
                 <div class="right-container">
 
-                    <h1>
+                    <h1 id="select">
+
+                        <span class="usermsg">Login | </span>
+                        <Transition name="fade" mode="out-in">
+                            <span class="usermsg1" :key="UserMsg" style="display: inline-block; width:max-content;height:max-content" >{{ UserMsg }}</span>
+                        </Transition>
                         <img v-if="!isAdmin" class="userlogo" src="../assets/stud1.png" @click="toggleImage">
                         <img v-else class="userlogo" src="../assets/admin1.png" @click="toggleImage">
-                        <h3>{{ UserMsg }}</h3>
+
                     </h1>
 
                     <div class="register">
@@ -38,7 +43,7 @@ export default {
             password: '',
             errorEmail: '',
             errorLogin: '',
-            UserMsg: 'Login | Student',
+            UserMsg: 'Student',
             imgSrc: "../assets/logo.png",
             isAdmin: false
         }
@@ -46,10 +51,11 @@ export default {
     methods: {
         toggleImage() {
             this.isAdmin = !this.isAdmin;
-            this.UserMsg = this.isAdmin ? 'Login | Faculty' : 'Login | Student'
+            this.UserMsg = this.isAdmin ? 'Faculty  ' : 'Student'
             this.imgSrc = this.isAdmin ? '../assets/admin1.png' : '../assets/stud1.png'
 
         },
+       
         async login() {
             if (this.isAdmin) {
                 //Admin Http request
@@ -77,7 +83,8 @@ export default {
                         const matchPass = result.data.some(obj => obj.password === this.password)
                         console.log(matchPass);
                         if (matchPass) {
-                            localStorage.setItem("user-info", JSON.stringify({ "email": this.email }))
+                            localStorage.setItem("role", this.isAdmin)
+                            localStorage.setItem("user-info", JSON.stringify({ "email": this.email, "pwd":this.password }))
                             this.$router.push({ name: 'HomeScreen' })
                         }
                         else {
@@ -119,9 +126,16 @@ export default {
     },
     mounted() {
         let user = localStorage.getItem('user-info');
-        if (user) {
+        let admin = localStorage.getItem('role');
+        if (user && admin) {
+            //admin JWT verification and if it is valid then we should route to Admin Homescreen (for now just route) 
             this.$router.push({ name: 'HomeScreen' })
         }
+        if (user && !admin) {
+            //User JWT verification and if it is valid then we should route to User Homescreen (for now just route) 
+            this.$router.push({ name: 'HomeScreen' })
+        }
+
     }
 }
 </script>
@@ -151,6 +165,12 @@ body {
     animation: gradient 15s ease infinite;
 }
 
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 1s;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
 h1 {
     margin-top: 0;
     margin-bottom: 1rem;
@@ -158,6 +178,8 @@ h1 {
     margin-right: 2vh;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 3.5vh;
+    display:block;
+    align-items: left;
 }
 
 .card {
@@ -172,17 +194,36 @@ h1 {
     background-color: rgba(255, 255, 255, 0.3);
 }
 
+@media only screen and (max-width: 767px) {
+    .card {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
 .logo {
     height: 40vh;
     margin-top: 2vh;
     margin-bottom: 2vh;
     margin-right: 5vh;
+    margin-left: 5vh;
 }
 
 .userlogo {
     height: 4vh;
     width: 4vh;
-    float: right
+    float: right;
+}
+
+.usermsg {
+    font-size: 1.5rem;
+    margin-left: 1rem;
+    flex: 1;
+}
+.usermsg1 {
+    font-size: 1.5rem;
+    margin-right: 1rem;
+    flex: 1;
 }
 
 .inp {
@@ -241,5 +282,4 @@ h1 {
     font-size: 10px;
     margin-top: 10px;
     text-decoration: none;
-}
-</style>
+}</style>

@@ -19,11 +19,7 @@ export default{
     }
 }
 </script>
-<style>
-    body{
-        padding: 0;
-        margin: 0;
-    }
+<style scoped>
     .nav{
         background-color: #8B0304;
         overflow: hidden;

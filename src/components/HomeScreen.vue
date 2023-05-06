@@ -12,16 +12,21 @@ import HeaderAll from './HeaderAll.vue';
         },
         mounted()
     {
-        let user= localStorage.getItem('user-info');
-        if(!user)
-        {
-            this.$router.push({name:'LogIn'})
+        let user = localStorage.getItem('user-info');
+        let admin = localStorage.getItem('role');
+        if (user && admin) {
+            //admin JWT verification and if it is not valid then we should route to Login 
         }
+        else if (user && !admin) {
+            //User JWT verification and if it is not valid then we should route to Login  
+        }
+        else{this.$router.push({ name: 'LogIn' })}
+
     }
     }
     
 </script>
-<style>
+<style scoped>
     .dia {
         width: 100%;
         height: auto;
