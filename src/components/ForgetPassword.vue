@@ -89,7 +89,7 @@ export default({
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 30px 40px;
+    padding: 30rem 40rem;
     margin: 0.5vh
 }
 
@@ -102,31 +102,31 @@ export default({
 
 h2 {
     font-size: 1.5rem;
-    margin-top: 10px;
+    margin-top: 10rem;
     text-transform: uppercase;
 }
 
 p {
-    font-size: 12px;
+    font-size: 12rem;
 }
 
 .passInput {
-    margin-top: 15px;
+    margin-top: 15rem;
     width: 80%;
     background: transparent;
     border: none;
-    border-bottom: 2px solid deepskyblue;
-    font-size: 15px;
+    border-bottom: 2rem solid deepskyblue;
+    font-size: 15rem;
     color: white;
     outline: none;
 }
 
 button {
-    margin-top: 15px;
+    margin-top: 15rem;
     width: 80%;
     background-color: deepskyblue;
     color: white;
-    padding: 10px;
+    padding: 10rem;
     text-transform: uppercase;
 }
 </style>
