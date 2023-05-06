@@ -12,6 +12,7 @@
         <h1 class="image-title">Quiz App</h1>
       </div>
       <div class="full-screen-image second-image"></div>
+      <div class="full-screen-image third-image"></div>
     </div>
   </template>
 
@@ -108,7 +109,11 @@ nav ul li a {
 }
 
 .second-image {
-  background-image: url('https://images.shiksha.com/mediadata/images/1566298040phpJkFB1H.jpeg');
+  background-image: url('https://images.hdqwalls.com/download/barbara-palvin-numero-russia-qx-1920x1080.jpg');
+}
+.third-image{
+    background-image: url('https://images.hdqwalls.com/download/sydney-sweeney-greg-swales-photoshoot-d3-1536x864.jpg');
+    
 }
 .image-title {
   position: absolute;
