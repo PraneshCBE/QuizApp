@@ -35,7 +35,8 @@
                         </form>
                         <p v-if="errorLogin.length != 0" class="error">{{ errorLogin }}</p>
                     </div>
-                    <router-link to="/ForgetPassword" class="fgpass">Forget password ?</router-link>
+                    <!-- <router-link to="/ForgetPassword" class="fgpass">Forget password ?</router-link> -->
+                    <p v-on:click="pop">Forget Password</p>
                 </div>
 
             </div>
@@ -45,6 +46,7 @@
 <script>
 import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import axios from 'axios'
+import swal from 'sweetalert';
 export default {
     name: 'LogIn',
     data() {
@@ -63,6 +65,31 @@ export default {
         KinesisElement,
     },
     methods: {
+
+        pop(){
+            swal(
+                {
+                    title:"Reset Password",
+                    text:"Enter valid Email-ID",
+                    closeOnClickOutside: false,
+                    button:"Reset",
+                    content:{
+                        element:"input",
+                        attributes:{
+                            placeholder:"Email id",
+                            type:"mail"
+                        }
+                    }
+            }).then((value) =>{
+
+                if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
+                swal("Reset Link sent Successfully",{icon:"success"});
+            } else {
+                swal('Enter a valid Email',{icon:"error"});
+            }
+
+            });
+        },
         toggleImage() {
             this.isAdmin = !this.isAdmin;
             this.UserMsg = this.isAdmin ? 'Faculty  ' : 'Student'
