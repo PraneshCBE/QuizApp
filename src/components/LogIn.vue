@@ -209,7 +209,10 @@ height: 100vh;
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
-
+.rp{
+    border: 3px solid black;
+    background-color: red;
+}
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 1s;
@@ -332,4 +335,13 @@ h1 {
     font-size: 10px;
     margin-top: 10px;
     text-decoration: none;
-}</style>
+}
+.swal-button {
+  padding: 7px 19px;
+  border-radius: 2px;
+  background-color: #4962B3;
+  font-size: 12px;
+  border: 1px solid #3e549a;
+  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+</style>
