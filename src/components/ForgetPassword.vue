@@ -11,7 +11,7 @@
         <div class="card">
         <img class="lock-icon" src="../assets/key.svg">
         <h2>Forgot Password?</h2>
-        <p>You can reset your Password here</p>
+        <p>Reset Password</p>
         <form @submit.prevent="sent">
         <input type="text" class="passInput" placeholder="Email address" v-model="email" required>
         <p v-if="errorEmail.length!=0" class="errormsg">{{errorEmail}}</p>
@@ -63,14 +63,17 @@ export default({
  }
 .body1 {
     background-color: #ff99f5;
-    background-image:
+    /* background-image:
         radial-gradient(at 61% 4%, hsla(303, 91%, 61%, 1) 0px, transparent 50%),
         radial-gradient(at 75% 66%, hsla(196, 91%, 79%, 1) 0px, transparent 50%),
         radial-gradient(at 98% 88%, hsla(76, 87%, 78%, 1) 0px, transparent 50%),
         radial-gradient(at 23% 16%, hsla(238, 96%, 77%, 1) 0px, transparent 50%),
         radial-gradient(at 95% 65%, hsla(13, 91%, 75%, 1) 0px, transparent 50%),
         radial-gradient(at 10% 79%, hsla(228, 96%, 69%, 1) 0px, transparent 50%),
-        radial-gradient(at 85% 58%, hsla(328, 81%, 68%, 1) 0px, transparent 50%);
+        radial-gradient(at 85% 58%, hsla(328, 81%, 68%, 1) 0px, transparent 50%); */
+        background: #0f0c29;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+
     background-repeat: no-repeat;
     color: white;
     display: flex;
@@ -90,7 +93,7 @@ export default({
     flex-direction: column;
     align-items: center;
     padding: 30px 40px;
-    margin: 0.5vh
+    margin: 0.5vh;
 }
 
 .lock-icon {
@@ -128,5 +131,7 @@ button {
     color: white;
     padding: 10px;
     text-transform: uppercase;
+    border-radius: 15px;
 }
+
 </style>
