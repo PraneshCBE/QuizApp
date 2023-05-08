@@ -70,8 +70,6 @@ export default {
             swal(
                 {
                     title:"Reset Password",
-                    text:"Enter valid Email-ID",
-                    closeOnClickOutside: false,
                     button:"Reset",
                     content:{
                         element:"input",
