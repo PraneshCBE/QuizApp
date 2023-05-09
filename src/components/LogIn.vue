@@ -1,4 +1,9 @@
 <template>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet"> 
+    </head>
     <div class="outer-container">
         <div class="container">
             <div class="card">
@@ -179,6 +184,11 @@ export default {
 }
 </script>
 <style scoped>
+*{
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
 body {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }

@@ -1,4 +1,9 @@
 <template>
+    <head>
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+      <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet"> 
+    </head>
     <div>
         <nav class="nav-show">
       <ul>
@@ -9,7 +14,7 @@
       </ul>
     </nav>
       <div class="full-screen-image first-image">
-        <h1 class="image-title">Quiz App</h1>
+        <h1 class="image-title">Qubix</h1>
       </div>
       <div class="full-screen-image second-image"></div>
       <div class="full-screen-image third-image"></div>
@@ -51,8 +56,16 @@ export default {
   },
 };
 </script>
-  
+<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet"> -->
+
 <style scoped>
+*{
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins', sans-serif;
+}
 nav {
   position: fixed;
   top: 0;
@@ -119,13 +132,13 @@ nav ul li a {
     
 }
 .image-title {
-  position: absolute;
-  top: 50%;
+  position:absolute;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
-  font-size: 4rem;
-  font-weight: bold;
+  font-size: 3rem;
+  font-weight:bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
