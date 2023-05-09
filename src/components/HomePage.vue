@@ -104,7 +104,10 @@ nav ul li a {
 }
 
 .first-image {
-  background-image: url('https://images.indianexpress.com/2021/02/AmritaVishwa.jpg');
+  background-color: black;
+  background-image: url('../assets/cbe\ campus.svg');
+  background-size: contain;
+  background-repeat: no-repeat;
 
 }
 
