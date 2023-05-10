@@ -3,8 +3,6 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet">
-      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
-      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/> -->
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     </head>
 
@@ -51,6 +49,7 @@
               <div class="header item" href="#">© Amrita Quibix</div>
               <a class="item" href="#">Home</a>
               <a class="item" href="#">About</a>
+              <a class="item" href="#">Contact</a>
               <a class="item" href="#">Login</a>
       </div>
         </div>
