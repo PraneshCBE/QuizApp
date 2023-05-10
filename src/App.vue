@@ -1,4 +1,7 @@
 <template>
+  <head>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/>
+  </head>
   <router-view></router-view>
 </template>
 

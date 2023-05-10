@@ -2,8 +2,12 @@
     <head>
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet"> 
+      <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet">
+      <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+      <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css"/> -->
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
     </head>
+
     <div>
         <nav class="nav-show">
       <ul>
@@ -14,14 +18,49 @@
       </ul>
     </nav>
       <div class="full-screen-image first-image">
-        <h1 class="image-title">Qubix</h1>
+        <h1 class="image-title">Quibix</h1>
       </div>
-      <div class="full-screen-image second-image"></div>
-      <div class="full-screen-image third-image"></div>
+      <!-- <div class="full-screen-image second-image"></div> -->
+      <!-- <div class="full-screen-image third-image"></div> -->
     </div>
+    <footer>
+      <!-- <div class = "ui list">
+        <div class="item">
+          <p>© Amrita Quibix</p>
+        </div>
+        <div class="item">
+          <font-awesome-icon :icon="['fab', 'instagram']" bounce style="color: #000000;" v-on:click="redir" />
+        </div>
+      </div> -->
+      <div class="ui vertical list">
+        <div class="item">
+          <div class = "ui huge divided relaxed horizontal list">
+              <div class="item">
+                  <i class="black instagram icon"></i>
+              </div>
+              <div class="item">
+                  <i class="black github icon"></i>
+              </div>
+              <div class="item">
+                  <i class="black google icon"></i>
+              </div>
+          </div>
+        </div>
+        <div class="item">
+          <div class="ui relxed horizontal list">
+              <div class="header item" href="#">© Amrita Quibix</div>
+              <a class="item" href="#">Home</a>
+              <a class="item" href="#">About</a>
+              <a class="item" href="#">Login</a>
+      </div>
+        </div>
+      </div>
+      
+    </footer>
   </template>
 
 <script>
+
 export default {
     name: "HomePage",
     data() {
@@ -53,19 +92,20 @@ export default {
         }
       }
     },
+    redir(){
+      window.location="http://www.instagram.com";
+    }
   },
 };
-</script>
-<!-- <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet"> -->
 
+</script>
 <style scoped>
 *{
   font-family: 'Hanken Grotesk', sans-serif;
   font-family: 'Nunito', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
+
 nav {
   position: fixed;
   top: 0;
@@ -145,5 +185,7 @@ nav ul li a {
 .visible {
   opacity: 1;
 }
+
+
 </style>
   
