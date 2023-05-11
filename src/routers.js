@@ -4,6 +4,7 @@ import HomePage from './components/HomePage.vue';
 import LogIn from './components/LogIn.vue';
 import ForgetPassword from './components/ForgetPassword.vue';
 import SpaceP404 from './components/space404.vue';
+import QuizModule from './components/QuizModule';
 const routes=[
     {
         name:'HomePage',
@@ -32,7 +33,12 @@ const routes=[
     {
         path:'/:pathMatch(.*)',
         component:SpaceP404
-    }
+    },
+    {
+        name:'QuizModule',
+        component:QuizModule,
+        path:'/QuizModule'
+    },
 ];
 
 const router=createRouter({

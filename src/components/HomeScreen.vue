@@ -1,10 +1,10 @@
 <template>
     <HeaderAll></HeaderAll>
-    <h1>Welcome to Amrita Quiz App</h1>
-    <img class="dia" src="../assets/amrita_dia.png">
+    <router-link to="/QuizModule">Quiz1</router-link>
 </template>
 <script>
 import HeaderAll from './HeaderAll.vue';
+// import QuizModule from './QuizModule.vue';
     export default{
         name: 'HomeScreen',
         components:{
