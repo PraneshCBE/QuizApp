@@ -4,9 +4,11 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css">
+      <link rel="stylesheet" href="https://cdn.tailwindcss.com">
     </head>
-
-    <div>
+    
+    <div class="full-screen-image first-image">
+      
         <nav class="nav-show">
       <ul>
         <li><a href="#">Home</a></li>
@@ -15,12 +17,22 @@
         <li ><router-link to="/Login">Login</router-link></li>
       </ul>
     </nav>
-      <div class="full-screen-image first-image">
-        <h1 class="image-title">Quibix</h1>
+    <div>
+      
+      <div class=" image-title ui horizontal list">
+                  <div class="item">
+              <img class="mini ui image" src="../assets/ll.png">
+              <div class="tit middle aligned content">
+                Amrita
+                Quibix
+              </div>
+            </div>
+        </div>
       </div>
+    </div>
+        
       <!-- <div class="full-screen-image second-image"></div> -->
       <!-- <div class="full-screen-image third-image"></div> -->
-    </div>
     <footer>
       <!-- <div class = "ui list">
         <div class="item">
@@ -156,7 +168,7 @@ nav ul li a {
 }
 
 .first-image {
-  background-color: black;
+  background-color: rgb(12, 20, 24);
   background-image: url('../assets/cbe\ campus.svg');
   background-size: contain;
   background-repeat: no-repeat;
@@ -172,7 +184,7 @@ nav ul li a {
 }
 .image-title {
   position:absolute;
-  top: 80%;
+  top: 85%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #fff;
@@ -183,6 +195,10 @@ nav ul li a {
 
 .visible {
   opacity: 1;
+}
+
+.tit{
+  font-size: x-large;
 }
 
 
