@@ -34,7 +34,7 @@
         <div class="item">
           <div class = "ui huge divided relaxed horizontal list">
               <div class="item">
-                  <i class="black instagram icon"></i>
+                  <i class="black instagram icon" v-on:click="redir"></i>
               </div>
               <div class="item">
                   <i class="black github icon"></i>
@@ -92,7 +92,7 @@ export default {
       }
     },
     redir(){
-      window.location="http://www.instagram.com";
+      window.location="https://www.instagram.com/praneshh77/";
     }
   },
 };
