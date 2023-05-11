@@ -139,12 +139,14 @@ export default {
             swal(
                 {
                     title:"Reset Password",
+                    className:"rr",
+                    showCloseButton: true,
                     button:"Reset",
                     content:{
                         element:"input",
                         attributes:{
                             placeholder:"Email id",
-                            type:"mail"
+                            type:"email"
                         }
                     }
             }).then((value) =>{
@@ -417,5 +419,8 @@ h1 {
   font-size: 12px;
   border: 1px solid #3e549a;
   text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+}
+.rr{
+    border-radius: 40px;
 }
 </style>
