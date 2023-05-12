@@ -5,6 +5,7 @@ import LogIn from './components/LogIn.vue';
 import ForgetPassword from './components/ForgetPassword.vue';
 import SpaceP404 from './components/space404.vue';
 import QuizModule from './components/QuizModule';
+import ResetPassword from './components/ResetPassword.vue'
 const routes=[
     {
         name:'HomePage',
@@ -38,6 +39,14 @@ const routes=[
         name:'QuizModule',
         component:QuizModule,
         path:'/QuizModule'
+    },
+    {
+        name:'ResetPassword',
+        component:ResetPassword,
+        path:'/resetpass',
+        meta: {
+            requiresResetToken: true
+          }
     },
 ];
 
