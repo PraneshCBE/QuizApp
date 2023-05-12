@@ -1,0 +1,4 @@
+{
+    "types" ; "vue-sweetalert2"
+    
+}

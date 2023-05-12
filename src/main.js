@@ -6,6 +6,8 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import SuiVue from 'semantic-ui-vue';
 import { initFlowbite,initAccordions, 
     initCarousels, 
@@ -22,6 +24,7 @@ library.add(faUserSecret,faInstagram)
 
 const app=createApp(App)
     app.use(router)
+    app.use(VueSweetalert2);
     app.use(SuiVue);
     app.component('font-awesome-icon', FontAwesomeIcon)
    app.mount('#app')

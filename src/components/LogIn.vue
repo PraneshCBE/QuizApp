@@ -4,7 +4,6 @@
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet"> 
     </head>
-    <HeaderAll></HeaderAll>
     <div class="outer-container">
         <div class="container">
             <div class="card">
@@ -50,10 +49,11 @@
     </div>
 </template>
 <script>
-import HeaderAll from './HeaderAll.vue';
 import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import axios from 'axios'
-import swal from 'sweetalert';
+// import swal from 'sweetalert';
+import swal from 'sweetalert2'
+import 'animate.css';
 export default {
     name: 'LogIn',
     data() {
@@ -70,33 +70,50 @@ export default {
     components: {
         KinesisContainer,
         KinesisElement,
-        HeaderAll
     },
     methods: {
 
         pop(){
-            swal(
+
+            const url = "http://172.20.10.9:8080/reset?uname="
+            swal.fire(
                 {
                     title:"Reset Password",
-                    className:"rr",
-                    showCloseButton: true,
-                    button:"Reset",
-                    content:{
-                        element:"input",
-                        attributes:{
-                            placeholder:"Email id",
-                            type:"email"
-                        }
+                    text:"Enter your Roll Number",
+                    showCloseButton:true,
+                    padding:'2em',
+                    confirmButtonText:'Reset',
+                    input:'text',
+                    inputPlaceholder:'Roll Number',
+                    showLoaderOnConfirm: true,
+                    preConfirm: (rollno) => {
+                        let tempurl=url.concat(rollno)
+                        console.log(tempurl);
+                        return fetch(tempurl)
+                        .then(response => {
+                            if (!response.ok) {
+                            throw new Error(response.statusText)
+                            }
+                            console.log(response.body.getReader)
+                            return response
+                        })
+                        .catch(error => {
+                            swal.showValidationMessage(
+                            `Request failed: ${error}`
+                            )
+                        })
+                    },
+                        allowOutsideClick: () => !swal.isLoading()
+
+                }
+                ).then((result) =>{
+                    if (result.isConfirmed){
+                        swal.fire('Reset Link sent to the valid Email', '', 'success',)
                     }
-            }).then((value) =>{
-
-                if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value)) {
-                swal("Reset Link sent Successfully",{icon:"success"});
-            } else {
-                swal('Enter a valid Email',{icon:"error"});
-            }
-
-            });
+                    else if(result.isDenied){
+                        swal.fire('Failed','','info')
+                    }
+                })
         },
         toggleImage() {
             this.isAdmin = !this.isAdmin;
