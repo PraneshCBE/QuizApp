@@ -20,6 +20,21 @@ import { initFlowbite,initAccordions,
     initTooltips } from 'flowbite'
 library.add(faUserSecret,faInstagram)
 
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresResetToken)) {
+      const resetToken = to.query.resetToken
+      if (!resetToken || resetToken.length === 0) {
+        next('/404')
+      } else {
+        // Here, you can make an API call to verify the reset token and handle the response accordingly.
+        // For simplicity, we'll just assume the reset token is valid.
+        next()
+      }
+    } else {
+      next()
+    }
+  })
+
 const app=createApp(App)
     app.use(router)
     app.use(SuiVue);
