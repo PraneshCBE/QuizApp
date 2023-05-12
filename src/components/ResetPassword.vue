@@ -1,9 +1,10 @@
-<template> 
-<div class="ui middle aligned center aligned grid">
+<template>
+	<br><br><br><br><br><br><br><br>
+<div class="center1 ui center aligned grid">
 	<div class="column">
 		<form class="ui form">
 			<div class="ui segment">
-				<h1><img src="../assets/ll.png" class="ui centered image"></h1>
+				<h1><img src="../assets/ll.png" class="tiny ui centered image"></h1>
 			<h2>Reset Password</h2>
 				<div class="ui center aligned basic segment">
 					<form class="ui form">
@@ -46,7 +47,11 @@ export default{
     body > .grid {
 	height: 100%;
 }
-
+/* .center1{
+	display: grid;
+    place-items: center;
+	height: 600px;
+} */
 .column {
 	max-width: 360px;
 }

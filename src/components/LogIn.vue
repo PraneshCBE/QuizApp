@@ -41,6 +41,7 @@
                         <p v-if="errorLogin.length != 0" class="error">{{ errorLogin }}</p>
                     </div>
                     <!-- <router-link to="/ForgetPassword" class="fgpass">Forget password ?</router-link> -->
+                    <br>
                     <p v-on:click="pop">Forget Password</p>
                 </div>
 
@@ -75,7 +76,7 @@ export default {
 
         pop(){
 
-            const url = "http://172.20.10.9:8080/reset?uname="
+            const url = "http://192.168.58.203:8080/reset?uname="
             swal.fire(
                 {
                     title:"Reset Password",

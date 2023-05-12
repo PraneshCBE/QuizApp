@@ -44,9 +44,9 @@ const routes=[
         name:'ResetPassword',
         component:ResetPassword,
         path:'/resetpass',
-        meta: {
-            requiresResetToken: true
-          }
+        // meta: {
+        //     requiresResetToken: true
+        //   }
     },
 ];
 
