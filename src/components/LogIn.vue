@@ -9,7 +9,7 @@
             <div class="card">
                 <kinesis-container>
                     <KinesisElement :strength="20">
-                <img class="logo" src="../assets/clipboard.png">
+                <img class="ui small logo image" src="../assets/ll.png">
             </KinesisElement>
             </kinesis-container>
                 <div class="right-container">
@@ -31,12 +31,8 @@
                             <input class="inp" type="text" v-model="email" required
                                 placeholder="Enter your University Email" />
                             <p v-if="errorEmail.length != 0" class="error">{{ errorEmail }}</p>
-                            <input class="inp" type="password" v-model="password" placeholder="Enter Password" />
-                            <kinesis-container>
-                                <kinesis-element :strength="10">
-                                    <input id="loginBtn" type="submit" value="Login" />
-                                </kinesis-element>
-                            </kinesis-container>
+                            <input class="inp" type="password" v-model="password" placeholder="Enter Password"/>
+                            <input id="loginBtn" type="submit" value="Login" />
                         </form>
                         <p v-if="errorLogin.length != 0" class="error">{{ errorLogin }}</p>
                     </div>
@@ -138,10 +134,13 @@ export default {
                     //let uri="api/getStudDetails";
                     //temp url
                     //  let uri="http://13.235.176.78:4202/users";
-                    let uri = "api/users"
-                    const result = await axios.get(uri,
-                        // { params: { studEmail: this.email, password: this.password } }
-                    )
+                    //let uri = "api/students/login"
+                    let uri = "http://172.20.10.9:8080/student/login"
+                    let data = {
+                        username:this.email,
+                        pass:this.password
+                    }
+                    const result = await axios.post(uri,data)
                     console.log(result.data)
                     // Check if email and password match with the data on the server
                     const matchUser = result.data.some(obj => obj.email === this.email)
@@ -188,7 +187,7 @@ export default {
     watch: {
         email(value) {
             this.email = value;
-            this.validateEmail(value);
+            //this.validateEmail(value);
         }
     },
     mounted() {
@@ -274,6 +273,7 @@ h1 {
     margin: 5vh;
     max-width: 80%;
     padding: 3vh;
+    padding-right: 7vh;
     display: flex;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.3);
@@ -295,8 +295,8 @@ h1 {
 }
 
 .userlogo {
-    height: 4vh;
-    width: 4vh;
+    height: 3.7vh;
+    width: 3.7vh;
     float: right;
 }
 
@@ -320,7 +320,7 @@ h1 {
     margin-right: auto;
     margin-left: auto;
     font-size: 1.5vh;
-    border: 1px solid #8B0304;
+    border: 1px solid #1835b9;
     border-radius: 1vh;
     text-align: center;
     background-color: rgba(255, 255, 255, 0.5);
@@ -334,12 +334,12 @@ h1 {
     width: 12vh;
     height: 5vh;
     margin-top: 3vh;
-    background: #8B0304;
+    background: #1835b9;
     color: white;
     font-size: large;
     font-size: 2vh;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    border-color: #8B0304;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
+    /* border-color: #8B0304; */
     border-radius: 2vh;
 }
 
@@ -350,6 +350,7 @@ h1 {
 .error {
     color: red;
     font-size: small;
+    padding-top: 2vh;
 }
 
 .container {
