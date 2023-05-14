@@ -6,6 +6,8 @@ import ForgetPassword from './components/ForgetPassword.vue';
 import SpaceP404 from './components/space404.vue';
 import QuizModule from './components/QuizModule';
 import ResetPassword from './components/ResetPassword.vue'
+import AvailCourses from './components/Dashboard/AvailCourses.vue';
+import QuizDets from './components/Dashboard/QuizDets.vue';
 const routes=[
     {
         name:'HomePage',
@@ -15,7 +17,19 @@ const routes=[
     {
         name:'HomeScreen',
         component:HomeScreen,
-        path:'/dashboard'
+        path:'/dashboard',
+        children: [
+            {
+             name: 'AvailCourses',
+             path: '/availcourses',
+             component:AvailCourses
+           },
+           {
+             name: 'QuizDets',
+             path: '/qd',
+             component:QuizDets
+           }
+         ]
     },
     {
         name:'LogIn',
