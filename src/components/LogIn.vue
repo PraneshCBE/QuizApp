@@ -134,8 +134,8 @@ export default {
                     //let uri="api/getStudDetails";
                     //temp url
                     //  let uri="http://13.235.176.78:4202/users";
-                    //let uri = "api/students/login"
-                    let uri = "http://172.20.10.9:8080/student/login"
+                    let uri = "api/student/login"
+                    //let uri = "http://localhost:8080/student/login"
                     let data = {
                         username:this.email,
                         pass:this.password
