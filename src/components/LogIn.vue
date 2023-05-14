@@ -1,27 +1,29 @@
 <template>
     <head>
-      <link rel="preconnect" href="https://fonts.googleapis.com">
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet"> 
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap"
+            rel="stylesheet">
     </head>
     <div class="outer-container">
         <div class="container">
             <div class="card">
                 <kinesis-container>
                     <KinesisElement :strength="20">
-                <img class="ui small logo image" src="../assets/ll.png">
-            </KinesisElement>
-            </kinesis-container>
+                        <img class="ui small logo image" src="../assets/ll.png">
+                    </KinesisElement>
+                </kinesis-container>
                 <div class="right-container">
 
                     <h1 id="select">
-                        
-                                <span class="usermsg">Login | </span>
-                                <Transition name="fade" mode="out-in">
-                                    <span class="usermsg1" :key="UserMsg"
-                                        style="display: inline-block; width:max-content;height:max-content">{{ UserMsg }}</span>
-                                </Transition>
-                          
+
+                        <span class="usermsg">Login | </span>
+                        <Transition name="fade" mode="out-in">
+                            <span class="usermsg1" :key="UserMsg"
+                                style="display: inline-block; width:max-content;height:max-content">{{ UserMsg }}</span>
+                        </Transition>
+
                         <img v-if="!isAdmin" class="userlogo" src="../assets/stud1.png" @click="toggleImage">
                         <img v-else class="userlogo" src="../assets/admin1.png" @click="toggleImage">
                     </h1>
@@ -31,7 +33,7 @@
                             <input class="inp" type="text" v-model="email" required
                                 placeholder="Enter your University Email" />
                             <p v-if="errorEmail.length != 0" class="error">{{ errorEmail }}</p>
-                            <input class="inp" type="password" v-model="password" placeholder="Enter Password"/>
+                            <input class="inp" type="password" v-model="password" placeholder="Enter Password" />
                             <input id="loginBtn" type="submit" value="Login" />
                         </form>
                         <p v-if="errorLogin.length != 0" class="error">{{ errorLogin }}</p>
@@ -70,47 +72,47 @@ export default {
     },
     methods: {
 
-        pop(){
+        pop() {
 
             const url = "http://192.168.58.203:8080/reset?uname="
             swal.fire(
                 {
-                    title:"Reset Password",
-                    text:"Enter your Roll Number",
-                    showCloseButton:true,
-                    padding:'2em',
-                    confirmButtonText:'Reset',
-                    input:'text',
-                    inputPlaceholder:'Roll Number',
+                    title: "Reset Password",
+                    text: "Enter your Roll Number",
+                    showCloseButton: true,
+                    padding: '2em',
+                    confirmButtonText: 'Reset',
+                    input: 'text',
+                    inputPlaceholder: 'Roll Number',
                     showLoaderOnConfirm: true,
                     preConfirm: (rollno) => {
-                        let tempurl=url.concat(rollno)
+                        let tempurl = url.concat(rollno)
                         console.log(tempurl);
                         return fetch(tempurl)
-                        .then(response => {
-                            if (!response.ok) {
-                            throw new Error(response.statusText)
-                            }
-                            console.log(response.body.getReader)
-                            return response
-                        })
-                        .catch(error => {
-                            swal.showValidationMessage(
-                            `Request failed: ${error}`
-                            )
-                        })
+                            .then(response => {
+                                if (!response.ok) {
+                                    throw new Error(response.statusText)
+                                }
+                                console.log(response.body.getReader)
+                                return response
+                            })
+                            .catch(error => {
+                                swal.showValidationMessage(
+                                    `Request failed: ${error}`
+                                )
+                            })
                     },
-                        allowOutsideClick: () => !swal.isLoading()
+                    allowOutsideClick: () => !swal.isLoading()
 
                 }
-                ).then((result) =>{
-                    if (result.isConfirmed){
-                        swal.fire('Reset Link sent to the valid Email', '', 'success',)
-                    }
-                    else if(result.isDenied){
-                        swal.fire('Failed','','info')
-                    }
-                })
+            ).then((result) => {
+                if (result.isConfirmed) {
+                    swal.fire('Reset Link sent to the valid Email', '', 'success',)
+                }
+                else if (result.isDenied) {
+                    swal.fire('Failed', '', 'info')
+                }
+            })
         },
         toggleImage() {
             this.isAdmin = !this.isAdmin;
@@ -119,56 +121,54 @@ export default {
 
         },
 
-        async login() {
-            if (this.isAdmin) {
+        async login() 
+        {
+            if (this.isAdmin) 
+            {
                 //Admin Http request
             }
-            else {
+            else 
+            {
                 //user http request
-                try {
-
-
-
-
-                    // let uri="    ";
-                    //let uri="api/getStudDetails";
-                    //temp url
-                    //  let uri="http://13.235.176.78:4202/users";
-                    let uri = "api/student/login"
-                    //let uri = "http://localhost:8080/student/login"
+                    var result='';
+                    // let uri = "/api/student/login"
+                    let uri = "http://52.72.173.171:8080/student/login"
+                    // let uri="http://localhost:8080/student/login"
                     let data = {
-                        username:this.email,
-                        pass:this.password
+                        username: (this.email).toUpperCase(),
+                        pass: this.password
                     }
-                    const result = await axios.post(uri,data)
-                    console.log(result.data)
-                    // Check if email and password match with the data on the server
-                    const matchUser = result.data.some(obj => obj.email === this.email)
-                    console.log(matchUser);
-                    if (matchUser) {
-                        const matchPass = result.data.some(obj => obj.password === this.password)
-                        console.log(matchPass);
-                        if (matchPass) {
-                            localStorage.setItem("role", this.isAdmin)
-                            localStorage.setItem("user-info", JSON.stringify({ "email": this.email, "pwd": this.password }))
-                            this.$router.push({ name: 'HomeScreen' })
+                    try{
+                    result = await axios.post(uri, data)
+                    console.log(result);
+                   
+                    if(result.status==200)
+                    {
+                        localStorage.setItem("user-info", JSON.stringify({ "username": this.email}))
+                        localStorage.setItem("st", result.data.secretToken)
+                        this.$router.push({name:'HomeScreen'})
+                    }
+                    else
+                    {
+                        this.errorLogin="Login Failed!, Try Again later";
+                    }
+                    }catch(err)
+                    {
+                        if (!err.response)
+                        {
+                            this.errorLogin="Login Failed!, Try Again";
                         }
-                        else {
-                            // Display error message
-                            this.errorLogin = 'Invalid password.'
+                        else if (err.response.status==404)
+                        {
+                        this.errorLogin="Invalid Credentials!";
+                        }
+                        else{
+                        this.errorLogin="Login Failed!, Try Again later";
                         }
                     }
-                    else {
-                        this.errorLogin = 'User not Found'
-                    }
+                    
 
-                } catch (error) {
-                    console.error(error)
-                    // Display error message
-
-                    this.errorLogin = 'Error logging in. Please try again later.'
                 }
-            }
         },
         onSubmit(event) {
             console.log(event)
@@ -206,11 +206,12 @@ export default {
 }
 </script>
 <style scoped>
-*{
-  font-family: 'Hanken Grotesk', sans-serif;
-  font-family: 'Nunito', sans-serif;
-  font-family: 'Poppins', sans-serif;
+* {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
 }
+
 body {
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
 }
@@ -228,23 +229,30 @@ body {
         background-position: 0% 50%;
     }
 }
-.oc{
-background: #0f0c29;  /* fallback for old browsers */
-background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
-background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-height: 100vh;
+
+.oc {
+    background: #0f0c29;
+    /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+    /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    height: 100vh;
 
 }
+
 .outer-container {
     height: 100vh;
     background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
     background-size: 400% 400%;
     animation: gradient 15s ease infinite;
 }
-.rp{
+
+.rp {
     border: 3px solid black;
     background-color: red;
 }
+
 .fade-enter-active,
 .fade-leave-active {
     transition: opacity 1s;
@@ -311,9 +319,11 @@ h1 {
     margin-right: 1rem;
     flex: 1;
 }
-.register{
+
+.register {
     margin-left: 2.5vh;
 }
+
 .inp {
     width: 30vh;
     height: 5vh;
@@ -372,15 +382,16 @@ h1 {
     margin-top: 10px;
     text-decoration: none;
 }
+
 .swal-button {
-  padding: 7px 19px;
-  border-radius: 2px;
-  background-color: #4962B3;
-  font-size: 12px;
-  border: 1px solid #3e549a;
-  text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
+    padding: 7px 19px;
+    border-radius: 2px;
+    background-color: #4962B3;
+    font-size: 12px;
+    border: 1px solid #3e549a;
+    text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.3);
 }
-.rr{
+
+.rr {
     border-radius: 40px;
-}
-</style>
+}</style>
