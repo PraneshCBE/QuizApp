@@ -8,6 +8,8 @@ import QuizModule from './components/QuizModule';
 import ResetPassword from './components/ResetPassword.vue'
 import AvailCourses from './components/Dashboard/AvailCourses.vue';
 import QuizDets from './components/Dashboard/QuizDets.vue';
+import StudMain from './components/Dashboard/StudMain.vue';
+import CourseInfo from './components/Dashboard/CourseInfo.vue';
 const routes=[
     {
         name:'HomePage',
@@ -18,6 +20,7 @@ const routes=[
         name:'HomeScreen',
         component:HomeScreen,
         path:'/dashboard',
+        redirect:'/sm',
         children: [
             {
              name: 'AvailCourses',
@@ -28,7 +31,12 @@ const routes=[
              name: 'QuizDets',
              path: '/qd',
              component:QuizDets
-           }
+           },
+           {
+            name: 'StudMain',
+            path: '/sm',
+            component:StudMain
+          }
          ]
     },
     {
@@ -58,10 +66,16 @@ const routes=[
         name:'ResetPassword',
         component:ResetPassword,
         path:'/resetpass',
-        // meta: {
-        //     requiresResetToken: true
-        //   }
+        meta: {
+            requiresResetToken: true
+          }
     },
+    {
+        name: 'CourseInfo',
+        path: '/ci',
+        props:true,
+        component:CourseInfo
+      }
 ];
 
 const router=createRouter({
