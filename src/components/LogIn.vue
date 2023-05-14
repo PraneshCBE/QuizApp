@@ -311,7 +311,9 @@ h1 {
     margin-right: 1rem;
     flex: 1;
 }
-
+.register{
+    margin-left: 2.5vh;
+}
 .inp {
     width: 30vh;
     height: 5vh;
