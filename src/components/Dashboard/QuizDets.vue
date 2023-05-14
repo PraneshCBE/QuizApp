@@ -1,3 +1,3 @@
 <template>
-    <div>Here comes tests available to attend and recently attended test etc etc</div>
+    <div>Here comes Missed Quizes and their available details</div>
 </template>
