@@ -16,14 +16,17 @@ export default {
 <style>
 html {
     height: 100%;
-    overflow: auto;
+    overflow: hidden;
 }
 body{
         padding: 0;
         margin: 0;
         height: 100%;
-    overflow: auto;
+        overflow:auto;
     }
+    body::-webkit-scrollbar{
+    display: none;
+  }
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
