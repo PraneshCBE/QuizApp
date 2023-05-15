@@ -149,9 +149,7 @@
                     <router-view></router-view>
                 </div>
             </div>
-        </div>
-        <!-- Main  -->
-        
+        </div>  
     </div>
 </template>
 <script>
@@ -162,7 +160,7 @@ export default {
     data() {
         return {
             showDropDown: false,
-            showSide: true,
+            showSide: false,
             homeBool:false
         }
     },

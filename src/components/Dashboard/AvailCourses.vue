@@ -10,8 +10,8 @@
     <p class="titlen">{{ co.name }}</p>
     <div class="circle">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
-      <circle class="stroke" cx="60" cy="60" r="50"/>
-      <image class ="enter" width="35" height="35" x="45" y="43" xlink:href="../../assets/enter.png" @click="course(co)"/>
+      <circle class="stroke" cx="60" cy="60" r="15%"/>
+      <image class ="enter" width="35" height="35" x="42" y="43" xlink:href="../../assets/enter.png" @click="course(co)"/>
     </svg></div>
   </div>
 </div>
@@ -28,7 +28,7 @@
                   {"code":"19CSE311","name":"Computer Security"},
                   {"code":"19CSE311","name":"Computer Security"},
                   {"code":"19CSE311","name":"Computer Security"},
-                  {"code":"19CSE311","name":"Computer Security"},
+                  {"code":"19CSE311","name":"Computer Security"}
                 ]
             }
         },
@@ -46,9 +46,13 @@
 }
 
 .container {
+  padding-left: 5%;
+  padding-right: 5%;
+  justify-content: center;
   overflow-y: auto;
+  overflow-x: auto;
   position:sticky;
-  height: 350px;
+  height: 300px;
   width: 100%;
   top: 5vh;
   left: 5vh;
@@ -56,10 +60,13 @@
   background-color: #00000000;
   
 }
+.container::-webkit-scrollbar{
+    display: none;
+  }
 .card {
   display: flex;
-  height: 250px;
-  width: 150px;
+  height: 70%;
+  width: 250px;
   margin-top: 6vh;
   margin-left: 6vh;
   background-color: #17141d;
@@ -68,11 +75,10 @@
 /*   margin-left: -50px; */
   transition: 0.4s ease-out;
   position: relative;
-  left: 0px;
 }
 
 .card:not(:first-child) {
-    margin-left: -50px;
+    margin-left: -10%;
 }
 
 .card:hover {
@@ -108,7 +114,7 @@
   top: 12px;
   left:2vh;
   height: 0.5vh;
-  width: 10px;
+  width: 60%;
 }
 
 .emptybar {
@@ -129,13 +135,13 @@
 }
 
 .card:hover .filledbar {
-  width: 80px;
+  width: 100%;
   transition: 0.4s ease-out;
 }
 
 .circle {
   position: absolute;
-  top: 150px;
+  top: 110px;
   left: calc(50% - 60px);
 }
 
