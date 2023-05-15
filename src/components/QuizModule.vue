@@ -3,7 +3,17 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.2.4/dist/vuetify-labs.css">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">    
       </head>
-      <div>
+      <!-- <div> -->
+        
+        <v-container class="bg-blue-darken-4 " width="100%" fluid style="min-height: 80px;display: flex;
+  align-items: center;">
+          <v-row style="justify-content:flex-end;margin-right: 10px;">
+              
+            <button class="btn glass" >Submit</button>
+            
+          </v-row>
+        </v-container>
+
         <v-container>
           <v-row>
             <v-col>
@@ -24,7 +34,7 @@
             </v-col>
           </v-row>
         </v-container>
-      </div> 
+      <!-- </div>  -->
 
 
 
@@ -89,7 +99,10 @@ export default {
         answer:['','',''],
         page:1,
         disable:false,
-        countDown: 10
+        hours:10,
+        minutes:28,
+        seconds:0,
+        days:1
         }
     },
     methods: {
@@ -97,18 +110,9 @@ export default {
               if(this.page<this.questions.length)
               this.page=this.page+1
             },
-            countDownTimer () {
-                if (this.countDown > 0) {
-                    setTimeout(() => {
-                        this.countDown -= 1
-                        this.countDownTimer()
-                    }, 1000)
-                }
-            }
-        },
-        created () {
-            this.countDownTimer()
-        }
+            
+      },
+       
 }
 </script>
 
@@ -119,6 +123,10 @@ export default {
   border-color: black;
   margin: 40px;
 }
+:root .countdown {
+  line-height: 1em;
+}
+
 
 </style>
 

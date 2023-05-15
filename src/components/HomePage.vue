@@ -32,6 +32,7 @@
         
       <!-- <div class="full-screen-image second-image"></div> -->
       <!-- <div class="full-screen-image third-image"></div> -->
+      
     <footer>
       <!-- <div class = "ui list">
         <div class="item">
@@ -70,6 +71,7 @@
   </template>
 
 <script>
+
 
 export default {
     name: "HomePage",
