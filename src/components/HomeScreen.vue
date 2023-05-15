@@ -1,11 +1,9 @@
 <template>
-    <!-- <HeaderAll></HeaderAll> -->
-    <!-- <router-link to="/QuizModule">Quiz1</router-link> -->
     <div class="w-screen h-screen flex">
         <!-- Side bar -->
-        <div class="w-[400px] h-full bg-gray-200 text-white" v-show="showSide">
+        <div class="w-[900px] h-full bg-gray-200 text-white" v-show="showSide">
             <div class="h-[50px] bg-gray-900 flex justify-start  items-center ">
-                <div class="px-[20px]">
+                <div class="px-[70px]">
                     <h3 class="font-bold text-xl">Student Dashboard</h3>
                 </div>
             </div>
@@ -74,7 +72,7 @@
         <div class="w-full h-full bg-gray-400">
             <div class="h-[50px] bg-gray-100 flex items-center shadow-sm px-[20px] w-full py-[10px] z-10 border-b ">
                 <!-- Hambuger menu -->
-                <div class="cursor-pointer w-[30px]" @click="toggleSideBar">
+                <div class="cursor-pointer w-[40px]" @click="toggleSideBar">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class=" w-[25px] h-[25px]">
                         <!--! Font Awesome Pro 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
                         <path
@@ -86,7 +84,7 @@
                 <div class="w-[calc(100%-0px)] flex">
                     <div class="w-[calc(100%-200px)] flex justify-center ">
                         <!-- Search bar -->
-                        <form class="flex items-center w-[200px]">
+                        <form class="flex items-center w-[300px]">
                             <label for="voice-search" class="sr-only">Search</label>
                             <div class="relative w-full">
                                 <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
@@ -113,7 +111,7 @@
                         </form>
                     </div>
                     <!-- User login -->
-                    <div class="w-[200px] ">
+                    <div class="w-[350px] ">
                         <div class="flex items-center justify-start space-x-4" @click="toggleDrop">
                             <img class="w-10 h-10 rounded-full border-2 border-gray-50"
                                 src="https://media.licdn.com/dms/image/D5603AQFOa51LLCcUPA/profile-displayphoto-shrink_800_800/0/1677431668768?e=1689811200&v=beta&t=VygvCx5KUcv0T8vVTYqvis-ooTExWBdGUhejTGGz1rc"
@@ -135,10 +133,8 @@
                                     id="menu-item-1">Support</a>
                                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
                                     id="menu-item-2">License</a>
-                                <form method="POST" action="#" role="none">
                                     <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm"
-                                        role="menuitem" tabindex="-1" id="menu-item-3">Sign out</button>
-                                </form>
+                                        role="menuitem" tabindex="-1" id="menu-item-3" @click="logout">Sign out</button>
                             </div>
                         </div>
                     </div>
@@ -175,6 +171,10 @@ export default {
             this.showDropDown = !this.showDropDown
 
         },
+        logout(){
+            localStorage.clear()
+            this.$router.push({name:"HomePage"})
+        }
     },
     components: {
         // HeaderAll,

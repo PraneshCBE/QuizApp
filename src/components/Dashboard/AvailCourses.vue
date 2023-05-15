@@ -51,11 +51,10 @@
   justify-content: center;
   overflow-y: auto;
   overflow-x: auto;
-  position:sticky;
+  position:static;
   height: 300px;
   width: 100%;
-  top: 5vh;
-  left: 5vh;
+  /* left: 5vh; */
   display: flex;
   background-color: #00000000;
   
@@ -67,12 +66,12 @@
   display: flex;
   height: 70%;
   width: 250px;
-  margin-top: 6vh;
+  margin-top: 4.5vh;
   margin-left: 6vh;
   background-color: #17141d;
   border-radius: 20px;
-  box-shadow: -1rem 0 3rem #000;
-/*   margin-left: -50px; */
+  box-shadow: -1rem 0 1rem #000;
+  /* margin-left: -50px; */
   transition: 0.4s ease-out;
   position: relative;
 }
@@ -82,13 +81,13 @@
 }
 
 .card:hover {
-  transform: translateY(-20px);
+  transform: translateY(-30px);
   transition: 0.4s ease-out;
 }
 
 .card:hover ~ .card {
   position: relative;
-  left: 50px;
+  left: 150px;
   transition: 0.4s ease-out;
 }
 
