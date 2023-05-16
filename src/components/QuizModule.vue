@@ -7,48 +7,70 @@
 
   <v-container class="bg-blue-darken-4 " width="100%" fluid style="min-height: 80px;display: flex;
   align-items: center;">
-    <v-row style="justify-content:flex-end;margin-right: 10px;">
-      <div class="timer">
-        <span class="countdown font-mono text-2xl">
-          <span>{{ hours }}</span>h
-          <span>{{ minutes }}</span>m
-          <span>{{ seconds }}</span>s
-        </span>
+          <v-row style="justify-content:flex-end;margin-right: 10px;">
+              
+            <button class="btn glass" >Submit</button>
+            
+          </v-row>
+        </v-container>
+
+        <v-container>
+          <v-row>
+            <v-col>
+              <v-btn align-self="start" variant="outlined"  style="margin-top: 10px;">Prev</v-btn>
+            </v-col>
+            <v-col align-self="center">
+              <v-pagination
+            v-model="page"
+            :length="questions.length"
+            prev-icon="mdi-menu-left"
+            next-icon="mdi-menu-right"
+            :total-visible="4"
+            :disabled="disable"
+          ></v-pagination>
+            </v-col>
+            <v-col>
+              <v-btn align-self="end" variant="outlined" style="margin-top: 10px;" @click="inc">Next</v-btn>
+            </v-col>
+          </v-row>
+        </v-container>
+      <!-- </div>  -->
+
+
+
+
+
+
+      <!-- <div style="width:400px;">   -->
+        <!-- <div class="text-center"> -->
+          <!-- <v-pagination
+            v-model="page"
+            :length="questions.length"
+            prev-icon="mdi-menu-left"
+            next-icon="mdi-menu-right"
+            :total-visible="4"
+          ></v-pagination>
+    </div> -->
+    <!-- <div class="ui small padded segment">
+      <div class="item">
+        <h1>{{ countDown }}</h1>
       </div>
-      <button class="btn glass">Submit</button>
-
-    </v-row>
-  </v-container>
-
-  <v-container>
-    <v-row>
-      <v-col>
-        <v-btn align-self="start" variant="outlined" style="margin-top: 10px;">Prev</v-btn>
-      </v-col>
-      <v-col align-self="center">
-        <v-pagination v-model="page" :length="questions.length" prev-icon="mdi-menu-left" next-icon="mdi-menu-right"
-          :total-visible="4" :disabled="disable"></v-pagination>
-      </v-col>
-      <v-col>
-        <v-btn align-self="end" variant="outlined" style="margin-top: 10px;" @click="inc">Next</v-btn>
-      </v-col>
-    </v-row>
-  </v-container>
- 
-  <div class=" ui padded segment" style="margin:5vh;">
-    <div class="ui two column grid">
-      <div class="column">
-        <p>{{ questions[page - 1] }}</p>
-        <!-- <p>{{ questions }}</p><p>{{ questions }}</p><p>{{ questions }}</p><p>{{ questions }}</p> -->
-      </div>
-      <div class="column">
-        <p>{{ answer }}</p>
-
-        <v-radio-group v-model="answer[page - 1]" mandatory>
-          <v-radio v-for="i in opt1[page - 1]" :key="i" :label="i" :value="i" :defaults-target="0" class="dec"></v-radio>
-        </v-radio-group>
-
-        <!-- <input type="radio" id="two" value="Two" v-model="answer" />
+    </div> -->
+  <!-- </div> -->
+    <div class=" ui padded segment" style="margin:5vh;">
+      <div class="ui two column grid">
+        <div class="column">
+          <p>{{ questions[page-1] }}</p>
+          <!-- <p>{{ questions }}</p><p>{{ questions }}</p><p>{{ questions }}</p><p>{{ questions }}</p> -->
+        </div>
+        <div class="column">
+          <p>{{ answer }}</p>
+          
+                    <v-radio-group v-model="answer[page-1]" mandatory >
+                      <v-radio v-for="i in opt1[page-1]" :key="i" :label="i" :value="i" :defaults-target="0" class="dec"></v-radio>
+          </v-radio-group>
+          
+          <!-- <input type="radio" id="two" value="Two" v-model="answer" />
           <label for="two">Two</label> -->
         <!-- <p>{{ questions }}</p><p>{{ questions }}</p><p>{{ questions }}</p><p>{{ questions }}</p><p>{{ questions }}</p> -->
       </div>
@@ -56,7 +78,6 @@
     <div class=" ui vertical  divider"></div>
   </div>
 </template>
-
 
 <script>
 
