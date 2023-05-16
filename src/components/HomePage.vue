@@ -32,7 +32,8 @@
         
       <!-- <div class="full-screen-image second-image"></div> -->
       <!-- <div class="full-screen-image third-image"></div> -->
-      
+      <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.334/build/spline-viewer.js"></script> -->
+      <Spline :scene="scene" />
     <footer>
       <!-- <div class = "ui list">
         <div class="item">
@@ -72,12 +73,16 @@
 
 <script>
 
-
+import Spline from "spline-vue/v3";
 export default {
     name: "HomePage",
+    components:{
+      Spline
+    },
     data() {
     return {
       navShow: false,
+      scene:"https://prod.spline.design/m53OvYWC3Zp5XPXO/scene.splinecode"
     };
 },
     mounted() {
