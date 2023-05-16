@@ -30,6 +30,7 @@
       </div>
       <div class="timer">
         <span class="countdown font-mono text-2xl">
+          <img src="../assets/tiktok.gif">
           <span>{{ hours }}</span>h
           <span>{{ minutes }}</span>m
           <span>{{ seconds }}</span>s
@@ -178,6 +179,10 @@ export default {
 .timer {
   margin-right: 4%;
   margin-top: 0.5%;
+}
+.timer img{
+  width: 30%;
+  height: 30%;
 }
 
 .countdown {

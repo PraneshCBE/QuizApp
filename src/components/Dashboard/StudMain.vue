@@ -98,8 +98,6 @@
   </script>
   
   <style scoped>
-  
-
 .courses {
   width: 100%;
   text-align: left;

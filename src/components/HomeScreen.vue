@@ -1,7 +1,7 @@
 <template>
     <div class="w-screen h-screen flex">
         <!-- Side bar -->
-        <div class="w-[900px] h-full bg-gray-200 text-white" v-show="showSide">
+        <div id ="drawer-navigation" class="w-[300px] h-full bg-gray-200 text-white" v-show="showSide">
             <div class="h-[50px] bg-gray-900 flex justify-start  items-center ">
                 <div class="px-[70px]">
                     <h3 class="font-bold text-xl">Student Dashboard</h3>
