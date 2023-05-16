@@ -1,14 +1,36 @@
 <template>
     <head>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vuetify@3.2.4/dist/vuetify-labs.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css">    
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@latest/css/materialdesignicons.min.css"> 
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.6.5/flowbite.min.css" rel="stylesheet" />  \
       </head>
       <!-- <div> -->
         
         <v-container class="bg-blue-darken-4 " width="100%" fluid style="min-height: 80px;display: flex;
   align-items: center;">
-          <v-row style="justify-content:flex-end;margin-right: 10px;">
-              
+          <v-row style="justify-content:space-between;margin-right: 10px;">
+
+                  <div style="margin-left: 10px;">
+                  <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800" type="button">Section<svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg></button>
+      <!-- Dropdown menu -->
+      <div id="dropdownHover" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+          <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Dashboard</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Settings</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Earnings</a>
+            </li>
+            <li>
+              <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Sign out</a>
+            </li>
+          </ul>
+      </div>
+      </div>
+
             <button class="btn glass" >Submit</button>
             
           </v-row>
@@ -36,26 +58,6 @@
         </v-container>
       <!-- </div>  -->
 
-
-
-
-
-
-      <!-- <div style="width:400px;">   -->
-        <!-- <div class="text-center"> -->
-          <!-- <v-pagination
-            v-model="page"
-            :length="questions.length"
-            prev-icon="mdi-menu-left"
-            next-icon="mdi-menu-right"
-            :total-visible="4"
-          ></v-pagination>
-    </div> -->
-    <!-- <div class="ui small padded segment">
-      <div class="item">
-        <h1>{{ countDown }}</h1>
-      </div>
-    </div> -->
   <!-- </div> -->
     <div class=" ui padded segment" style="margin:5vh;">
       <div class="ui two column grid">
@@ -79,7 +81,6 @@
     </div>
     
 </template>
-
 
 <script>
 
