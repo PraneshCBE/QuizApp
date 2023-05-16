@@ -48,6 +48,8 @@ router.beforeEach((to, from, next) => {
     components,
     directives,
   })
+
+
 const app=createApp(App)
     app.use(router)
     app.use(VueSweetalert2);
@@ -67,4 +69,4 @@ const app=createApp(App)
    initTabs(),
    initTooltips())
 
-
+app.config.globalProperties.$url='http://34.16.135.44:8090'

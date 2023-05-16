@@ -123,6 +123,7 @@ export default {
 
         async login() 
         {
+            console.log(this.$url)
             if (this.isAdmin) 
             {
                 //Admin Http request
@@ -131,8 +132,8 @@ export default {
             {
                 //user http request
                     var result='';
-                    // let uri = "/api/student/login"
-                    let uri = "http://52.72.173.171:8080/student/login"
+                    let uri = this.$url+"/student/login"
+                    console.log(uri)
                     // let uri="http://localhost:8080/student/login"
                     let data = {
                         username: (this.email).toUpperCase(),
