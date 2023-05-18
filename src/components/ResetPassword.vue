@@ -29,6 +29,7 @@
 </template>
 <script>
 import axios from 'axios'
+import swal from 'sweetalert2'
 export default {
 	name: 'ResetPassword',
 	data() {
@@ -40,16 +41,30 @@ export default {
 	},
 	methods: {
 		async savePass() {
+			console.log(this.newpass)
 			try {
 				var body = {
-					resetToken: this.$route.query.resetToken,
+					resetToken: (this.$route.query.resetToken).toString,
 					pass: this.newpass
 				}
-				const result = axios.post(this.$url + "/student/resetpass",body)
-				console.log(result)
+				const result = await axios.post(this.$url + "/student/resetpass",body)
+				console.log(result)	 
+				if (result.status==200)
+				{
+					swal.fire('Password Update Successfull', '', 'success',)
+					this.$router.replace({name:'LogIn'})
+				}
+					
 			}catch(err){
 				//Error handling if anythimg wrong in saving the new password
-				console.log(err)
+				console.log(err.response.status)
+				if(err.response.status==400)
+				{swal.fire('Invalid Reset Link', '', 'info',)}
+				else if(err.response.status==408)
+				{swal.fire('Token Expired', '', 'info',)}
+				else
+				{swal.fire('500 Internal Server Error', '', 'info',)}
+				
 			}
 			
 		}
