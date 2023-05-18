@@ -44,7 +44,7 @@ export default {
 			console.log(this.newpass)
 			try {
 				var body = {
-					resetToken: (this.$route.query.resetToken).toString,
+					resetToken: this.$route.query.resetToken,
 					pass: this.newpass
 				}
 				const result = await axios.post(this.$url + "/student/resetpass",body)
