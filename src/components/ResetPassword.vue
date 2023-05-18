@@ -7,7 +7,7 @@
 					<h1><img src="../assets/ll.png" class="tiny ui centered image"></h1>
 					<h2>Reset Password</h2>
 					<div class="ui center aligned basic segment">
-						<form class="ui form">
+						<form class="ui form" @submit.prevent=savePass>
 							<div class="field">
 								<div class="ui left input">
 									<input type="password" name="password" placeholder="New  Password">
@@ -18,7 +18,7 @@
 									<input type="password" name="password" placeholder="Confirm Password" v-model="newpass">
 								</div>
 							</div>
-							<button class="ui primary fluid button" type="submit" @submit="savePass">Submit</button>
+							<button class="ui primary fluid button" type="submit" >Submit</button>
 						</form>
 						<div class="ui divider"></div>
 					</div>
