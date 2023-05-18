@@ -34,8 +34,23 @@
                                 placeholder="Enter your University Email" />
                             <p v-if="errorEmail.length != 0" class="error">{{ errorEmail }}</p>
                             <input class="inp" type="password" v-model="password" placeholder="Enter Password" />
-                            <input id="loginBtn" type="submit" value="Login" />
+                            <select class="inp" v-model="semester">
+                                <option disabled value="0">Please select Semester</option>
+                                <option value="1">Sem 1</option>
+                                <option value="2">Sem 2</option>
+                                <option value="3">Sem 3</option>
+                                <option value="4">Sem 4</option>
+                                <option value="5">Sem 5</option>
+                                <option value="6">Sem 6</option>
+                                <option value="7">Sem 7</option>
+                                <option value="8">Sem 8</option>
+                            </select>
+                            <input id="loginBtn" type="submit" value="Login" :disabled="loading" />
                         </form>
+                        <div v-if="loading" class="loading-indicator">
+                            <p class="error">Loading....</p>
+                            <!-- Display a loading spinner or any desired loading animation here -->
+                        </div>
                         <p v-if="errorLogin.length != 0" class="error">{{ errorLogin }}</p>
                     </div>
                     <!-- <router-link to="/ForgetPassword" class="fgpass">Forget password ?</router-link> -->
@@ -63,7 +78,9 @@ export default {
             errorLogin: '',
             UserMsg: 'Student',
             imgSrc: "../assets/logo.png",
-            isAdmin: false
+            isAdmin: false,
+            semester: '',
+            loading: false
         }
     },
     components: {
@@ -74,7 +91,7 @@ export default {
 
         pop() {
 
-            const url = "http://192.168.58.203:8080/reset?uname="
+            const url = this.$url + "/student/reset?username="
             swal.fire(
                 {
                     title: "Reset Password",
@@ -121,55 +138,52 @@ export default {
 
         },
 
-        async login() 
-        {
+        async login() {
+            this.loading = true;
             console.log(this.$url)
-            if (this.isAdmin) 
-            {
+            if (this.isAdmin) {
                 //Admin Http request
             }
-            else 
-            {
+            else {
                 //user http request
-                    var result='';
-                    let uri = this.$url+"/student/login"
-                    console.log(uri)
-                    // let uri="http://localhost:8080/student/login"
-                    let data = {
-                        username: (this.email).toUpperCase(),
-                        pass: this.password
-                    }
-                    try{
-                    result = await axios.post(uri, data)
-                    console.log(result);
-                   
-                    if(result.status==200)
-                    {
-                        localStorage.setItem("user-info", JSON.stringify({ "username": this.email}))
-                        localStorage.setItem("st", result.data.secretToken)
-                        this.$router.push({name:'HomeScreen'})
-                    }
-                    else
-                    {
-                        this.errorLogin="Login Failed!, Try Again later";
-                    }
-                    }catch(err)
-                    {
-                        if (!err.response)
-                        {
-                            this.errorLogin="Login Failed!, Try Again";
-                        }
-                        else if (err.response.status==404)
-                        {
-                        this.errorLogin="Invalid Credentials!";
-                        }
-                        else{
-                        this.errorLogin="Login Failed!, Try Again later";
-                        }
-                    }
-                    
-
+                var result = '';
+                let uri = this.$url + "/student/login"
+                console.log(uri)
+                // let uri="http://localhost:8080/student/login"
+                let data = {
+                    username: (this.email).toUpperCase(),
+                    pass: this.password,
+                    semester: this.semester
                 }
+                console.log(this.semester)
+                try {
+                    result = await axios.post(uri, data)
+                    console.log("result")
+                    console.log(result);
+
+                    if (result.status == 200) {
+                        localStorage.setItem("user-info", JSON.stringify({ "username": this.email,"sem":this.semester,"st": result.data.secretToken }))
+                        this.$router.push({ name: 'HomeScreen' })
+                    }
+                    else {
+                        this.errorLogin = "Login Failed!, Try Again later";
+                    }
+                } catch (err) {
+                    if (!err.response) {
+                        this.errorLogin = "Login Failed!, Try Again";
+                    }
+                    else if (err.response.status == 404) {
+                        this.errorLogin = "Invalid Credentials!";
+                    }
+                    else {
+                        this.errorLogin = "Login Failed!, Try Again later";
+                    }
+                } finally {
+                    this.loading = false; // Set loading flag back to false when the request is complete
+                }
+
+
+            }
         },
         onSubmit(event) {
             console.log(event)
@@ -395,4 +409,5 @@ h1 {
 
 .rr {
     border-radius: 40px;
-}</style>
+}
+</style>

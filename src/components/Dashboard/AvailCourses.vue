@@ -5,9 +5,9 @@
 <body>
 <div class="container">
   <div v-for="co in courses" :key="co" class="card">
-    <h3 class="title">{{ co.code }}</h3>
+    <h3 class="title">{{ co.course_id }}</h3>
     <div class="bar"><div class="emptybar"></div><div class="filledbar"></div></div>
-    <p class="titlen">{{ co.name }}</p>
+    <p class="titlen">{{ co.course_name }}</p>
     <div class="circle">
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg">
       <circle class="stroke" cx="60" cy="60" r="15%"/>
@@ -18,24 +18,37 @@
 </body>
 </template>
 <script>
+import axios from 'axios'
     export default({
         data(){
             return{
-                courses:[
-                  {"code":"19CSE311","name":"Computer Security"},
-                  {"code":"19CSE311","name":"Computer Security"},
-                  {"code":"19CSE311","name":"Computer Security"},
-                  {"code":"19CSE311","name":"Computer Security"},
-                  {"code":"19CSE311","name":"Computer Security"},
-                  {"code":"19CSE311","name":"Computer Security"},
-                  {"code":"19CSE311","name":"Computer Security"}
-                ]
+                courses:[],
+                dataFetchError:false
             }
         },
         methods:{
           course(co){
+            if(!this.dataFetchError){
             this.$router.push({name:'CourseInfo',query:{course:JSON.stringify({co})}})
+            }
+            else{this.getCourses()}
+          },
+          async getCourses() {
+            try{
+            const result = await axios.get(this.$url+'/student/courses', { params: { semester: JSON.parse(localStorage.getItem('user-info')).sem  } })
+            this.courses=result.data.courses
+            this.dataFetchError=false
+            }catch(err){
+              //Error Handling for the courses
+              this.dataFetchError=true
+              this.courses=[{"course_id":"Error 500","course_name":"Unable to Fetch Data"},{"course_id":"Error 500","course_name":"Try Refresing the Page ;( "}]
+              console.log(err)
+            }
+
           }
+        },
+        mounted(){
+          this.getCourses()
         }
     })
 </script>

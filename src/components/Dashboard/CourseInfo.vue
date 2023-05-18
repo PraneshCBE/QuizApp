@@ -15,9 +15,6 @@ export default({
         HeaderAll
     },
     mounted(){
-        const myObj = JSON.parse(this.$route.query.course);
-        console.log("json",myObj.co.name);
-        console.log("json1",this.$route.query.course);
     }
 })
 </script>
