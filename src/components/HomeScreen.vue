@@ -111,7 +111,7 @@
                         </form>
                     </div>
                     <!-- User login -->
-                    <div class="w-[350px] ">
+                    <div class="w-[150px] ">
                         <div class="flex items-center justify-start space-x-4" @click="toggleDrop">
                             <img class="w-10 h-10 rou   nded-full border-2 border-gray-50"
                                 :src="profile.pic"  alt="profile">
@@ -177,9 +177,9 @@ export default {
         },
         getProfile(){
             this.profile={
-                "name":"404 Not Found",
+                "name":JSON.parse(localStorage.getItem("user-info")).name,
                 "roll":JSON.parse(localStorage.getItem("user-info")).rollno,
-                "pic":"https://media.licdn.com/dms/image/D5603AQFOa51LLCcUPA/profile-displayphoto-shrink_800_800/0/1677431668768?e=1689811200&v=beta&t=VygvCx5KUcv0T8vVTYqvis-ooTExWBdGUhejTGGz1rc"
+                "pic":JSON.parse(localStorage.getItem("user-info")).dp,
             }
         }
     },

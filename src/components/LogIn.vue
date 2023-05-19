@@ -162,7 +162,7 @@ export default {
                     console.log(result);
 
                     if (result.status == 200) {
-                        localStorage.setItem("user-info", JSON.stringify({ "rollno": this.rollno,"sem":this.semester,"st": result.data.secretToken }))
+                        localStorage.setItem("user-info", JSON.stringify({ "rollno": this.rollno,"sem":this.semester,"st": result.data.secretToken,"name":result.data.name,"dp":result.data.dp }))
                         this.$router.push({ name: 'HomeScreen' })
                     }
                     else {
