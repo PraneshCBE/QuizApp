@@ -1,6 +1,6 @@
 <template>
     <HeaderAll></HeaderAll>
-    Course Info of {{ co.co.name}}
+    Course Info of {{ co.co.course_name}}
 </template>
 <script>
 import HeaderAll from '../HeaderAll.vue';

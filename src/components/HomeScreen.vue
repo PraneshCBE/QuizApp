@@ -113,12 +113,11 @@
                     <!-- User login -->
                     <div class="w-[350px] ">
                         <div class="flex items-center justify-start space-x-4" @click="toggleDrop">
-                            <img class="w-10 h-10 rounded-full border-2 border-gray-50"
-                                src="https://media.licdn.com/dms/image/D5603AQFOa51LLCcUPA/profile-displayphoto-shrink_800_800/0/1677431668768?e=1689811200&v=beta&t=VygvCx5KUcv0T8vVTYqvis-ooTExWBdGUhejTGGz1rc"
-                                alt="Profile">
+                            <img class="w-10 h-10 rou   nded-full border-2 border-gray-50"
+                                :src="profile.pic"  alt="profile">
                             <div class="font-semibold dark:text-white text-left">
-                                <div>Lallu Maamey</div>
-                                <div class="text-xs text-gray-500 dark:text-gray-400">cb.en.u4cse20138</div>
+                                <div>{{ profile.name }}</div>
+                                <div class="text-xs text-gray-500 dark:text-gray-400">{{profile.roll }}</div>
                             </div>
                         </div>
                         <!-- Drop down -->
@@ -157,7 +156,8 @@ export default {
         return {
             showDropDown: false,
             showSide: false,
-            homeBool:false
+            homeBool:false,
+            profile:{},
         }
     },
     methods: {
@@ -174,12 +174,20 @@ export default {
         logout(){
             localStorage.clear()
             this.$router.push({name:"HomePage"})
+        },
+        getProfile(){
+            this.profile={
+                "name":"404 Not Found",
+                "roll":JSON.parse(localStorage.getItem("user-info")).rollno,
+                "pic":"https://media.licdn.com/dms/image/D5603AQFOa51LLCcUPA/profile-displayphoto-shrink_800_800/0/1677431668768?e=1689811200&v=beta&t=VygvCx5KUcv0T8vVTYqvis-ooTExWBdGUhejTGGz1rc"
+            }
         }
     },
     components: {
         // HeaderAll,
     },
     mounted() {
+        
         let user = localStorage.getItem('user-info');
         let admin = localStorage.getItem('role');
         if (user && admin) {
@@ -189,6 +197,7 @@ export default {
             //User JWT verification and if it is not valid then we should route to Login  
         }
         else { this.$router.push({ name: 'LogIn' }) }
+        this.getProfile()
 
     }
 }

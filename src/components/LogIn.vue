@@ -30,7 +30,7 @@
 
                     <div class="register">
                         <form @submit.prevent=onSubmit>
-                            <input class="inp" type="text" v-model="email" required
+                            <input class="inp" type="text" v-model="rollno" required
                                 placeholder="Enter your University Email" />
                             <p v-if="errorEmail.length != 0" class="error">{{ errorEmail }}</p>
                             <input class="inp" type="password" v-model="password" placeholder="Enter Password" />
@@ -72,7 +72,7 @@ export default {
     name: 'LogIn',
     data() {
         return {
-            email: '',
+            rollno: '',
             password: '',
             errorEmail: '',
             errorLogin: '',
@@ -151,7 +151,7 @@ export default {
                 console.log(uri)
                 // let uri="http://localhost:8080/student/login"
                 let data = {
-                    username: (this.email).toUpperCase(),
+                    username: (this.rollno).toUpperCase(),
                     pass: this.password,
                     semester: this.semester
                 }
@@ -162,7 +162,7 @@ export default {
                     console.log(result);
 
                     if (result.status == 200) {
-                        localStorage.setItem("user-info", JSON.stringify({ "username": this.email,"sem":this.semester,"st": result.data.secretToken }))
+                        localStorage.setItem("user-info", JSON.stringify({ "rollno": this.rollno,"sem":this.semester,"st": result.data.secretToken }))
                         this.$router.push({ name: 'HomeScreen' })
                     }
                     else {
@@ -189,8 +189,8 @@ export default {
             console.log(event)
             this.login()
         },
-        validateEmail(email) {
-            if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(email)) {
+        validateEmail(rollno) {
+            if (/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(rollno)) {
                 this.errorEmail = ""
                 return
             } else {
@@ -200,8 +200,8 @@ export default {
     },
 
     watch: {
-        email(value) {
-            this.email = value;
+        rollno(value) {
+            this.rollno = value;
             //this.validateEmail(value);
         }
     },
