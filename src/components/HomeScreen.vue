@@ -189,6 +189,7 @@ export default {
     mounted() {
         
         let user = localStorage.getItem('user-info');
+        console.log("User",user)
         if (user){
             var res=this.$globalmethods.decryptData(JSON.parse(user))
             if (res=="Rengaraj!!")
