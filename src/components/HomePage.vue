@@ -24,7 +24,7 @@
               <img class="mini ui image" src="../assets/ll.png">
               <div class="tit middle aligned content">
                 Amrita
-                Quibix hello
+                Quibix
               </div>
             </div>
         </div>
