@@ -91,10 +91,16 @@
     </div>
     <div class=" ui vertical  divider"></div>
   </div>
+  <footer id="footer">
+    <div style="display: flex;align-items: flex-start; margin:10px;" >
+      <img v-if="internetStrength=='2g'" src="../assets/Wifi_weak.svg" >
+      <img v-if="internetStrength=='3g'" src="../assets/Wifi_moderate.svg">
+      <img v-if="internetStrength=='4g'" src="../assets/Wifi_Strong.svg">
+    </div>
+  </footer>
 </template>
 
 <script>
-
 export default {
   name: "QuizModule",
   data() {
@@ -115,9 +121,24 @@ export default {
       minutes: 2,
       seconds: 59,
       days: 1,
+      internetStrength: null
+      
     }
   },
+  created() {
+    this.checkInternetStrength();
+  },
   methods: {
+    async checkInternetStrength() {
+      if ('connection' in navigator) {
+        const connection = navigator.connection;
+        if (connection) {
+          this.internetStrength = connection.effectiveType || 'Unknown';
+        }
+      } else {
+        this.internetStrength = 'N/A';
+      }
+    },
     inc() {
       if (this.page < this.questions.length)
         this.page = this.page + 1
@@ -152,12 +173,19 @@ export default {
 
     // Start the countdown
     this.startCountdown();
+    this.checkInternetStrength()
   },
 
 }
 </script>
-
 <style scoped>
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;            /* Footer height */
+}
 .dec {
   border: 1.5px solid;
   padding: 3px;
