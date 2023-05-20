@@ -10,7 +10,7 @@
             <div class="h-[calc(100vh-50px)] bg-gray-800 py-[20px]">
                 <div class="flex flex-col justify-between h-full px-[20px] space-y-[10px]">
                     <div class=" flex flex-col justify-between space-y-[10px]">
-                        <router-link to="/sm"
+                        <router-link to="/sm" @click="showSide = false"
                             class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-200 hover:text-gray-800  transition duration-400 ease-in-out"  >
                             <svg aria-hidden="true" class="mr-2 w-[25px] h-[25px] fill-current" fill="currentColor"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -20,7 +20,7 @@
                             </svg>
                             Home
                         </router-link>
-                        <router-link to="/qd"
+                        <router-link to="/qd" @click="showSide = false"
                             class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300  hover:text-gray-800 transition duration-400 ease-in-out">
                             <svg aria-hidden="true" class="mr-2 w-[25px] h-[25px] fill-current" fill="currentColor"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -30,7 +30,7 @@
                             </svg>
                             Backlogs
                         </router-link>
-                        <router-link to="/QuizModule"
+                        <router-link to="/QuizModule" @click="showSide = false"
                             class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md border-gray-200 hover:bg-gray-300  hover:text-gray-800 transition duration-400 ease-in-out">
                             <svg aria-hidden="true" class="mr-2 w-[25px] h-[25px] fill-current" fill="currentColor"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
@@ -40,7 +40,7 @@
                             </svg>
                             Marks
                         </router-link>
-                        <router-link to="/download"
+                        <router-link to="/download" @click="showSide = false"
                             class="inline-flex relative items-center py-[10px] px-[10px] w-full text-sm font-medium rounded-md rounded-b-lg hover:bg-gray-300  hover:text-gray-800 transition duration-400 ease-in-out">
                             <svg aria-hidden="true" class="mr-2 w-[25px] h-[25px] fill-current" fill="currentColor"
                                 viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
