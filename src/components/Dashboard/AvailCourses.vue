@@ -180,4 +180,5 @@ svg {
 .card:hover .enter{
   visibility: visible;
 }
+
 </style>

@@ -6,17 +6,18 @@
       <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"> -->
     </head>
     
-    <div class="full-screen-image first-image">
+   
       
         <nav class="nav-show">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><router-link to="">About</router-link></li>
-        <li><router-link to="">Contact</router-link></li>
+        <li><a href="#about-us">About</a></li>
+        <li><a href="#contact-us">Contact</a></li>
         <li ><router-link to="/Login">Login</router-link></li>
       </ul>
-    </nav>
-    <div>
+      </nav>
+      <div class="full-screen-image first-image">
+      <div>
       
       <div class=" image-title ui horizontal list">
                   <div class="item">
@@ -30,10 +31,9 @@
       </div>
     </div>
         
-      <!-- <div class="full-screen-image second-image"></div> -->
-      <!-- <div class="full-screen-image third-image"></div> -->
+      <div id="about-us" class="full-screen-image second-image"></div>
       <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.334/build/spline-viewer.js"></script> -->
-      <Spline :scene="scene" />
+      <Spline :scene="scene"  id="contact-us"/>
     <footer>
       <!-- <div class = "ui list">
         <div class="item">
@@ -61,9 +61,9 @@
           <div class="ui relxed horizontal list">
               <div class="header item" href="#">© Amrita Quibix</div>
               <a class="item" href="#">Home</a>
-              <a class="item" href="#">About</a>
-              <a class="item" href="#">Contact</a>
-              <a class="item" href="#">Login</a>
+              <a class="item" href="#about-us">About</a>
+              <a class="item" href="#contact-us">Contact</a>
+              <router-link class="item" to="/Login">Login</router-link>
       </div>
         </div>
       </div>

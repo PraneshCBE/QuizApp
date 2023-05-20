@@ -16,16 +16,18 @@
           <select v-model="selectedDate" @change="getScheduledQuizzes">
             <option v-for="date in dates" :key="date" :value="date">{{ date }}</option>
           </select>
+          <div class="container">
           <div v-if="scheduledQuizzes.length > 0">
             <h3>{{ selectedDate === currentDate ? "Today's Quiz" : selectedDate }} </h3>
             <ul>
-              <li v-for="quiz in scheduledQuizzes" :key="quiz.id">{{ quiz.name }}</li>
+              <li v-for="quiz in scheduledQuizzes" :key="quiz.id" @click="takeQuiz(quiz.id)">{{ quiz.name }}</li>
             </ul>
           </div>
           <div v-else>
             <p>No quizzes scheduled for the selected date.</p>
           </div>
         </div>
+      </div>
         <div class="info">
             <div class="dummy">
            <p> Some info</p>
@@ -60,6 +62,11 @@
     this.getScheduledQuizzes();
     },
     methods: {
+    takeQuiz(quizId) {
+      // this.$router.push({ name: 'quiz', params: { id: quizId } });
+      console.log(quizId);
+      this.$router.push({ name: 'QuizModule' });
+    },
         getDates() {
       const today = new Date();
       for (let i = 0; i < 7; i++) {
@@ -83,6 +90,7 @@
           { id: 1, name: 'Quiz 1' },
           { id: 2, name: 'Quiz 2' },
           { id: 3, name: 'Quiz 3' },
+          { id: 4, name: 'Quiz 4  ' },
         ];
       } else if (selectedDate === this.dates[1]) {
         this.scheduledQuizzes = [
@@ -108,36 +116,60 @@
   overflow: hidden;
 }
 
-
+/* this quiz-box should not go outside it's parent , instead should make a scroll it's own contents inside it */
 .quiz-box {
   width: 40%;
-  height:max-content;
-  background-color: #3b3939;
-  padding: 20px;
-  color:wheat;
-  
+  height: 300px;
+  padding: 1%;
+  background-color: #ffffff00;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
-
-.quiz-box select {
+.container {
   width: 100%;
+  height: 100%;
+  padding: 20px;
+  background-color: #ffffff00;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 20px;
+  overflow-y:auto;
+  overflow-x: hidden;
+}
+.quiz-box select {
+ 
   padding: 10px;
   margin-bottom: 10px;
-  color: aliceblue;
-  background-color: darkgrey;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #000;
+  width: 100%;
+  background-color: #ffffff00;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .quiz-box h3 {
   margin-bottom: 10px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #000;
 }
 
 .quiz-box ul {
-  list-style: none;
   padding: 0;
   margin: 0;
+  list-style: none;
 }
 
 .quiz-box li {
-  margin-bottom: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
 }
 @media (max-width: 768px) {
   .content {
@@ -145,22 +177,23 @@
   }
   .quiz-box {
     width: 100%;
+    height: 100%;
   }
   .info{
-    flex-direction: column;
+    height: 100%;
+    overflow-y: hidden;
   }
+
 }
 .info{
-    width: 100%;
-    background-color: aquamarine;
-    float: center;
-    display:flex;
-    flex-direction: row;
-    justify-content: space-around;
-}
-.dummy{
-display: flex;
-flex-direction: column;
+  width: 100%;
+  height: 300px;
+  padding: 1%;
+  background-color: #ffffff00;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-y:auto;
+  overflow-x: hidden;
 }
 
 </style>  
