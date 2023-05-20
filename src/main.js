@@ -29,6 +29,7 @@ import { initFlowbite,initAccordions,
 
 library.add(faUserSecret,faInstagram)
 
+import globalmethods from './globalmethods.js'
 router.beforeEach((to, from, next) => {
     if (to.matched.some(record => record.meta.requiresResetToken)) {
       const resetToken = to.query.resetToken
@@ -70,3 +71,4 @@ const app=createApp(App)
    initTooltips())
 
 app.config.globalProperties.$url='http://34.16.135.44:8090'
+app.config.globalProperties.$globalmethods=globalmethods

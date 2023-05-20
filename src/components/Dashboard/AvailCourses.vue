@@ -35,7 +35,10 @@ import axios from 'axios'
           },
           async getCourses() {
             try{
-            const result = await axios.get(this.$url+'/student/courses', { params: { semester: JSON.parse(localStorage.getItem('user-info')).sem  } })
+              var dData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
+              const sem=dData.sem
+              console.log(sem)
+            const result = await axios.get(this.$url+'/student/courses', { params: { semester: sem } })
             this.courses=result.data.courses
             this.dataFetchError=false
             }catch(err){

@@ -65,7 +65,6 @@
 <script>
 import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import axios from 'axios'
-// import swal from 'sweetalert';
 import swal from 'sweetalert2'
 import 'animate.css';
 export default {
@@ -137,7 +136,7 @@ export default {
             this.imgSrc = this.isAdmin ? '../assets/admin1.png' : '../assets/stud1.png'
 
         },
-
+        
         async login() {
             this.loading = true;
             console.log(this.$url)
@@ -162,20 +161,26 @@ export default {
                     console.log(result);
 
                     if (result.status == 200) {
-                        localStorage.setItem("user-info", JSON.stringify({ "rollno": this.rollno,"sem":this.semester,"st": result.data.secretToken,"name":result.data.name,"dp":result.data.dp }))
+                        console.log("Login Successfull")
+                        const encryptedData=this.$globalmethods.encryptData(JSON.stringify({ "rollno": this.rollno,"sem":this.semester,"st": result.data.secretToken,"name":result.data.name,"dp":result.data.dp }))
+                        localStorage.setItem("user-info",JSON.stringify(encryptedData))
                         this.$router.push({ name: 'HomeScreen' })
                     }
                     else {
+                        console.error(result)
                         this.errorLogin = "Login Failed!, Try Again later";
                     }
                 } catch (err) {
                     if (!err.response) {
+                        console.error(err)
                         this.errorLogin = "Login Failed!, Try Again";
                     }
                     else if (err.response.status == 404) {
+                        console.error(err)
                         this.errorLogin = "Invalid Credentials!";
                     }
                     else {
+                        console.error(err)
                         this.errorLogin = "Login Failed!, Try Again later";
                     }
                 } finally {

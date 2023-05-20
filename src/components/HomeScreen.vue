@@ -177,9 +177,9 @@ export default {
         },
         getProfile(){
             this.profile={
-                "name":JSON.parse(localStorage.getItem("user-info")).name,
-                "roll":JSON.parse(localStorage.getItem("user-info")).rollno,
-                "pic":JSON.parse(localStorage.getItem("user-info")).dp,
+                "name":this.profile.name,
+                "roll":this.profile.rollno,
+                "pic":this.profile.dp,
             }
         }
     },
@@ -189,12 +189,22 @@ export default {
     mounted() {
         
         let user = localStorage.getItem('user-info');
+        if (user){
+            var res=this.$globalmethods.decryptData(JSON.parse(user))
+            if (res=="Rengaraj!!")
+            {
+                console.warn("Rengaraj Detected!!")
+                localStorage.clear()
+                this.$router.replace({name:'InspectWatcher'})
+            }
+        }
         let admin = localStorage.getItem('role');
         if (user && admin) {
             //admin JWT verification and if it is not valid then we should route to Login 
         }
         else if (user && !admin) {
             //User JWT verification and if it is not valid then we should route to Login  
+            this.profile=res
         }
         else { this.$router.push({ name: 'LogIn' }) }
         this.getProfile()

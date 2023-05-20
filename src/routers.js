@@ -10,6 +10,7 @@ import AvailCourses from './components/Dashboard/AvailCourses.vue';
 import QuizDets from './components/Dashboard/QuizDets.vue';
 import StudMain from './components/Dashboard/StudMain.vue';
 import CourseInfo from './components/Dashboard/CourseInfo.vue';
+import InspectWatcher from './components/InspectWatcher.vue';
 const routes=[
     {
         name:'HomePage',
@@ -36,7 +37,8 @@ const routes=[
             name: 'StudMain',
             path: '/sm',
             component:StudMain
-          }
+          },
+    
          ]
     },
     {
@@ -69,6 +71,11 @@ const routes=[
         meta: {
             requiresResetToken: true
           }
+    },
+    {
+        name: 'InspectWatcher',
+        path: '/you-r-dead',
+        component:InspectWatcher
     },
     {
         name: 'CourseInfo',
