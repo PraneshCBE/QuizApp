@@ -11,8 +11,8 @@
         <nav class="nav-show">
       <ul>
         <li><a href="#">Home</a></li>
-        <li><a href="#about-us">About Us</a></li>
-        <li><a href="#contact-us">Contact Us</a></li>
+        <li><a href="#about-us">About</a></li>
+        <li><a href="#contact-us">Contact</a></li>
         <li ><router-link to="/Login">Login</router-link></li>
       </ul>
       </nav>
