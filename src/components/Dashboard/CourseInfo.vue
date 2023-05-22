@@ -13,6 +13,7 @@
     </div>
 </template>
 <script>
+import axios from 'axios';
 import HeaderAll from '../HeaderAll.vue';
 export default({
     name:'CourseInfo',
@@ -24,7 +25,29 @@ export default({
     components:{
         HeaderAll
     },
+    methods:{
+        getQuizzes(){
+            var usrData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
+            console.log(usrData)
+            var token=usrData.st
+            console.log(token)
+            var id=(usrData.rollno).toUpperCase()
+            axios.get(
+                this.$url+'/authStudent/getQuizzes/'+this.co.co.course_id+'/'+id,
+                //bearer token
+                {headers:{'Authorization':`Bearer ${token}`}})
+            .then((res)=>{
+                console.log(res)
+                console.log(res.data)
+            })
+            .catch((err)=>{
+                console.log(err)
+            })
+        }
+    },
     mounted(){
+        this.getQuizzes()
+
     }
 })
 </script>
