@@ -11,12 +11,12 @@
             <div class="card">
                 <kinesis-container>
                     <KinesisElement :strength="20">
-                        <img class="ui small logo image" src="../assets/ll.png">
+                        <img class="ui center floated small logo image" src="../assets/ll.png">
                     </KinesisElement>
                 </kinesis-container>
-                <div class="right-container">
+                <div class="right-container" style="margin-top: 5vh;padding-left: 2vh;">
 
-                    <h1 id="select">
+                    <h1 id="select" style="padding-left: 5vh;">
 
                         <span class="usermsg">Login | </span>
                         <Transition name="fade" mode="out-in">
@@ -55,7 +55,7 @@
                     </div>
                     <!-- <router-link to="/ForgetPassword" class="fgpass">Forget password ?</router-link> -->
                     <br>
-                    <p v-on:click="pop">Forget Password</p>
+                    <p v-on:click="pop" style="padding-left: 2vh;">Forget Password</p>
                 </div>
 
             </div>
@@ -389,15 +389,22 @@ h1 {
 }
 
 .container {
+    float: center;
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .right-container {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .fgpass {
