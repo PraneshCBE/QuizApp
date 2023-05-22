@@ -8,7 +8,7 @@
         </div>
         <div class="left-container">
             <p class="title">Quizzes Available</p>
-            <p class="quiz">Quizzes Available</p>
+            <p class="quiz">Scheduled Quizzes</p>
         </div>
     </div>
 </template>
@@ -27,6 +27,7 @@ export default({
     },
     methods:{
         getQuizzes(){
+            console.log("In getQuizzes")
             var usrData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
             console.log(usrData)
             var token=usrData.st
