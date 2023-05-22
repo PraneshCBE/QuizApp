@@ -30,13 +30,15 @@
       </div>
         <div class="info">
             <div class="dummy">
-           <p> Some info</p>
+              <p>Calender</p>
+              <p>Reports</p>
+           <!-- <p> Some info</p>
            <p> Dei lalithuh Enaala mudeela daaaa</p> 
            <p> Oru alavuku box pirichuten</p> 
            <p> Alugu padutheeru daaaaaaaaaaaaaa</p> 
-            <p>  Pleaseeeeeeeeeeeeeeeeeeeeeeeeeeee</p> 
+            <p>  Pleaseeeeeeeeeeeeeeeeeeeeeeeeeeee</p>  -->
         </div>
-      <img  src="../../assets/ll.png">
+      <!-- <img  src="../../assets/ll.png"> -->
     </div>
     </div>
   </template>
