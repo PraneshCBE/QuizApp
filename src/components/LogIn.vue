@@ -67,6 +67,7 @@ import { KinesisContainer, KinesisElement } from "vue-kinesis";
 import axios from 'axios'
 import swal from 'sweetalert2'
 import 'animate.css';
+import CryptoJS from 'crypto-js'
 export default {
     name: 'LogIn',
     data() {
@@ -149,6 +150,8 @@ export default {
                 let uri = this.$url + "/student/login"
                 console.log(uri)
                 // let uri="http://localhost:8080/student/login"
+                let password=CryptoJS.SHA256(this.password).toString()
+                console.log(password)
                 let data = {
                     username: (this.rollno).toUpperCase(),
                     pass: this.password,
