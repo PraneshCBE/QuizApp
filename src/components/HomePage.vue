@@ -9,10 +9,10 @@
     
         <nav class="nav-show">
       <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#about-us">About</a></li>
-        <li><a href="#contact-us">Contact</a></li>
-        <li ><router-link to="/Login">Login</router-link></li>
+        <li><a href="#" style="color: whitesmoke;">Home</a></li>
+        <li><a href="#about-us" style="color: whitesmoke;">About</a></li>
+        <li><a href="#contact-us" style="color: whitesmoke;">Contact</a></li>
+        <li ><router-link to="/Login" style="color: whitesmoke;">Login</router-link></li>
       </ul>
       </nav>
       <div class="full-screen-image first-image">
@@ -29,14 +29,21 @@
         </div>
       </div>
     </div>
-      <div id="about-us" class="full-screen-image" style="background-color:#03001C;" >
-        
-          <v-card class="mx-auto" max-width="600" variant="outlined" v-animate-onscroll.repeat="{in: 'animated flipInX', out: 'animated flipOutX'}" >
-          <v-card-item>
-            <Spline :scene="scene"  id="contact-us"/>
-            <div v-animate-onscroll.repeat="{in: 'animated flipInX', out: 'animated flipOutX'}" >Animate me upon scroll forever</div>     
-          </v-card-item>
+      
+      <div id="about-us" class="full-screen-image" style="background-color:#03001C; display: flex; align-items: center;" >
+        <!-- <Spline :scene="scene"  id="contact-us"/> -->
+        <v-row>
+          <v-col>
+            <v-card class="mx-auto" max-width="600" variant="outlined" height="400">
+          <Spline :scene="scene"  id="contact-us"/>  
         </v-card>
+          </v-col>
+          <v-col>
+           <p style="font-size:500%; color: whitesmoke;">Quibix</p>
+           <p>Lores Epsum</p>
+          </v-col>
+        </v-row>
+          
         
       </div>
       
@@ -82,7 +89,8 @@ export default {
     data() {
     return {
       navShow: false,
-      scene:"https://prod.spline.design/m53OvYWC3Zp5XPXO/scene.splinecode"
+      scene:"https://prod.spline.design/B3D9fC8xvOWhG3Wx/scene.splinecode"
+      // "https://prod.spline.design/hnTF7CNSViaLMkdn/scene.splinecode"
     };
 },
     mounted() {
