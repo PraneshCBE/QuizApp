@@ -1,4 +1,5 @@
 <template>
+  <!-- <anime-bg></anime-bg> -->
 <div class="page_404">
     <div class="container">
       <div class="row"> 
@@ -24,8 +25,12 @@
   </div>
 </template>
 <script>
+// import AnimeBg from './AnimeBg.vue';
 export default{
-    name:"SpaceP404"
+    name:"SpaceP404",
+    components:{
+        // AnimeBg
+    }
 }
 </script>
 <style scoped>

@@ -11,6 +11,7 @@ import QuizDets from './components/Dashboard/QuizDets.vue';
 import StudMain from './components/Dashboard/StudMain.vue';
 import CourseInfo from './components/Dashboard/CourseInfo.vue';
 import InspectWatcher from './components/InspectWatcher.vue';
+import AnimeBg from './components/AnimeBg.vue';
 const routes=[
     {
         name:'HomePage',
@@ -82,6 +83,11 @@ const routes=[
         path: '/ci',
         props:true,
         component:CourseInfo
+      },
+      {
+        name: 'AnimeBg',
+        path:'/bg',
+        component:AnimeBg
       }
 ];
 

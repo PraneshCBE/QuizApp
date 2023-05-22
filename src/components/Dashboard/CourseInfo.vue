@@ -28,19 +28,19 @@ export default({
     methods:{
         getQuizzes(){
             console.log("In getQuizzes")
-            var usrData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
-            console.log(usrData)
-            var token=usrData.st
-            console.log(token)
-            var id=(usrData.rollno).toUpperCase()
+            // var usrData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
+            // var token=usrData.st
+            // var uri=this.$url+'/authStudent/getQuizzes/'+this.co.co.course_id+'/'+id
+            // var id=(usrData.rollno).toUpperCase()
+            var uri=this.$url+'/test/'+this.co.co.course_id
             axios.get(
-                this.$url+'/authStudent/getQuizzes/'+this.co.co.course_id+'/'+id,
-                {
-                    headers:
-                    {
-                        'Authorization':`Bearer ${token}`
-                    }
-                }
+                uri,
+                // {
+                //     headers:
+                //     {
+                //         'Authorization':`Bearer ${token}`
+                //     }
+                // }
                 )
             .then((res)=>{
                 console.log(res)
