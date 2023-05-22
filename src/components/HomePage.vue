@@ -33,18 +33,20 @@
       <div id="about-us" class="full-screen-image" style="background-color:#03001C; display: flex; align-items: center;" >
         <!-- <Spline :scene="scene"  id="contact-us"/> -->
         <v-row>
-          <v-col>
-            <v-card class="mx-auto" max-width="600" variant="outlined" height="400">
+          <v-col style="margin-left: 2%;">
+            <v-card class="mx-auto" max-width="800" variant="outlined" height="600" >
           <Spline :scene="scene"  id="contact-us"/>  
         </v-card>
+        <p>Don't touch the things</p>
           </v-col>
           <v-col>
            <p style="font-size:500%; color: whitesmoke;">Quibix</p>
-           <p>Lores Epsum</p>
+           <p style="color: rgb(227, 220, 220);">No more Connectivity issue while attending Test</p>
           </v-col>
         </v-row>
           
         
+         <!-- <Spline :scene="scene"  id="contact-us"/>   -->
       </div>
       
     <footer>
@@ -89,7 +91,9 @@ export default {
     data() {
     return {
       navShow: false,
-      scene:"https://prod.spline.design/B3D9fC8xvOWhG3Wx/scene.splinecode"
+      scene:"https://prod.spline.design/YrfgjgP7BbHKie0O/scene.splinecode"
+      //"https://prod.spline.design/B3D9fC8xvOWhG3Wx/scene.splinecode"
+      
       // "https://prod.spline.design/hnTF7CNSViaLMkdn/scene.splinecode"
     };
 },

@@ -35,8 +35,13 @@ export default({
             var id=(usrData.rollno).toUpperCase()
             axios.get(
                 this.$url+'/authStudent/getQuizzes/'+this.co.co.course_id+'/'+id,
-                //bearer token
-                {headers:{'Authorization':`Bearer ${token}`}})
+                {
+                    headers:
+                    {
+                        'Authorization':`Bearer ${token}`
+                    }
+                }
+                )
             .then((res)=>{
                 console.log(res)
                 console.log(res.data)
@@ -71,6 +76,7 @@ export default({
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     width: 40%;
     height: 200px;
+    overflow: hidden;
 
 }
 .left-container{
@@ -83,28 +89,29 @@ export default({
     box-shadow: 0 0 10px 0 rgba(0,0,0,0.2);
     width: 40%;
     height: 200px;
+    overflow: hidden;
 
 
 }
 .title{
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: bold;
     margin: 0;
 }
 
 .code{
-    font-size: 20px;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0;
 }
 
 .quiz{
-    font-size: 20px;
+    font-size: 1rem;
     font-weight: bold;
     margin: 0;
 }
 .page-title{
-    font-size: 30px;
+    font-size: 2rem;
     font-weight: bold;
     margin-bottom: 10;
 }
