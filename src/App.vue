@@ -16,6 +16,11 @@ export default {
 </script>
 
 <style>
+* {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
 html {
     height: 100%;
     overflow: hidden;
@@ -30,7 +35,7 @@ body{
     display: none;
   }
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  /* font-family: Avenir, Helvetica, Arial, sans-serif; */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;

@@ -11,7 +11,7 @@
       <div style="margin-left: 10px;">
         <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
           class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-          type="button">
+          type="button" style="margin-top: 2vh;">
           Section
           <svg class="w-4 h-4 ml-2" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24"
             xmlns="http://www.w3.org/2000/svg">
@@ -50,16 +50,15 @@
           <span>{{ seconds }}</span>s
         </span>
       </div>
-      <!-- <button class="btn glass" >Submit</button> -->
       <button type="button"
-        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br dark:font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Submit</button>
+        class="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br dark:font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" @click="console.log(this.answer)" style="height: 40px;margin-top: 2vh;">Submit</button>
     </v-row>
   </v-container>
 
   <v-container>
     <v-row>
       <v-col>
-        <v-btn align-self="start" variant="outlined" style="margin-top: 10px;">Prev</v-btn>
+        <v-btn align-self="start" variant="outlined" style="margin-top: 10px;" @click="dec" :disabled="disable">Prev</v-btn>
       </v-col>
       <v-col align-self="center">
         <v-pagination v-model="page" :length="questions.length" prev-icon="mdi-menu-left" next-icon="mdi-menu-right"
@@ -70,12 +69,12 @@
       </v-col>
     </v-row>
   </v-container>
-  <!-- </div>  -->
 
 
   <div class=" ui padded segment" style="margin:5vh;">
     <div class="ui two column grid">
       <div class="column">
+        <p>Question {{ page }}</p>
         <p>{{ questions[page - 1] }}</p>
       </div>
       <div class="column">
@@ -100,9 +99,10 @@
   </div>
   <footer id="footer">
     <div style="display: flex;align-items: flex-start; margin:10px;">
-      <img v-if="internetStrength == '2g'" src="../assets/Wifi_weak.svg">
-      <img v-if="internetStrength == '3g'" src="../assets/Wifi_moderate.svg">
-      <img v-if="internetStrength == '4g'" src="../assets/Wifi_Strong.svg">
+      <p style="padding-right: 2vh; margin-left: 2vh;">Network Status</p>
+      <img v-if="internetStrength == '3g'" src="../assets/Wifi_moderate.svg"  height="20" width="20">
+      <img v-else-if="internetStrength == '4g'" src="../assets/Wifi_Strong.svg" height="20" width="20">
+      <img v-else src="../assets/Wifi_weak.svg"  height="20" width="20">
     </div>
   </footer>
 </template>
@@ -113,7 +113,7 @@ export default {
   data() {
     return {
       subject: "Quiz-1",
-      questions: ['Q1: Who is smartest?', 'Q2: Who is cringest?', 'Q3: Who is funniest?'],
+      questions: ['Who is smartest?', 'Who is cringest?', 'Who is funniest?'],
       opt: ['Lalith', 'Megha', 'Sharath', 'Pranesh', 'Suraj'],
       opt1: {
         "0": ['Lalith', 'Sharath', 'Megha'],
@@ -147,6 +147,10 @@ export default {
     inc() {
       if (this.page < this.questions.length)
         this.page = this.page + 1
+    },
+    dec() {
+      if (this.page > 1)
+        this.page = this.page - 1
     },
     startCountdown() {
       const countdownInterval = setInterval(() => {
@@ -190,6 +194,12 @@ export default {
 }
 </script>
 <style scoped>
+* {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+
 #footer {
   position: absolute;
   bottom: 0;

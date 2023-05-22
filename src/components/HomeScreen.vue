@@ -127,11 +127,7 @@
                             <div class="py-1 text-left" role="none">
                                 <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                                 <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                                    id="menu-item-0">Account settings</a>
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
                                     id="menu-item-1">Support</a>
-                                <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                                    id="menu-item-2">License</a>
                                     <button type="submit" class="text-gray-700 block w-full px-4 py-2 text-left text-sm"
                                         role="menuitem" tabindex="-1" id="menu-item-3" @click="logout">Sign out</button>
                             </div>
@@ -213,7 +209,13 @@ export default {
 }
 
 </script>
-<style scoped>.dia {
+<style scoped>
+* {
+    font-family: 'Hanken Grotesk', sans-serif;
+    font-family: 'Nunito', sans-serif;
+    font-family: 'Poppins', sans-serif;
+}
+.dia {
     width: 100%;
     height: auto;
     filter: contrast(1.5) brightness(1.2) saturate(1.2);
