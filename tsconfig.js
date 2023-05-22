@@ -1,4 +1,3 @@
 {
     "types" ; "vue-sweetalert2"
-    
 }

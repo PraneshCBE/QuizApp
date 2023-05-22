@@ -3,11 +3,10 @@
       <link rel="preconnect" href="https://fonts.googleapis.com">
       <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
       <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
       <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/semantic-ui@2.5.0/dist/semantic.min.css"> -->
     </head>
     
-   
-      
         <nav class="nav-show">
       <ul>
         <li><a href="#">Home</a></li>
@@ -20,7 +19,7 @@
       <div>
       
       <div class=" image-title ui horizontal list">
-                  <div class="item">
+                  <div class="item animate__animated animate__bounceIn">
               <img class="mini ui image" src="../assets/ll.png">
               <div class="tit middle aligned content">
                 Amrita
@@ -30,19 +29,19 @@
         </div>
       </div>
     </div>
+      <div id="about-us" class="full-screen-image" style="background-color:#03001C;" >
         
-      <div id="about-us" class="full-screen-image second-image"></div>
-      <!-- <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.334/build/spline-viewer.js"></script> -->
-      <Spline :scene="scene"  id="contact-us"/>
+          <v-card class="mx-auto" max-width="600" variant="outlined" v-animate-onscroll.repeat="{in: 'animated flipInX', out: 'animated flipOutX'}" >
+          <v-card-item>
+            <Spline :scene="scene"  id="contact-us"/>
+            <div v-animate-onscroll.repeat="{in: 'animated flipInX', out: 'animated flipOutX'}" >Animate me upon scroll forever</div>     
+          </v-card-item>
+        </v-card>
+        
+      </div>
+      
     <footer>
-      <!-- <div class = "ui list">
-        <div class="item">
-          <p>© Amrita Quibix</p>
-        </div>
-        <div class="item">
-          <font-awesome-icon :icon="['fab', 'instagram']" bounce style="color: #000000;" v-on:click="redir" />
-        </div>
-      </div> -->
+      
       <div class="ui vertical list">
         <div class="item">
           <div class = "ui huge divided relaxed horizontal list">
@@ -74,6 +73,7 @@
 <script>
 
 import Spline from "spline-vue/v3";
+import 'animate.css';
 export default {
     name: "HomePage",
     components:{
@@ -174,12 +174,20 @@ nav ul li a {
 }
 
 .first-image {
-  background-color: rgb(12, 20, 24);
+  background-color: #03001C;
   background-image: url('../assets/cbe\ campus.svg');
   background-size: contain;
   background-repeat: no-repeat;
-
+  
 }
+/* @keyframes fadeInAnimation {
+	0% {
+		opacity: 0.9;
+	}
+	100% {
+		opacity: 1;
+	}
+} */
 
 .second-image {
   background-image: url('https://images.hdqwalls.com/download/barbara-palvin-numero-russia-qx-1920x1080.jpg');
@@ -204,8 +212,10 @@ nav ul li a {
 }
 
 .tit{
-  font-size: x-large;
+  font-size: xx-large;
+ 
 }
+
 
 
 </style>
