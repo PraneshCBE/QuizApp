@@ -10,10 +10,40 @@
         <div>
           <AvailCourses></AvailCourses>
         </div>
-    <div class="content">
+        <v-row style="display: flex; justify-content: space-evenly;">
+          <v-col class="brd quick">
+            <!-- <div class="quiz-box"> -->
+            <h3 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white-200 md:text-4xl dark:text-white">Quick Access</h3>
+          <select v-model="selectedDate" @change="getScheduledQuizzes" class="brd" style="max-width:80%;">
+            <option v-for="date in dates" :key="date" :value="date">{{ date }}</option>
+          </select>
+          <div class="container">
+          <div v-if="scheduledQuizzes.length > 0">
+            <h3>{{ selectedDate === currentDate ? "Today's Quiz" : selectedDate }} </h3>
+            <ul>
+              <li v-for="quiz in scheduledQuizzes" :key="quiz.id" @click="takeQuiz(quiz.id)" class="lis">{{ quiz.name }}</li>
+            </ul>
+          </div>
+          <div v-else>
+            <p>No quizzes scheduled for the selected date.</p>
+          </div>
+        </div>
+      <!-- </div> -->
+          </v-col>
+          <v-col class="quick">
+            <!-- <div class="info" > -->
+            <!-- <div class="dummy">
+              
+              </div> -->
+              <VDatePicker v-model="date" mode="date" :is-dark="true" expanded/>
+              <!-- <VCalendar expanded :is-dark="true"/> -->
+        <!-- </div> -->
+          </v-col>
+        </v-row>
+    <!-- <div class="content" >
         <div class="quiz-box">
             <h3 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-white-200 md:text-4xl dark:text-white">Quick Access</h3>
-          <select v-model="selectedDate" @change="getScheduledQuizzes">
+          <select v-model="selectedDate" @change="getScheduledQuizzes" style="max-width:80%;">
             <option v-for="date in dates" :key="date" :value="date">{{ date }}</option>
           </select>
           <div class="container">
@@ -27,20 +57,15 @@
             <p>No quizzes scheduled for the selected date.</p>
           </div>
         </div>
-      </div>
-        <div class="info">
+      </div> -->
+        <!-- <div class="info" >
             <div class="dummy">
-              <p>Calender</p>
-              <p>Reports</p>
-           <!-- <p> Some info</p>
-           <p> Dei lalithuh Enaala mudeela daaaa</p> 
-           <p> Oru alavuku box pirichuten</p> 
-           <p> Alugu padutheeru daaaaaaaaaaaaaa</p> 
-            <p>  Pleaseeeeeeeeeeeeeeeeeeeeeeeeeeee</p>  -->
-        </div>
-      <!-- <img  src="../../assets/ll.png"> -->
-    </div>
-    </div>
+              <p id="caltxt">Calender</p>
+              <VDatePicker v-model="date" mode="date" :is-dark="true" />
+          
+        </div> -->
+        <!-- </div> -->
+    <!-- </div> -->
   </template>
   
   <script>
@@ -52,6 +77,7 @@
       scheduledQuizzes: [],
       dates: [],
       currentDate: '',
+      date: Date.now()
       };
     },
     components:{
@@ -116,16 +142,47 @@
 .content {
     display: flex;
   overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  
 }
 
+.quick{
+  margin: 5vh;
+  max-height: 300px;
+  max-width: 50%;
+  -webkit-overflow-scrolling: scroll;
+  overflow-x: hidden ;
+}
+
+.lis{
+  padding: 10px;
+  margin-bottom: 10px;
+  /* border: 1px solid #ddd;
+  border-radius: 5px; */
+  font-size: 16px;
+  color: #000;
+  cursor: pointer;
+}
+
+.brd{
+  border: 1px solid;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
 /* this quiz-box should not go outside it's parent , instead should make a scroll it's own contents inside it */
 .quiz-box {
   width: 40%;
   height: 300px;
   padding: 1%;
   background-color: #ffffff00;
+  border: 1px solid;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  overflow-x: hidden;
+  justify-content: center;
+  align-items: center;
+  
 }
 .container {
   width: 100%;
@@ -135,7 +192,7 @@
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   margin-right: 20px;
-  overflow-y:auto;
+  overflow-y:hidden;
   overflow-x: hidden;
 }
 .quiz-box select {
@@ -181,21 +238,22 @@
     width: 100%;
     height: 100%;
   }
-  .info{
-    height: 100%;
-    overflow-y: hidden;
-  }
-
+  
 }
 .info{
-  width: 100%;
+  width: 50%;
   height: 300px;
   padding: 1%;
   background-color: #ffffff00;
+  border: 1px solid;
   border-radius: 5px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   overflow-y:auto;
   overflow-x: hidden;
 }
 
+#caltxt{
+  
+  font-weight: bold;
+}
 </style>  

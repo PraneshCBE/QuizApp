@@ -43,7 +43,7 @@ export default{
   width: 100%;
   padding: 0 50px;
   box-sizing: border-box;
-  background-color: cadetblue;
+  background-color: lightsteelblue;
 }
 .logo{
   height: 50px;
@@ -64,7 +64,7 @@ export default{
   margin-right: 20px;
 }
 .item:hover{
-  color: #FFB800;
+  color: #002aff;
 }
 
 </style>
