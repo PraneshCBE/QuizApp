@@ -6,6 +6,8 @@ import './index.css'
 // import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 // import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+import VCalendar from 'v-calendar';
+import 'v-calendar/style.css';
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import SuiVue from 'semantic-ui-vue';
@@ -58,6 +60,7 @@ const app=createApp(App)
     app.use(SuiVue);
     app.use(vuetify)
     // app.component('font-awesome-icon', FontAwesomeIcon)
+    app.use(VCalendar, {})
    app.mount('#app')
    app.mount(initFlowbite(),initAccordions(),
    initCarousels(),
