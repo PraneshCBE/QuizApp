@@ -1,8 +1,9 @@
 <template>
     <HeaderAll></HeaderAll>
-    <h1 class="page-title">Course Info of {{ co.co.course_name }}</h1>
-    <div class="container">
-        <div class="left-container">
+    <div style="align-content:center;">
+    <h1 class="page-title"> {{  co.co.course_id+" "+co.co.course_name }}</h1>
+    <!-- <div class="container"> -->
+        <div v-if="!loading" class="left-container"  >
             <p class="quiz">Quizzes Available Now</p>
                 <p v-if="availableQuizzes.length==0">Nothing to Take now</p>
                 <div v-else>
@@ -33,13 +34,18 @@
                             </v-card>            
                         </div>
         </div>
-        <div class="right-container">
+    <div v-else id ="lottie-container" class="lottie-container">
+    </div>
+        <!-- <div class="right-container">
             <p class="title">{{ co.co.course_name }}</p>
             <p class="code">{{ co.co.course_id }}</p>
-        </div>
+        </div> -->
     </div>
+<!-- </div> -->
 </template>
 <script>
+import lottie from 'lottie-web';
+import animationData from '../../assets/loading.json';
 import axios from 'axios';
 import moment from 'moment';
 import HeaderAll from '../HeaderAll.vue';
@@ -48,7 +54,8 @@ export default ({
     data() {
         return {
             co: JSON.parse(this.$route.query.course),
-            quizzes: []
+            quizzes: [],
+            loading: true,
         }
     },
     components: {
@@ -60,14 +67,16 @@ export default ({
       Live: ${(moment(quiz.quiz_start_time)).utcOffset('+05:30').format('hh:mm A')} 
        to ${(moment(quiz.quiz_end_time)).utcOffset('+05:30').format('hh:mm A')}`;
     },
-        getQuizzes() {
+        async getQuizzes() {
             console.log("In getQuizzes")
             // var usrData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
             // var token=usrData.st
             // var uri=this.$url+'/authStudent/getQuizzes/'+this.co.co.course_id+'/'+id
             // var id=(usrData.rollno).toUpperCase()
             var uri = this.$url + '/test/' + this.co.co.course_id
-            axios.get(
+            this.loading = true
+            console.log(this.loading)
+            await axios.get(
                 uri,
                 // {
                 //     headers:
@@ -77,12 +86,15 @@ export default ({
                 // }
             )
                 .then((res) => {
+                    this.loading = false
+                    console.log(this.loading)
                     console.log(res)
                     this.quizzes = res.data
                     console.log((moment(this.quizzes[0].quiz_start_time)).format('DD-MM-YYYY'))
                     console.log((moment(this.quizzes[0].quiz_start_time)).utcOffset('+05:30').format('hh:mm A'));
                 })
                 .catch((err) => {
+                    this.loading = false
                     console.log(err)
                 })
         },
@@ -130,20 +142,42 @@ export default ({
     },
     mounted() {
         this.getQuizzes()
+        const container = document.getElementById('lottie-container');
+
+        lottie.loadAnimation({
+      container: container,
+      renderer: 'svg',
+      animationData: animationData,
+      loop: true,
+      autoplay: true,
+    });
+
 
     }
 })
 </script>
 <style scoped>
+/* @media only screen and (max-width: 767px) {
+    .container {
+        flex-direction: column;
+        justify-content: space-between;
+
+    }
+} */
 .container {
-    display: flex;
-    flex-direction: row;
+    /* display: flex;
+    flex-direction: row; */
     justify-content: space-around;
     margin: 20px;
 
 
 }
-
+.lottie-container{
+    width: 500px;
+  height: 50%;
+  margin: 0 auto;
+  align-content: center;
+}
 .right-container {
     /* display: flex;
     flex-direction: column; */
@@ -158,15 +192,14 @@ export default ({
 }
 
 .left-container {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+
+    justify-content: space-around;
     padding: 20px;
     border: 1px solid black;
     border-radius: 10px;
     box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     overflow: hidden;
-    margin-right: 1%;
+    margin:2vh;
     
 
 }

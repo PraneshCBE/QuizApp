@@ -3,7 +3,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300i,400" rel="stylesheet">
 </head>
 <body>
-<div class="container">
+<div v-if="!loading" class="container">
   <div v-for="co in courses" :key="co" class="card">
     <h3 class="title">{{ co.course_id }}</h3>
     <div class="bar"><div class="emptybar"></div><div class="filledbar"></div></div>
@@ -15,15 +15,20 @@
     </svg></div>
   </div>
 </div>
+<div v-else id ="lottie-container" class="lottie-container"></div>
+
 </body>
 </template>
 <script>
 import axios from 'axios'
+import lottie from 'lottie-web';
+import animationData from '../../assets/loading.json';
     export default({
         data(){
             return{
                 courses:[],
-                dataFetchError:false
+                dataFetchError:false,
+                loading:true
             }
         },
         methods:{
@@ -35,16 +40,20 @@ import axios from 'axios'
           },
           async getCourses() {
             try{
+
               var dData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
               const sem=dData.sem
+              this.loading=true
             const result = await axios.get(this.$url+'/student/courses', { params: { semester: sem } })
             this.courses=result.data.courses
+            this.loading=false
             console.log(result.data)
             this.dataFetchError=false
             }catch(err){
               //Error Handling for the courses
+              this.loading=false
               this.dataFetchError=true
-              this.courses=[{"course_id":"Error 500","course_name":"Unable to Fetch Data"},{"course_id":"Error 500","course_name":"Try Refresing the Page ;( "}]
+              this.courses=[{"course_id":"Error 500","course_name":"Unable to Fetch Data"},{"course_id":"Error 500","course_name":"Try Refresing the Page ;( or Log-in again "}]
               console.log(err)
             }
 
@@ -52,6 +61,15 @@ import axios from 'axios'
         },
         mounted(){
           this.getCourses()
+          const container = document.getElementById('lottie-container');
+
+lottie.loadAnimation({
+container: container,
+renderer: 'svg',
+animationData: animationData,
+loop: true,
+autoplay: true,
+});
         }
     })
 </script>
@@ -75,6 +93,12 @@ import axios from 'axios'
   background-color: #00000000;
   
 }
+
+#lottie-container {
+    width: 500px;
+    height: 30%;
+    margin: 0 auto;
+  }
 .container::-webkit-scrollbar{
     display: none;
   }

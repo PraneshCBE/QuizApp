@@ -184,8 +184,17 @@ export default {
     mounted() {
         
         let user = localStorage.getItem('user-info');
+        var res=""
         if (user){
-            var res=this.$globalmethods.decryptData(JSON.parse(user))
+            try{
+             res=this.$globalmethods.decryptData(JSON.parse(user))
+            }
+            catch(err){
+                console.log(err)
+                localStorage.clear()
+                this.$router.replace({name:'InspectWatcher'})
+            }
+            console.log("res: "+res)    
             if (res=="Rengaraj!!")
             {
                 console.warn("Rengaraj Detected!!")
