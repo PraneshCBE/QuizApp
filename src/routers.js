@@ -12,6 +12,7 @@ import StudMain from './components/Dashboard/StudMain.vue';
 import CourseInfo from './components/Dashboard/CourseInfo.vue';
 import InspectWatcher from './components/InspectWatcher.vue';
 import AnimeBg from './components/AnimeBg.vue';
+import QuizConformation from './components/QuizConformation.vue';
 const routes=[
     {
         name:'HomePage',
@@ -63,6 +64,7 @@ const routes=[
     {
         name:'QuizModule',
         component:QuizModule,
+        props:true,
         path:'/QuizModule'
     },
     {
@@ -88,7 +90,13 @@ const routes=[
         name: 'AnimeBg',
         path:'/bg',
         component:AnimeBg
-      }
+      },
+      {
+        name: 'QuizConformation',
+        path: '/qConfo',
+        props:true,
+        component:QuizConformation
+      },
 ];
 
 const router=createRouter({

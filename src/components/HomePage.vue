@@ -42,6 +42,8 @@
           <v-col>
            <p style="font-size:500%; color: whitesmoke;">Quibix</p>
            <p style="color: rgb(227, 220, 220);">No more Connectivity issue while attending Test</p>
+           <div id="lottie-container"></div>
+
           </v-col>
         </v-row>
           
@@ -83,6 +85,8 @@
 
 import Spline from "spline-vue/v3";
 import 'animate.css';
+import lottie from 'lottie-web';
+  import animationData from '../assets/connect.json';
 export default {
     name: "HomePage",
     components:{
@@ -99,6 +103,14 @@ export default {
 },
     mounted() {
     window.addEventListener('scroll', this.handleScroll)
+    const container = document.getElementById('lottie-container');
+    lottie.loadAnimation({
+        container: container,
+        renderer: 'svg',
+        animationData: animationData,
+        loop: true,
+        autoplay: true,
+      });
   },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -227,6 +239,11 @@ nav ul li a {
   font-size: xx-large;
  
 }
+#lottie-container {
+    width: 60%;
+    height: 70%;
+    margin: 0 auto;
+  }
 
 
 

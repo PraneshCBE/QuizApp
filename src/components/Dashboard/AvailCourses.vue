@@ -39,6 +39,7 @@ import axios from 'axios'
               const sem=dData.sem
             const result = await axios.get(this.$url+'/student/courses', { params: { semester: sem } })
             this.courses=result.data.courses
+            console.log(result.data)
             this.dataFetchError=false
             }catch(err){
               //Error Handling for the courses

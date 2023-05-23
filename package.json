@@ -23,6 +23,7 @@
     "gsap": "^3.11.5",
     "lottie-web": "^5.11.0",
     "material-design-icons-iconfont": "^6.7.0",
+    "moment": "^2.29.4",
     "motion": "^10.15.5",
     "semantic-ui-vue": "^0.11.0",
     "spline-vue": "^0.1.3",
