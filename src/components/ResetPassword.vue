@@ -10,7 +10,7 @@
 						<form class="ui form" @submit.prevent=savePass>
 							<div class="field">
 								<div class="ui left input">
-									<input type="password" name="password" placeholder="New  Password">
+									<input type="password" name="password" placeholder="New  Password" v-model="cnewpass">
 								</div>
 							</div>
 							<div class="field">
@@ -30,22 +30,32 @@
 <script>
 import axios from 'axios'
 import swal from 'sweetalert2'
+import cryptoJs from 'crypto-js'
 export default {
 	name: 'ResetPassword',
 	data() {
 		return {
 			resetToken: '',
-			newpass:''
+			newpass:'',
+			cnewpass:''
 		}
 
 	},
 	methods: {
 		async savePass() {
 			console.log(this.newpass)
+			if(this.newpass!=this.cnewpass)
+			{
+				swal.fire('Password Mismatch', '', 'info',)
+				return
+			}	
+			else
+			{
 			try {
+				var hashedPass=cryptoJs.SHA256(this.newpass).toString()
 				var body = {
 					resetToken: this.$route.query.resetToken,
-					pass: this.newpass
+					pass: hashedPass
 				}
 				const result = await axios.post(this.$url + "/student/resetpass",body)
 				console.log(result)	 
@@ -66,6 +76,7 @@ export default {
 				{swal.fire('500 Internal Server Error', '', 'info',)}
 				
 			}
+		}
 			
 		}
 	},
