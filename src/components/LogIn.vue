@@ -154,7 +154,7 @@ export default {
                 console.log(password)
                 let data = {
                     username: (this.rollno).toUpperCase(),
-                    pass: this.password,
+                    pass: password,
                     semester: this.semester
                 }
                 console.log(this.semester)

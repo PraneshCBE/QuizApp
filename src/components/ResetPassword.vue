@@ -53,6 +53,7 @@ export default {
 			{
 			try {
 				var hashedPass=cryptoJs.SHA256(this.newpass).toString()
+				console.log(hashedPass)
 				var body = {
 					resetToken: this.$route.query.resetToken,
 					pass: hashedPass
