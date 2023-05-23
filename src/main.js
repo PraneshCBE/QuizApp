@@ -2,10 +2,10 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './routers'
 import './index.css'
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
-import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
-import { faInstagram } from '@fortawesome/free-brands-svg-icons'
+// import { library } from '@fortawesome/fontawesome-svg-core'
+// import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+// import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
+// import { faInstagram } from '@fortawesome/free-brands-svg-icons'
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import SuiVue from 'semantic-ui-vue';
@@ -28,7 +28,7 @@ import { initFlowbite,initAccordions,
     initTabs, 
     initTooltips } from 'flowbite'
 
-library.add(faUserSecret,faInstagram)
+// library.add(faUserSecret,faInstagram)
 
 import globalmethods from './globalmethods.js'
 router.beforeEach((to, from, next) => {
@@ -57,7 +57,7 @@ const app=createApp(App)
     app.use(VueSweetalert2);
     app.use(SuiVue);
     app.use(vuetify)
-    app.component('font-awesome-icon', FontAwesomeIcon)
+    // app.component('font-awesome-icon', FontAwesomeIcon)
    app.mount('#app')
    app.mount(initFlowbite(),initAccordions(),
    initCarousels(),

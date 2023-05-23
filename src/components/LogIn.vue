@@ -34,8 +34,8 @@
                                 placeholder="Enter your University Email" />
                             <p v-if="errorEmail.length != 0" class="error">{{ errorEmail }}</p>
                             <input class="inp" type="password" v-model="password" placeholder="Enter Password" />
-                            <select class="inp" v-model="semester">
-                                <option disabled value="0">Please select Semester</option>
+                            <select class="inp" v-model="semester" required>
+                                <option value="" disabled selected>Semester</option>
                                 <option value="1">Sem 1</option>
                                 <option value="2">Sem 2</option>
                                 <option value="3">Sem 3</option>
