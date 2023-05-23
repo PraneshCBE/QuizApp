@@ -12,6 +12,8 @@ import StudMain from './components/Dashboard/StudMain.vue';
 import CourseInfo from './components/Dashboard/CourseInfo.vue';
 import InspectWatcher from './components/InspectWatcher.vue';
 import AnimeBg from './components/AnimeBg.vue';
+import SuccessSubmit from './components/SuccessSubmit.vue';
+import AutoSubmit from './components/AutoSubmit.vue';
 import QuizConformation from './components/QuizConformation.vue';
 const routes=[
     {
@@ -96,6 +98,16 @@ const routes=[
         path: '/qConfo',
         props:true,
         component:QuizConformation
+      },
+      {
+        name: 'SuccessSubmit',
+        path: '/ss',
+        component:SuccessSubmit
+      },
+      {
+        name: 'AutoSubmit',
+        path: '/as',
+        component:AutoSubmit
       },
 ];
 
