@@ -37,11 +37,11 @@
             <v-card class="mx-auto" max-width="800" variant="outlined" height="600" >
           <Spline :scene="scene"  id="contact-us"/>  
         </v-card>
-        <p>Don't touch the things</p>
+        <p style="color: rgb(227, 220, 220);">Don't touch the things</p>
           </v-col>
           <v-col>
            <p style="font-size:500%; color: whitesmoke;">Quibix</p>
-           <p style="color: rgb(227, 220, 220);">No more Connectivity issue while attending Test</p>
+           <p style="color: rgb(227, 220, 220);" id="txt">No more Connectivity issue while attending Test</p>
            <div id="lottie-container"></div>
 
           </v-col>
@@ -187,6 +187,10 @@ nav ul li a {
   font-weight: bold;
 }
 
+#txt{
+  font-size: x-large;
+}
+
 .full-screen-image {
   position: relative;
   height: 100vh;
@@ -240,8 +244,8 @@ nav ul li a {
  
 }
 #lottie-container {
-    width: 60%;
-    height: 70%;
+    width: 50%;
+    height: 50%;
     margin: 0 auto;
   }
 
