@@ -50,7 +50,111 @@
         
          <!-- <Spline :scene="scene"  id="contact-us"/>   -->
       </div>
+      <div id="about-us" class="full-screen-image" style="background-color:#03001C; " >
+        <p style="font-size:500%; color: whitesmoke;">Tools and Framework</p>
+
+        <div class="ui inverted very relaxed horizontal list" style="margin-bottom: 10vh;">
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/vue.svg">
+            <div class="content">
+              Vue JS
+            </div>
+            </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/spring.svg">
+            <div class="content">
+             Spring Boot
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/mongodb-original.svg">
+            <div class="content">
+             Mongo DB
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/node-js.svg">
+            <div class="content">
+             Node JS
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/semantic-ui.svg">
+            <div class="content">
+             Semantic UI
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/vuetify.svg">
+            <div class="content">
+             Vuetify
+            </div>
+          </h2>
+        </div>
+      </div>
       
+      <div class="ui inverted very relaxed horizontal list">
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui inverted image" src="../assets/tandf/github.svg" >
+            <div class="content">
+              Github
+            </div>
+            </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/file-type-jenkins.svg">
+            <div class="content">
+             Jenkins
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/jira.svg">
+            <div class="content">
+             Jira
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/google-cloud.svg">
+            <div class="content">
+             Google Cloud
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/postman.svg">
+            <div class="content">
+             Postman
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/slack-icon.svg">
+            <div class="content">
+             Slack
+            </div>
+          </h2>
+        </div>
+      </div>
+      </div>
     <footer>
       
       <div class="ui vertical list">
@@ -146,7 +250,10 @@ export default {
   font-family: 'Nunito', sans-serif;
   font-family: 'Poppins', sans-serif;
 }
-
+img{
+  height: 50px;
+  width: 50px;
+}
 nav {
   position: fixed;
   top: 0;
