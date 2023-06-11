@@ -35,7 +35,8 @@
             <!-- <div class="dummy">
               
               </div> -->
-              <VDatePicker v-model="date" mode="date" :is-dark="true" expanded/>
+              <!-- <VDatePicker v-model="date" mode="date" :is-dark="true" expanded/> -->
+              <VCalendar v-model="date" mode="date" :is-dark="true" :attributes='attrs' expanded/>
               <!-- <VCalendar expanded :is-dark="true"/> -->
         <!-- </div> -->
           </v-col>
@@ -67,9 +68,37 @@
         <!-- </div> -->
     <!-- </div> -->
   </template>
-  
+  <script setup>
+  import { ref,computed } from 'vue';
+  const quiz = ref([]);
+  quiz.value = [
+      {
+        description: 'Quiz 1',
+        isComplete: false,
+        dates: [new Date(2023, 6, 12)],
+        color: 'green'
+      },
+      // Add more items as needed
+    ];
+
+  const attrs = computed(() => [
+  // Attributes for todos
+  ...quiz.value.map(quiz => ({
+    dates: quiz.dates,
+    dot: {
+      color: quiz.color,
+      class: quiz.isComplete ? 'opacity-75' : '',
+    },
+    popover: {
+      label: quiz.description,
+      visibility: 'hover',
+    }
+  })),
+]);
+  </script>
   <script>
   import AvailCourses from './AvailCourses.vue';
+// import { onMounted } from 'vue';
   export default {
     data() {
       return {
@@ -77,7 +106,7 @@
       scheduledQuizzes: [],
       dates: [],
       currentDate: '',
-      date: Date.now()
+      date: Date.now(),
       };
     },
     components:{
