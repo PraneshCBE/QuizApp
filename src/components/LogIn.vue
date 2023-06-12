@@ -143,6 +143,7 @@ export default {
             console.log(this.$url)
             if (this.isAdmin) {
                 //Admin Http request
+                this.$router.push('/FacultyDashboard')
             }
             else {
                 //user http request

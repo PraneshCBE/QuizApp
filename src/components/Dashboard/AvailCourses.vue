@@ -20,6 +20,7 @@
 </body>
 </template>
 <script>
+import AES from 'crypto-js/aes'
 import axios from 'axios'
 import lottie from 'lottie-web';
 import animationData from '../../assets/loading.json';
@@ -34,7 +35,8 @@ import animationData from '../../assets/loading.json';
         methods:{
           course(co){
             if(!this.dataFetchError){
-            this.$router.push({name:'CourseInfo',query:{course:JSON.stringify({co})}})
+            console.log(this.$globalmethods.AES_secret_key)
+            this.$router.push({name:'CourseInfo',query:{course:AES.encrypt(JSON.stringify({co}),this.$secretKey)}})
             }
             else{this.getCourses()}
           },
