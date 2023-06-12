@@ -116,7 +116,9 @@
 import axios from 'axios'
 import lottie from 'lottie-web';
 import animationData from '../assets/loading.json';
+import Swal from 'sweetalert2'
 export default {
+
   name: "QuizModule",
   data() {
     return {
@@ -138,11 +140,50 @@ export default {
       internetStrength: null,
       loading: true,
       end: "",
-      isLoaded:true
+      isLoaded:true,
+      exitstat:false
 
     }
   },
   methods: {
+    enterFullScreen() {
+    const docElement = document.documentElement;
+    if (docElement.requestFullscreen) {
+      docElement.requestFullscreen();
+    } else if (docElement.mozRequestFullScreen) {
+      docElement.mozRequestFullScreen();
+    } else if (docElement.webkitRequestFullscreen) {
+      docElement.webkitRequestFullscreen();
+    } else if (docElement.msRequestFullscreen) {
+      docElement.msRequestFullscreen();
+    }
+  },
+    exitFullscreenHandler() {
+    if (!document.fullscreenElement) {
+      // The page is not in fullscreen mode
+      // Redirect to another page
+      if(this.exitstat==false){
+      Swal.fire({
+          title: 'Please enter FullScreen to continue',
+          icon: 'warning',
+          // showCancelButton: true,
+          allowEscapeKey:false,
+          allowOutsideClick:false,
+          confirmButtonText: 'FullScreen',
+          // cancelButtonText: 'Cancel',
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.enterFullScreen()}
+          // } else {
+          //   this.exitstat=true
+          //   this.$router.replace({ name: 'AnotherPage' });
+          // }
+        });
+      }
+      // this.$router.replace({ name: 'AnotherPage' });
+    }
+    },
+
     async checkInternetStrength() {
       if ('connection' in navigator) {
         const connection = navigator.connection;
@@ -266,6 +307,17 @@ export default {
         return false;
     },
     submit(isAuto){
+      this.exitstat=true
+      this.exitFullscreenHandler()
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
       //api call for sending the saved answers map
       const final_answers=JSON.parse(sessionStorage.getItem('progress')).answers
       console.log(final_answers)
@@ -281,7 +333,7 @@ export default {
   },
   mounted() {
     const container = document.getElementById('lottie-container');
-
+    document.addEventListener('fullscreenchange', this.exitFullscreenHandler);
     lottie.loadAnimation({
       container: container,
       renderer: 'svg',
@@ -385,9 +437,6 @@ export default {
       }
     },
   },
-  computed: {
-
-  }
 
 }
 </script>
