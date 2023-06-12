@@ -74,5 +74,5 @@ const app=createApp(App)
    initTabs(),
    initTooltips())
 
-app.config.globalProperties.$url='http://34.16.135.44:8090'
+app.config.globalProperties.$url='http://34.16.135.44:3102'
 app.config.globalProperties.$globalmethods=globalmethods

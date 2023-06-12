@@ -42,7 +42,15 @@ const routes=[
             path: '/sm',
             component:StudMain
           },
-    
+          {
+            path: '/dashboard', // Replace with the path you want to redirect to
+            name: 'AnotherPage', // Name the route 'AnotherPage'
+            component: StudMain, // Replace with the actual component for 'AnotherPage'
+          },
+          {
+            path: '/dashboard',
+            redirect: { name: 'AnotherPage' }, // Redirect to the named route 'AnotherPage'
+          },
          ]
     },
     {
@@ -109,6 +117,8 @@ const routes=[
         path: '/as',
         component:AutoSubmit
       },
+      
+      
 ];
 
 const router=createRouter({

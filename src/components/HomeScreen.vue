@@ -155,7 +155,9 @@ export default {
             profile:{},
         }
     },
+    
     methods: {
+        
         // hide show side bar
         toggleSideBar() {
             this.showSide = !this.showSide
@@ -213,7 +215,7 @@ export default {
         else { this.$router.push({ name: 'LogIn' }) }
         this.getProfile()
 
-    }
+    },
 }
 
 </script>
