@@ -15,6 +15,10 @@ import AnimeBg from './components/AnimeBg.vue';
 import SuccessSubmit from './components/SuccessSubmit.vue';
 import AutoSubmit from './components/AutoSubmit.vue';
 import QuizConformation from './components/QuizConformation.vue';
+import FacultyDashboard from './components/Faculty/FacultyDashboard.vue';
+import ManageQuiz from './components/Faculty/ManageQuiz.vue';
+import FacMain from './components/Faculty/FacMain.vue';
+import CourseQmarks from './components/Dashboard/CourseQmarks.vue';
 const routes=[
     {
         name:'HomePage',
@@ -42,7 +46,11 @@ const routes=[
             path: '/sm',
             component:StudMain
           },
-    
+          {
+            path: '/cqm',
+            name: 'CourseQmarks',
+            component: CourseQmarks,
+          },
          ]
     },
     {
@@ -109,6 +117,25 @@ const routes=[
         path: '/as',
         component:AutoSubmit
       },
+      
+      {
+        name:'FacultyDashboard',
+        component:FacultyDashboard,
+        path:'/faculty',
+        redirect:'/fm',
+        children: [
+          {
+            name: 'FacMain',
+            path: '/fm',
+            component:FacMain
+          },
+            {
+              name: 'ManageQuiz',
+              path: '/managequiz',
+              component:ManageQuiz            
+            }
+        ]
+      }
 ];
 
 const router=createRouter({

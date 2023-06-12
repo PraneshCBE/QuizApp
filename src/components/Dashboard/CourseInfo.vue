@@ -5,33 +5,54 @@
     <!-- <div class="container"> -->
         <div v-if="!loading" class="left-container"  >
             <p class="quiz">Quizzes Available Now</p>
-                <p v-if="availableQuizzes.length==0">Nothing to Take now</p>
+                <p v-if="availableQuizzes.length==0">
+                    <v-card-subtitle>Nothing to Take now</v-card-subtitle>
+                </p>
                 <div v-else>
-                    <v-card class="quizCard" v-for="quiz in availableQuizzes" :key="quiz.id" 
+                    <v-card-actions class="justify-center">
+                        <v-card class="quizCard card-hover" v-for="quiz in availableQuizzes" :key="quiz.id" 
                         :title="quiz.quiz_name" 
                         :subtitle="getSubtitle(quiz)"
                         :text="quiz.quiz_description"
-                        @click="attendQuiz(quiz.quiz_id,quiz.quiz_isPasswordProtected,quiz.quiz_start_time,quiz.quiz_end_time)">
-                    </v-card>            
+                        @click="attendQuiz(quiz.quiz_id,quiz.quiz_isPasswordProtected,quiz.quiz_start_time,quiz.quiz_end_time)"
+                        color="#7986CB" theme="dark"
+                        width = 500px height= 250px
+                        >
+                        </v-card>           
+                    </v-card-actions> 
                  </div>
 
             <p class="quiz">Scheduled Quizzes</p>
-                <p v-if="scheduledQuizzes.length==0">Ufff! Nothing till now</p>
+                <p v-if="scheduledQuizzes.length==0">
+                        <v-card-subtitle>Ufff! Nothing till now</v-card-subtitle>
+                </p>
                     <div v-else>
-                        <v-card class="quizCard" v-for="quiz in scheduledQuizzes" :key="quiz.id" 
+                        <v-card-actions class="justify-center">
+                            <v-card class="quizCard card-hover" v-for="quiz in scheduledQuizzes" :key="quiz.id" 
                             :title="quiz.quiz_name" 
                             :subtitle="getSubtitle(quiz)"
-                            :text="quiz.quiz_description">
-                        </v-card>            
+                            :text="quiz.quiz_description"
+                            color="#0097A7" theme="dark"
+                            width = 500px height= 250px
+                            >
+                            </v-card>  
+                        </v-card-actions>          
                     </div>
             <p class="quiz">Past Quizzes</p>
-                <p v-if="pastQuizzes.length==0">Wow! There is no past</p>
+                <p v-if="pastQuizzes.length==0">
+                    <v-card-subtitle>Wow! There is no past</v-card-subtitle>
+                </p>
                         <div v-else>
-                            <v-card class="quizCard" v-for="quiz in pastQuizzes" :key="quiz.id" 
+                            <v-card-actions class="justify-center">
+                                <v-card class="quizCard card-hover" v-for="quiz in pastQuizzes" :key="quiz.id" 
                                 :title="quiz.quiz_name" 
                                 :subtitle="getSubtitle(quiz)"
-                                :text="quiz.quiz_description">
-                            </v-card>            
+                                :text="quiz.quiz_description"
+                                color="#AB47BC" theme="dark"
+                                width = 500px height= 250px
+                                >
+                                </v-card>         
+                            </v-card-actions>   
                         </div>
         </div>
     <div v-else id ="lottie-container" class="lottie-container">
@@ -169,6 +190,12 @@ export default ({
 
     }
 } */
+
+.card-hover:hover {
+  box-shadow: 0 4px 8px 0 rgba(4, 4, 4, 4);
+  transition: box-shadow 0.3s ease-in-out;
+}
+
 .container {
     /* display: flex;
     flex-direction: row; */
@@ -215,6 +242,10 @@ export default ({
     margin: 0;
 }
 
+.custom-title {
+  font-size: 20px;
+}
+
 .code {
     font-size: 1.5rem;
     font-weight: bold;
@@ -222,7 +253,7 @@ export default ({
 }
 
 .quiz {
-    font-size: 1rem;
+    font-size: 26px;
     font-weight: bold;
     margin: 0;
 }

@@ -140,10 +140,12 @@ export default {
         
         async login() {
             this.loading = true;
-            console.log(this.$url)
+            console.log(this.isAdmin)
             if (this.isAdmin) {
                 //Admin Http request
-                this.$router.push('/FacultyDashboard')
+                localStorage.setItem('role', true)
+                localStorage.setItem('user-info',{"roll":this.rollno, "admin":this.isAdmin})
+                this.$router.push('/faculty')
             }
             else {
                 //user http request
