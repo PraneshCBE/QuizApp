@@ -146,17 +146,36 @@ export default {
     }
   },
   methods: {
-    enterFullScreen() {
-    const docElement = document.documentElement;
-    if (docElement.requestFullscreen) {
-      docElement.requestFullscreen();
-    } else if (docElement.mozRequestFullScreen) {
-      docElement.mozRequestFullScreen();
-    } else if (docElement.webkitRequestFullscreen) {
-      docElement.webkitRequestFullscreen();
-    } else if (docElement.msRequestFullscreen) {
-      docElement.msRequestFullscreen();
-    }
+      enterFullScreen() {
+        const docElement = document.documentElement;
+if (docElement.requestFullscreen) {
+  docElement.requestFullscreen().then(() => {
+    this.enterFullScreen();
+  }).catch((error) => {
+    console.error('Failed to enter fullscreen:', error);
+  });
+} else if (docElement.mozRequestFullScreen) {
+  docElement.mozRequestFullScreen().then(() => {
+    this.enterFullScreen();
+  }).catch((error) => {
+    console.error('Failed to enter fullscreen:', error);
+  });
+} else if (docElement.webkitRequestFullscreen) {
+  docElement.webkitRequestFullscreen().then(() => {
+    this.enterFullScreen();
+  }).catch((error) => {
+    console.error('Failed to enter fullscreen:', error);
+  });
+} else if (docElement.msRequestFullscreen) {
+  docElement.msRequestFullscreen().then(() => {
+    this.enterFullScreen();
+  }).catch((error) => {
+    console.error('Failed to enter fullscreen:', error);
+  });
+} else {
+  console.error('Fullscreen API is not supported');
+}
+
   },
     exitFullscreenHandler() {
     if (!document.fullscreenElement) {
@@ -169,6 +188,7 @@ export default {
           // showCancelButton: true,
           allowEscapeKey:false,
           allowOutsideClick:false,
+
           confirmButtonText: 'FullScreen',
           // cancelButtonText: 'Cancel',
         }).then((result) => {
@@ -241,6 +261,7 @@ export default {
         sessionStorage.setItem('sections', JSON.stringify(this.sections))
         this.subject = res.data.name
         sessionStorage.setItem('subject', this.subject)
+        sessionStorage.setItem('cnt',0)
         this.selSection = this.sections[0].section_name
         this.questions = res.data.sections[0].questions
         this.opt1 = {}
@@ -352,10 +373,23 @@ export default {
 
     // Check if this is the first time the user is taking the quiz
     if (this.checkFirst()) {
-      
+      this.enterFullScreen();
       this.getQns()
     }
     else {
+      if (sessionStorage.getItem('cnt')>3)
+      {
+        Swal.fire({
+          title: 'You have went out of this test 3 times and came back which is not necessary',
+          text: 'Please contact your teacher for further details',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          this.submit(true)
+        })
+       
+      }
+      sessionStorage.setItem('cnt',parseInt(sessionStorage.getItem('cnt'))+1)
       var currentTime = new Date()
       console.log(currentTime)
       var startTime = new Date(JSON.parse(sessionStorage.getItem('progress')).start)
@@ -369,6 +403,8 @@ export default {
       //if duratuin_in_seconds - (currentTime - startTime) >5 allow to attend test
       if (seconds>5)
       {
+        
+        this.enterFullScreen()
         this.hours = Math.floor(seconds / 3600);
         this.minutes = Math.floor(seconds % 3600 / 60);
         this.seconds = Math.floor(seconds % 3600 % 60);
