@@ -77,18 +77,110 @@
       <!-- </div> -->
   <!-- </div> -->
 </template>
-<script setup>
+<!-- <script setup>
 import { ref,computed } from 'vue';
 const quiz = ref([]);
 quiz.value = [
     {
       description: 'Quiz 1',
       isComplete: false,
-      dates: [new Date(2023, 6, 12)],
+      dates: [new Date(2023, 7, 12)],
       color: 'green'
     },
     // Add more items as needed
   ];
+    const attrs = computed(() => [
+  // Attributes for todos
+  quiz.value.map(quiz => ({
+    dates: quiz.dates,
+    dot: {
+      color: quiz.color,
+      class: quiz.isComplete ? 'opacity-75' : '',
+    },
+    popover: {
+      label: quiz.description,
+      visibility: 'hover',
+    }
+  })),
+]);
+  // var quizzes =[]
+  // var q=[]
+  // async function getQuizzes1() {
+  //           // console.log("In getQuizzes")
+  //           var uri = 'http://34.16.135.44:3102/test/calendar/getall'
+  //           // this.loading = true
+  //           // console.log(this.loading)
+  //           await axios.get(
+  //               uri,
+  //           )
+  //               .then((res) => {
+  //                   // this.loading = false
+  //                   // console.log(this.loading)
+  //                   console.log(res)
+  //                   quizzes = res.data
+  //                   var date=[quizzes.length]
+  //                   var d=[quizzes.length]
+  //                   var m = [quizzes.length]
+  //                   var y =[quizzes.length]
+  //                   var name=[quizzes.length]
+  //                   var quizObject={}
+  //                   for(var i=0;i<quizzes.length;i++)
+  //                   {
+  //                     date[i]=new Date(quizzes[i]['quiz_start_time'])
+  //                     d[i] = date[i].getDate()
+  //                     m[i] = date[i].getMonth()+1
+  //                     y[i] = date[i].getFullYear()
+  //                     name[i] = quizzes[i]['quiz_name']
+  //                   }
+  //                   console.log(d[0])
+  //                   console.log((moment(quizzes[0].quiz_start_time)).utcOffset('+05:30').format('hh:mm A'));
+  //                   for (let i = 0; i <quizzes.length; i++) {
+  //                       quizObject = {
+  //                         description: name[i],
+  //                         isComplete: false,
+  //                         dates: [new Date(y[i], m[i], d[i])],
+  //                         color: 'green'
+  //                       };
+  //                       quiz.value.push(quizObject);
+  //                     }
+  //                     // quiz.value=q
+  //                     console.log(quiz.value)
+  //               })
+  //               .catch((err) => {
+  //                   // this.loading = false
+  //                   console.log(err)
+  //               })
+  //       }
+  //       getQuizzes1();
+  
+//   quiz.value = [
+//   { description: 'Test Quiz 1 - 19CSE313', isComplete: false, dates: [new Date(2023,7,12)], color: 'green' },
+//   { description: 'Test Quiz 2 - 19CSE313', isComplete: false, dates: [new Date(2023,7,13)], color: 'green' },
+//   { description: 'Test Quiz 3 - 19CSE313', isComplete: false, dates: [new Date(2023,7,20)], color: 'green' }
+// ];
+  
+ 
+
+  </script> -->
+  <script setup>
+  import { ref,computed } from 'vue';
+  const quiz = ref([]);
+  // quiz.value = [
+  //     {
+  //       description: 'Quiz 1',
+  //       isComplete: false,
+  //       dates: [new Date(2023, 7, 13)],
+  //       color: 'green'
+  //     },
+  //     // Add more items as needed
+  //   ];
+  quiz.value = [
+  { description: 'Test Quiz 1 - 19CSE313', isComplete: false, dates: [new Date(2023,7,12)], color: 'green' },
+  { description: 'Test Quiz 2 - 19CSE313', isComplete: false, dates: [new Date(2023,7,13)], color: 'green' },
+  { description: 'Test Quiz 3 - 19CSE313', isComplete: false, dates: [new Date(2023,7,20)], color: 'green' },
+  { description: 'Test Quiz 4 - 19CSE311', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' },
+  { description: 'Test Quiz 3 - 19CSE314', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' }
+];
 
 const attrs = computed(() => [
 // Attributes for todos
@@ -107,6 +199,8 @@ const attrs = computed(() => [
 </script>
 <script>
 import AvailCourses from './AvailCourses.vue';
+  // import axios from 'axios';
+  // import moment from 'moment';
 // import { onMounted } from 'vue';
 export default {
   data() {
@@ -115,6 +209,9 @@ export default {
     scheduledQuizzes: [],
     dates: [],
     currentDate: '',
+      // quizzes: [],
+      // q:[],
+      loading: true,
     date: Date.now(),
     };
   },
@@ -128,6 +225,7 @@ export default {
   this.getScheduledQuizzes();
   },
   methods: {
+      
   takeQuiz(quizId) {
     //this.$router.push({ name: 'quiz', params: { id: quizId } });
     console.log(quizId);
