@@ -45,15 +45,17 @@
 </template>
 <script>
 import lottie from 'lottie-web';
+import AES from 'crypto-js/aes';
 import animationData from '../../assets/loading.json';
 import axios from 'axios';
 import moment from 'moment';
 import HeaderAll from '../HeaderAll.vue';
+import Utf8 from 'crypto-js/enc-utf8';
 export default ({
     name: 'CourseInfo',
     data() {
         return {
-            co: JSON.parse(this.$route.query.course),
+            co: JSON.parse(AES.decrypt(this.$route.query.course, this.$secretKey).toString(Utf8)),
             quizzes: [],
             loading: true,
         }
@@ -141,7 +143,10 @@ export default ({
         
     },
     mounted() {
+        console.log("check decryption")
+        console.log(AES.decrypt(this.$route.query.course, this.$secretKey).toString(Utf8))
         this.getQuizzes()
+        
         const container = document.getElementById('lottie-container');
 
         lottie.loadAnimation({
