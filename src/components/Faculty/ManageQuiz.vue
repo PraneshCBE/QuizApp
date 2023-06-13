@@ -3,51 +3,67 @@
       <div class="courses">
       <h2 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Create a Quiz</h2>
     </div>
+  <v-card class = "formcard">
     <form @submit="submitForm" class="formQ">
-    <label for="name">Name:</label>
-    <input type="text" id="name" v-model="formData.name" required>
+
+      <label for="name" class = "labeltext ">Name:</label> 
+      <v-card class = "custom-label hover-effect">
+        <input type="text" id="name" v-model="formData.name" required class = "inputclass">
+      </v-card>
     
-    <label for="password">Password:</label>
-    <input type="password" id="password" v-model="formData.password" required>
     
-    <label for="is_password_protected">Is Password Protected:</label>
+    <label for="password" class = "labeltext">Password:</label>
+    <v-card class = "custom-label hover-effect">
+        <input type="password" id="password" v-model="formData.password" required class = "inputclass">
+    </v-card>
+    
+    <label for="is_password_protected" class = "labeltext">Is Password Protected:</label>
     <input type="checkbox" id="is_password_protected" v-model="formData.is_password_protected">
     
-    <label for="description">Description:</label>
-    <textarea id="description" v-model="formData.description" required></textarea>
+    <label for="description" class = "labeltext">Description:</label>
+    <v-card class = "custom-label hover-effect">
+        <textarea id="description" v-model="formData.description" required class = "inputclass"></textarea>
+    </v-card>
     
-    <label for="course_id">Course ID:</label>
-    <input type="text" id="course_id" v-model="formData.course_id" required>
-    
-    <label for="publish_date">Publish Date:</label>
-    <input type="date" id="publish_date" v-model="formData.publish_date" required>
-    
-    <label for="closing_date">Closing Date:</label>
-    <input type="date" id="closing_date" v-model="formData.closing_date" required>
-    
-    <label for="duration">Duration (in seconds):</label>
-    <input type="number" id="duration" v-model="formData.duration" required>
+    <label for="course_id" class = "labeltext">Course ID:</label>
+    <v-card class = "custom-label hover-effect">
+        <input type="text" id="course_id" v-model="formData.course_id" required class = "inputclass">
+    </v-card>
 
-    <label for="islinear">Is Linear:</label>
+    <label for="publish_date" class = "labeltext">Publish Date:</label>
+    <v-card class = "custom-label hover-effect">
+        <input type="date" id="publish_date" v-model="formData.publish_date" required class = "inputclass">
+    </v-card>
+
+    <label for="closing_date" class = "labeltext">Closing Date:</label>
+    <v-card class = "custom-label hover-effect">
+        <input type="date" id="closing_date" v-model="formData.closing_date" required class = "inputclass">
+    </v-card>
+
+    <label for="duration" class = "labeltext">Duration (in seconds):</label>
+    <v-card class = "custom-label hover-effect">
+        <input type="number" id="duration" v-model="formData.duration" required class = "inputclass">
+    </v-card>
+
+    <label for="islinear" class = "labeltext">Is Linear:</label>
     <input type="checkbox" id="islinear" v-model="formData.islinear">
 
-    <label for="question">Question:</label>
-    <input type="text" id="question" v-model="question" required>
+    <label for="question" class = "labeltext">Question:</label>
+    <v-card class = "custom-label hover-effect">
+        <textarea id="Question" v-model="question" required class = "inputclass"></textarea>
+    </v-card>
 
-    <div>
-      <label>Question Type:</label>
-      <select v-model="questionType" required @change="updateAnswerOptions">
-        <option value="">Select Question Type</option>
-        <option value="sch">Single Choice</option>
-        <option value="mch">Multiple Choice</option>
-        <option value="num">Integer Type</option>
-      </select>
+    <div class = "container">
+      <label class = "labeltext">Question Type:</label>
+      <v-select v-model="questionType" :items="locations" label="QuestionType" class = "vselectclass"></v-select>
     </div>
 
     <div>
-  <label for="numQuestions">Number of Questions:</label>
-  <input type="number" id="numQuestions" v-model="numQuestions">
-  <button @click="generateQuestions">Generate Questions</button>
+  <label for="numQuestions" class = "labeltext">Number of Questions:</label>
+  <v-card class = "custom-label centered-text hover-effect">
+      <input type="number" id="numQuestions" v-model="numQuestions" class = "inputclass">
+      <button @click="generateQuestions">Generate Questions</button>
+  </v-card>
 
   <div v-for="(question, index) in questions" :key="index">
     <h3>Question {{ index + 1 }}</h3>
@@ -65,15 +81,17 @@
     <div>
   </div>
 
-  </form>
+    </form>
+  </v-card>
   </div>
 </template>
 
 <script>
 export default{
 data(){
-      
 return {
+
+locations : ["sch","mch", "num"],
 formData: {
       name: "",
       password: "",
@@ -128,6 +146,56 @@ methods: {
 };
 </script> 
 <style scoped>
+
+
+.vselectclass{
+  width : 100px;
+  height : 130px;
+}
+.formcard {
+  width:auto;
+}
+.hover-effect {
+  transition: background-color 0.3s ease;
+}
+
+.hover-effect:hover {
+  background-color: #E0F7FA;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 200px; /* Adjust the height as needed */
+}
+
+.centered-text {
+  text-align: center;
+}
+.labeltext {
+  font-size: 20px;
+  padding:10px;
+}
+.custom-label {
+  display: inline-block;
+  padding: 5px 10px;
+  border-radius: 10px;
+  width: 400px; 
+  height:6-px;
+}
+
+.inputclass {
+  border-radius: 10px;
+
+  width:387px;
+  height:43px;
+}
+
+.labelclass{
+  margin-right: auto;
+}
+
 .formQ{
   display: flex;
 align-items: center;
