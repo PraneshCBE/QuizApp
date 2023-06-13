@@ -34,7 +34,7 @@
                                 placeholder="Enter your University Email" />
                             <p v-if="errorEmail.length != 0" class="error">{{ errorEmail }}</p>
                             <input class="inp" type="password" v-model="password" placeholder="Enter Password" />
-                            <select class="inp" v-model="semester" required>
+                            <select class="inp" v-model="semester" required v-if="!isAdmin">
                                 <option value="" disabled selected>Semester</option>
                                 <option value="1">Sem 1</option>
                                 <option value="2">Sem 2</option>
@@ -137,15 +137,49 @@ export default {
             this.imgSrc = this.isAdmin ? '../assets/admin1.png' : '../assets/stud1.png'
 
         },
-        
+
         async login() {
             this.loading = true;
             console.log(this.isAdmin)
             if (this.isAdmin) {
                 //Admin Http request
-                localStorage.setItem('role', true)
-                localStorage.setItem('user-info',{"roll":this.rollno, "admin":this.isAdmin})
-                this.$router.push('/faculty')
+                let uri = this.$url + "/faculty/login"
+                let password = this.password
+                let data = {
+                    username: this.rollno,
+                    pass: password
+                }
+                try {
+                    result = await axios.post(uri, data)
+                    console.log(result)
+                    if (result.status == 200) {
+                        console.log("Admin Login")
+                        const encryptedData = this.$globalmethods.encryptData(JSON.stringify({ "rollno": this.rollno, "isAdmin": true }))
+                        localStorage.setItem("user-info", JSON.stringify(encryptedData))
+                        this.$router.push('/faculty')
+                    }
+                    else {
+                        console.error(result)
+                        this.errorLogin = "Login Failed!, Try Again later";
+                    }
+
+                } catch (err) {
+                    if (!err.response) {
+                        console.error(err)
+                        this.errorLogin = "Login Failed!, Try Again";
+                    }
+                    else if (err.response.status == 404) {
+                        console.error(err)
+                        this.errorLogin = "Invalid Credentials!";
+                    }
+                    else {
+                        console.error(err)
+                        this.errorLogin = "Login Failed!, Try Again later";
+                    }
+                }finally{
+                    this.loading = false;
+                }
+
             }
             else {
                 //user http request
@@ -153,7 +187,7 @@ export default {
                 let uri = this.$url + "/student/login"
                 console.log(uri)
                 // let uri="http://localhost:8080/student/login"
-                let password=CryptoJS.SHA256(this.password).toString()
+                let password = CryptoJS.SHA256(this.password).toString()
                 console.log(password)
                 let data = {
                     username: (this.rollno).toUpperCase(),
@@ -168,8 +202,8 @@ export default {
 
                     if (result.status == 200) {
                         console.log("Login Successfull")
-                        const encryptedData=this.$globalmethods.encryptData(JSON.stringify({ "rollno": this.rollno,"sem":this.semester,"st": result.data.secretToken,"name":result.data.name,"dp":result.data.dp }))
-                        localStorage.setItem("user-info",JSON.stringify(encryptedData))
+                        const encryptedData = this.$globalmethods.encryptData(JSON.stringify({ "rollno": this.rollno, "sem": this.semester, "st": result.data.secretToken, "name": result.data.name, "dp": result.data.dp }))
+                        localStorage.setItem("user-info", JSON.stringify(encryptedData))
                         this.$router.push({ name: 'HomeScreen' })
                     }
                     else {
@@ -400,7 +434,7 @@ h1 {
     position: absolute;
     top: 50%;
     left: 50%;
-  transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
 }
 
 .right-container {

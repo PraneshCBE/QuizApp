@@ -80,7 +80,6 @@
 
         startAssignment(){
             //password validation
-            this.enterFullScreen();
             this.$router.replace({name:'QuizModule',query:{id:this.qid}})
         },
         enterFullScreen() {
