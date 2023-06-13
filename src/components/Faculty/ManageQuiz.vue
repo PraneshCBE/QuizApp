@@ -4,7 +4,7 @@
       <h2 class="mb-4 text-3xl font-extrabold leading-none tracking-tight text-gray-900 md:text-4xl dark:text-white">Create a Quiz</h2>
     </div>
   <v-card class = "formcard">
-    <form @submit="submitForm" class="formQ">
+    <form class="formQ" @submit.prevent=submitForm>
 
       <label for="name" class = "labeltext ">Name:</label> 
       <!-- <v-card class = "custom-label hover-effect"> -->
@@ -92,7 +92,7 @@
         <textarea id="Question" v-model="question" required class = "inputclass"></textarea>
     </v-card>
 
-    <button type="submit">Submit</button>
+    <router-link to="/sc"><button type="submit">Submit</button></router-link>
 
     <div>
   </div>
@@ -138,6 +138,9 @@ methods: {
 
     this.addedQuestions.push(newQuestion);
     this.resetForm();
+  },
+  submitForm(){
+    this.$router.replace({path:"/sc"})
   },
   generateQuestions() {
     this.questions = [];

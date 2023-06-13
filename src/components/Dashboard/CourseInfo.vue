@@ -5,6 +5,7 @@
     <!-- <div class="container"> -->
         <div v-if="!loading" class="left-container"  >
             <p class="quiz">Quizzes Available Now</p>
+            <button v-if="isAdmin" @click="stopQuiz">Stop Quizzes</button>
                 <p v-if="availableQuizzes.length==0">
                     <v-card-subtitle>Nothing to Take now</v-card-subtitle>
                 </p>
@@ -79,12 +80,18 @@ export default ({
             co: JSON.parse(AES.decrypt(this.$route.query.course, this.$secretKey).toString(Utf8)),
             quizzes: [],
             loading: true,
+            isAdmin:false
         }
     },
     components: {
         HeaderAll
     },
     methods: {
+        stopQuiz(){
+            console.log("Pressed Stop")
+            window.alert("Stopping all Quizzes")
+            this.$router.replace({path:"/faculty"})
+        },
         getSubtitle(quiz) {
       return `${(moment(quiz.quiz_start_time)).format('DD-MM-YY')}
       Live: ${(moment(quiz.quiz_start_time)).utcOffset('+05:30').format('hh:mm A')} 
@@ -167,9 +174,7 @@ export default ({
         console.log("check decryption")
         console.log(AES.decrypt(this.$route.query.course, this.$secretKey).toString(Utf8))
         this.getQuizzes()
-        
         const container = document.getElementById('lottie-container');
-
         lottie.loadAnimation({
       container: container,
       renderer: 'svg',
@@ -177,8 +182,9 @@ export default ({
       loop: true,
       autoplay: true,
     });
-
-
+    var temp=localStorage.getItem('user-info')
+    var res=this.$globalmethods.decryptData(JSON.parse(temp))
+    this.isAdmin=res.isAdmin
     }
 })
 </script>

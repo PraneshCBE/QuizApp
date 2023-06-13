@@ -154,7 +154,7 @@ export default {
                     console.log(result)
                     if (result.status == 200) {
                         console.log("Admin Login")
-                        const encryptedData = this.$globalmethods.encryptData(JSON.stringify({ "rollno": this.rollno, "isAdmin": true }))
+                        const encryptedData = this.$globalmethods.encryptData(JSON.stringify({ "user":this.rollno,"name": result.data.name,"url":result.data.url, "isAdmin": true }))
                         localStorage.setItem("user-info", JSON.stringify(encryptedData))
                         this.$router.push('/faculty')
                     }

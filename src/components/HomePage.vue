@@ -360,23 +360,23 @@ nav ul li a {
   font-size: x-large;
 }
 
-.full-screen-image {
-  position: relative;
-  height: 100vh;
-  width: 100%;
-  background-size: cover;
-  background-position: center;
-  transition: opacity 1s;
-  opacity: 1;
-}
+  .full-screen-image {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: opacity 1s;
+    opacity: 1;
+  }
 
-.first-image {
-  background-color: #03001C;
-  background-image: url('../assets/cbe\ campus.svg');
-  background-size: contain;
-  background-repeat: no-repeat;
-  
-}
+  .first-image {
+    background-color: #03001C;
+    background-image: url('../assets/cbe\ campus.svg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    
+  }
 /* @keyframes fadeInAnimation {
 	0% {
 		opacity: 0.9;

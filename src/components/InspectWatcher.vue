@@ -29,7 +29,6 @@ export default {
   name: "InspectWatcher",
   mounted() {
     const container = document.getElementById('lottie-container');
-
     lottie.loadAnimation({
       container: container,
       renderer: 'svg',

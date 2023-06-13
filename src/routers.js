@@ -19,6 +19,7 @@ import FacultyDashboard from './components/Faculty/FacultyDashboard.vue';
 import ManageQuiz from './components/Faculty/ManageQuiz.vue';
 import FacMain from './components/Faculty/FacMain.vue';
 import CourseQmarks from './components/Dashboard/CourseQmarks.vue';
+import SuccessCreate from './components/Faculty/QuizCreate.vue';
 const routes=[
     {
         name:'HomePage',
@@ -111,6 +112,11 @@ const routes=[
         name: 'SuccessSubmit',
         path: '/ss',
         component:SuccessSubmit
+      },
+      {
+        name: 'SuccessCreate',
+        path: '/sc',
+        component:SuccessCreate
       },
       {
         name: 'AutoSubmit',

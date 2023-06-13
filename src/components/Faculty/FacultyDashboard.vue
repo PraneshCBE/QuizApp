@@ -170,11 +170,12 @@ export default {
             localStorage.clear()
             this.$router.push({name:"HomePage"})
         },
-        getProfile(){
+        getProfile(data){
+            console.log(data)
             this.profile={
-                "name":this.profile.name,
-                "roll":this.profile.rollno,
-                "pic":this.profile.dp,
+                "name":data.name,
+                "roll":"ASC Coimbatore",
+                "pic":data.url,
             }
         }
     },
@@ -183,35 +184,30 @@ export default {
     },
     mounted() {
         
-        // let user = localStorage.getItem('user-info');
-        // var res=""
-        // if (user){
-        //     try{
-        //      res=this.$globalmethods.decryptData(JSON.parse(user))
-        //     }
-        //     catch(err){
-        //         console.log(err)
-        //         localStorage.clear()
-        //         this.$router.replace({name:'InspectWatcher'})
-        //     }
-        //     console.log("res: "+res)    
-        //     if (res=="Rengaraj!!")
-        //     {
-        //         console.warn("Rengaraj Detected!!")
-        //         localStorage.clear()
-        //         this.$router.replace({name:'InspectWatcher'})
-        //     }
-        // }
-        // let admin = localStorage.getItem('role');
-        // if (user && admin) {
-        //     //admin JWT verification and if it is not valid then we should route to Login 
-        // }
-        // else if (user && !admin) {
-        //     //User JWT verification and if it is not valid then we should route to Login  
-        //     this.profile=res
-        // }
-        // else { this.$router.push({ name: 'LogIn' }) }
-        // this.getProfile()
+        let user = localStorage.getItem('user-info');
+        var res=""
+        if (user){
+            try{
+             res=this.$globalmethods.decryptData(JSON.parse(user))
+             console.log("res in Fac Dashboard: ",res)
+            }
+            catch(err){
+                console.log(err)
+                localStorage.clear()
+                this.$router.replace({name:'InspectWatcher'})
+            }
+            console.log("res: "+res)    
+            if (res=="Rengaraj!!")
+            {
+                console.warn("Rengaraj Detected!!")
+                localStorage.clear()
+                this.$router.replace({name:'InspectWatcher'})
+            }
+        }
+        else{
+            this.$router.replace({name:'HomePage'})
+        }
+        this.getProfile(res)
 
     }
 }

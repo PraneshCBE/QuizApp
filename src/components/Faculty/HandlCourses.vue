@@ -44,9 +44,9 @@
              try{
  
                var dData=this.$globalmethods.decryptData(JSON.parse(localStorage.getItem('user-info')))
-               const sem=dData.sem
+               const uname=dData.user
                this.loading=true
-             const result = await axios.get(this.$url+'/student/courses', { params: { semester: sem } })
+             const result = await axios.get(this.$url+'/faculty/courses', { params: { username: uname } })
              this.courses=result.data.courses
              this.loading=false
              console.log(result.data)

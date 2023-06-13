@@ -1,13 +1,20 @@
-<template>
+<template >
+  <router-link to="/">
     <div id="large-header" class="large-header">
   <canvas id="demo-canvas"></canvas>
-  <h1 class="main-title">Amrita<span class="thin">Quibix</span></h1>
+  <h1 class="main-title" >Amrita<span class="thin">Quibix</span></h1>
 </div>
+</router-link>
 </template>
 <script>
 import { TweenLite, Circ } from "gsap";
 export default({
     name:'AnimeBg',
+    methods:{
+        home(){
+            this.$router.push('/');
+        }
+    },
     mounted(){
         (function () {
   var width,

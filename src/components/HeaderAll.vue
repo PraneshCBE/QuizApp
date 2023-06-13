@@ -8,7 +8,8 @@
   <div class="nav">
     <div class = "nav-items">
       <router-link to="/" class="logo"><img src="../assets/ll.png"></router-link>
-        <router-link to="/dashboard" class="item">Go to Dashboard</router-link>
+        <router-link to="/dashboard" class="item" v-if="!isAdmin">Go to Dashboard</router-link>
+        <router-link to="/faculty" class="item" v-if="isAdmin">Go to Dashboard</router-link>
     </div>
 
   </div>
@@ -17,6 +18,11 @@
 <script>
 export default{
     name: 'HeaderAll',
+    data() {
+        return {
+            isAdmin:false
+        }
+      },
     methods:{
         logout()
         {
@@ -24,6 +30,11 @@ export default{
             this.$router.push({name: 'LogIn'})
 
         }
+    },
+    mounted(){
+      var temp=localStorage.getItem('user-info')
+    var res=this.$globalmethods.decryptData(JSON.parse(temp))
+    this.isAdmin=res.isAdmin
     }
 }
 </script>

@@ -10,8 +10,11 @@
         <div>
           <HandlCourses></HandlCourses>
         </div>
+        <div id="lottie-container" style="width: 50px height: 50px;"></div>
   </template>
   <script>
+  import lottie from 'lottie-web';
+import animationData from '../../assets/fac.json';
   import HandlCourses from './HandlCourses.vue';
 // import { onMounted } from 'vue';
   export default {
@@ -22,6 +25,17 @@
     components:{
        HandlCourses
     },
+    mounted() {
+    const container = document.getElementById('lottie-container');
+
+    lottie.loadAnimation({
+      container: container,
+      renderer: 'svg',
+      animationData: animationData,
+      loop: true,
+      autoplay: true,
+    });
+  },
 }
    
   </script>
