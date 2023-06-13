@@ -155,7 +155,7 @@ export default {
       answer: {},
       mchSel: [],
       page: 1,
-      disable: false,
+      disable: true,
       duration: 0,
       hours: 0,
       minutes: 0,

@@ -46,25 +46,38 @@
 
     <label for="islinear" class = "labeltext">Is Linear:</label>
     <input type="checkbox" id="islinear" v-model="formData.islinear">
-
-    <label for="question" class = "labeltext">Question:</label>
+    
+    <label for="duration" class = "labeltext">Number of Sections</label>
     <!-- <v-card class = "custom-label hover-effect"> -->
-        <textarea id="Question" v-model="question" required class = "inputclass"></textarea>
+        <input type="number" id="duration" v-model="formData.noofsections" required class = "inputclass">
     <!-- </v-card> -->
+    <div v-for="(section,index) in noofsections" :key="index">
+      <h3>Section {{ index + 1 }}</h3>
+      <!-- <input type="text" v-model="question.text" placeholder="Enter question">
+    <div v-for="(option, optionIndex) in question.options" :key="optionIndex">
+      <label>Option {{ optionIndex + 1 }}:</label>
+      <input type="text" v-model="option[optionIndex]" placeholder="Enter option">
+    </div> -->
+    </div>
+    
+    <label for="question" class = "labeltext">Question:</label>
+    <v-card class = "custom-label hover-effect">
+        <textarea id="Question" v-model="question" required class = "inputclass"></textarea>
+    </v-card>
 
-    <div class = "container">
+    <!-- <div class = "container">
       <label class = "labeltext">Question Type:</label>
       <v-select v-model="questionType" :items="locations" label="QuestionType" class = "vselectclass"></v-select>
-    </div>
+    </div> -->
 
-    <div>
-  <label for="numQuestions" class = "labeltext">Number of Questions:</label>
-  <v-card class = "custom-label centered-text hover-effect">
+    <!-- <div> -->
+  <!-- <label for="numQuestions" class = "labeltext">Number of Questions:</label> -->
+  <!-- <v-card class = "custom-label centered-text hover-effect">
       <input type="number" id="numQuestions" v-model="numQuestions" class = "inputclass">
       <button @click="generateQuestions">Generate Questions</button>
-  </v-card>
+  </v-card> -->
 
-  <div v-for="(question, index) in questions" :key="index">
+  <!-- <div v-for="(question, index) in questions" :key="index">
     <h3>Question {{ index + 1 }}</h3>
     <input type="text" v-model="question.text" placeholder="Enter question">
     <div v-for="(option, optionIndex) in question.options" :key="optionIndex">
@@ -73,7 +86,11 @@
     </div>
     <hr>
   </div>
-</div>
+</div> -->
+<label for="question" class = "labeltext">Options</label>
+    <v-card class = "custom-label hover-effect">
+        <textarea id="Question" v-model="question" required class = "inputclass"></textarea>
+    </v-card>
 
     <button type="submit">Submit</button>
 
@@ -100,6 +117,7 @@ formData: {
       publish_date:'' ,
       closing_date:'' ,
       duration: 0,
+      noofsections:0,
       sections: [],
       islinear: false,
       question: '',
@@ -185,8 +203,7 @@ methods: {
 }
 
 .inputclass {
-  border-radius: 10px;
-
+  border-radius:5px;
   width:387px;
   height:43px;
 }
