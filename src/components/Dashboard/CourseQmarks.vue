@@ -1,5 +1,9 @@
 <template>
+  <head>
+    <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet">
+  </head>
     <v-container>
+      <h1>Results</h1>
       <v-row>
         <v-col cols="6" v-for="course in courses" :key="course.id">
           <v-card class="course-card">
@@ -24,34 +28,34 @@
         courses: [
           {
             id: 1,
-            name: 'CSE311',
+            name: '19CSE311',
             quizzes: [
-              { id: 1, name: 'Quiz 1', marks: 50 },
-              { id: 2, name: 'Quiz 2', marks: 50 },
+              { id: 1, name: 'Quiz 1', marks: 14 },
+              // { id: 2, name: 'Quiz 2', marks: 20 },
             ],
           },
           {
             id: 2,
-            name: 'CSE312',
+            name: '19CSE312',
             quizzes: [
-              { id: 1, name: 'Quiz 1', marks: 50 },
-              { id: 2, name: 'Quiz 2', marks: 50 },
+              { id: 1, name: 'Quiz 1', marks: 10 },
+              // { id: 2, name: 'Quiz 2', marks: 7 },
             ],
           },
           {
             id: 3,
-            name: 'CSE313',
+            name: '19CSE313',
             quizzes: [
-              { id: 1, name: 'Quiz 1', marks: 50 },
-              { id: 2, name: 'Quiz 2', marks: 50 },
+              { id: 1, name: 'Quiz 1', marks: 9 },
+              { id: 2, name: 'Quiz 2', marks: 12 },
             ],
           },
           {
             id: 4,
-            name: 'CSE314',
+            name: '19CSE314',
             quizzes: [
-              { id: 1, name: 'Quiz 1', marks: 50 },
-              { id: 2, name: 'Quiz 2', marks: 50 },
+              { id: 1, name: 'Quiz 1', marks: 11 },
+              { id: 2, name: 'Quiz 2', marks: 6 },
             ],
           },
         ],
@@ -61,6 +65,11 @@
   </script>
   
   <style scoped>
+  /* *{
+  font-family: 'Hanken Grotesk', sans-serif;
+  font-family: 'Nunito', sans-serif;
+  font-family: 'Poppins', sans-serif;
+} */
   .course-card {
     margin: 10px;
     padding: 10px;

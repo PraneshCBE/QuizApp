@@ -51,7 +51,7 @@
          <!-- <Spline :scene="scene"  id="contact-us"/>   -->
       </div>
       <div id="about-us" class="full-screen-image" style="background-color:#03001C; " >
-        <p style="font-size:500%; color: whitesmoke;">Tools and Framework</p>
+        <p style="font-size:500%; color: whitesmoke;">Tools and Frameworks</p>
 
         <div class="ui inverted very relaxed horizontal list" style="margin-bottom: 10vh;">
         <div class="item">
@@ -104,7 +104,7 @@
         </div>
       </div>
       
-      <div class="ui inverted very relaxed horizontal list">
+      <div class="ui inverted very relaxed horizontal list" style="margin-bottom: 10vh;">
         <div class="item">
           <h2 class="ui grey header">
             <img class="ui inverted image" src="../assets/tandf/github.svg" >
@@ -154,6 +154,68 @@
           </h2>
         </div>
       </div>
+
+      <div class="ui inverted very relaxed horizontal list" style="margin-bottom: 10vh;">
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/nginx.svg">
+            <div class="content">
+             Nginx
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/git.svg">
+            <div class="content">
+             Git
+            </div>
+          </h2>
+        </div><div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/vscode.svg">
+            <div class="content">
+             VSCode
+            </div>
+          </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/intellij-idea.svg">
+            <div class="content">
+              IntelliJ
+            </div>
+            </h2>
+        </div>
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui inverted image" src="../assets/tandf/selenium.svg" >
+            <div class="content">
+              Selenium
+            </div>
+            </h2>
+        </div>
+        
+        <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/practi.svg">
+            <div class="content">
+             PractiTest
+            </div>
+          </h2>
+        </div>
+        
+        <!-- <div class="item">
+          <h2 class="ui grey header">
+            <img class="ui image" src="../assets/tandf/slack-icon.svg">
+            <div class="content">
+             Slack
+            </div>
+          </h2>
+        </div> -->
+      
+      </div>
+      
       </div>
     <footer>
       

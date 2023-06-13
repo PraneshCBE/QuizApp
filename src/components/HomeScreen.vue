@@ -1,4 +1,7 @@
 <template>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk&family=Nunito:wght@500&family=Poppins&display=swap" rel="stylesheet">
+    </head>
     <div class="w-screen h-screen flex">
         <!-- Side bar -->
         <div id ="drawer-navigation" class="w-[300px] h-full bg-gray-200 text-white" v-show="showSide">

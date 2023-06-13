@@ -169,10 +169,10 @@ quiz.value = [
   //     // Add more items as needed
   //   ];
   quiz.value = [
-  { description: 'Test Quiz 1 - 19CSE313', isComplete: false, dates: [new Date(2023,7,12)], color: 'green' },
-  { description: 'Test Quiz 2 - 19CSE313', isComplete: false, dates: [new Date(2023,7,13)], color: 'green' },
-  { description: 'Test Quiz 3 - 19CSE313', isComplete: false, dates: [new Date(2023,7,20)], color: 'green' },
-  { description: 'Test Quiz 4 - 19CSE311', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' },
+  { description: 'Test Quiz 3 - 19CSE313', isComplete: false, dates: [new Date(2023,7,14)], color: 'green' },
+  { description: 'Test Quiz 2 - 19CSE312', isComplete: false, dates: [new Date(2023,7,13)], color: 'green' },
+  { description: 'Test Quiz 4 - 19CSE313', isComplete: false, dates: [new Date(2023,7,15)], color: 'green' },
+  { description: 'Test Quiz 2 - 19CSE311', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' },
   { description: 'Test Quiz 3 - 19CSE314', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' }
 ];
 const attrs = computed(() => [
