@@ -252,10 +252,28 @@ export default {
     },
     mounted() {
         let user = localStorage.getItem('user-info');
-        let admin = localStorage.getItem('role');
+        var res=""
+        if (user){
+            try{
+             res=this.$globalmethods.decryptData(JSON.parse(user))
+            }
+            catch(err){
+                console.log(err)
+                localStorage.clear()
+                this.$router.replace({name:'InspectWatcher'})
+            }
+            console.log("res: "+res)    
+            if (res=="Rengaraj!!")
+            {
+                console.warn("Rengaraj Detected!!")
+                localStorage.clear()
+                this.$router.replace({name:'InspectWatcher'})
+            }
+        }
+        let admin = res.isAdmin
         if (user && admin) {
             //admin JWT verification and if it is valid then we should route to Admin Homescreen (for now just route) 
-            this.$router.push({ name: 'HomeScreen' })
+            this.$router.push({ name: 'FacultyDashboard' })
         }
         if (user && !admin) {
             //User JWT verification and if it is valid then we should route to User Homescreen (for now just route) 

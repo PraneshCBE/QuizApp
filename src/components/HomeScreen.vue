@@ -207,7 +207,7 @@ export default {
                 this.$router.replace({name:'InspectWatcher'})
             }
         }
-        let admin = localStorage.getItem('role');
+        let admin = res.role
         if (user && admin) {
             //admin JWT verification and if it is not valid then we should route to Login 
         }
