@@ -9,7 +9,7 @@
   align-items: center;">
       <v-row style="justify-content:space-around;margin-right: 10px;">
         <div style="margin-left: 10px;">
-          <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
+          <!-- <button id="dropdownHoverButton" data-dropdown-toggle="dropdownHover" data-dropdown-trigger="hover"
             class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2.5 text-center inline-flex items-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             type="button" style="margin-top: 2vh;">
             Section
@@ -17,9 +17,9 @@
               xmlns="http://www.w3.org/2000/svg">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
             </svg>
-          </button>
+          </button> -->
           <!-- Dropdown menu -->
-          <div id="dropdownHover"
+          <!-- <div id="dropdownHover"
             class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
             <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdownHoverButton">
               <li v-for="section in sections" :key="section">
@@ -27,7 +27,31 @@
                   @click="changeSection(section.section_name)">{{ section.section_name }}</a>
               </li>
             </ul>
-          </div>
+          </div> -->
+          <div class="text-center">
+          <v-menu
+            open-on-hover
+          >
+            <template v-slot:activator="{ props }">
+              <v-btn
+                color="blue"
+                v-bind="props" style="margin-top: 10px;">
+                Section
+              </v-btn>
+            </template>
+
+            <v-list>
+              <v-list-item
+                v-for="section in sections"
+                :key="section"
+              >
+              <a href="#" class="block px-4 py-2 hover:bg-blue-100 dark:hover:bg-blue-600 dark:hover:text-white"
+                  @click="changeSection(section.section_name)">{{ section.section_name }}</a>
+                <!-- <v-list-item-title>{{ item.title }}</v-list-item-title> -->
+              </v-list-item>
+            </v-list>
+          </v-menu>
+  </div>
         </div>
         <div class="timer">
           <span class="countdown font-mono text-2xl">

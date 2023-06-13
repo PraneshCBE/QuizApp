@@ -13,7 +13,6 @@
                   Results will be published soon 
                 </h3>
                 <p>Thank you</p>
-  
                 <router-link to="/dashboard" class="link_404" @click="exitFullscreenHandler">Go to Home</router-link>
               </div>
             </div>
@@ -39,20 +38,20 @@
       });
     },
     methods:{
-    //   exitFullscreenHandler() {
-    //     if (document.exitFullscreen) {
-    //     document.exitFullscreen();
-    //   } else if (document.mozCancelFullScreen) {
-    //     document.mozCancelFullScreen();
-    //   } else if (document.webkitExitFullscreen) {
-    //     document.webkitExitFullscreen();
-    //   } else if (document.msExitFullscreen) {
-    //     document.msExitFullscreen();
-    //   }
+      // exitFullscreenHandler() {
+      //   if (document.exitFullscreen) {
+      //   document.exitFullscreen();
+      // } else if (document.mozCancelFullScreen) {
+      //   document.mozCancelFullScreen();
+      // } else if (document.webkitExitFullscreen) {
+      //   document.webkitExitFullscreen();
+      // } else if (document.msExitFullscreen) {
+      //   document.msExitFullscreen();
+      // }
     // if (!document.fullscreenElement) {
     //   // The page is not in fullscreen mode
     //   // Redirect to another page
-    //   this.$router.replace({ name: 'AnotherPage' });
+    //   // this.$router.replace({ name: 'AnotherPage' });
     // }
     // },
 

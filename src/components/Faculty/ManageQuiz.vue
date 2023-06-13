@@ -7,51 +7,50 @@
     <form @submit="submitForm" class="formQ">
 
       <label for="name" class = "labeltext ">Name:</label> 
-      <v-card class = "custom-label hover-effect">
+      <!-- <v-card class = "custom-label hover-effect"> -->
         <input type="text" id="name" v-model="formData.name" required class = "inputclass">
-      </v-card>
-    
-    
-    <label for="password" class = "labeltext">Password:</label>
-    <v-card class = "custom-label hover-effect">
-        <input type="password" id="password" v-model="formData.password" required class = "inputclass">
-    </v-card>
+      <!-- </v-card> -->
     
     <label for="is_password_protected" class = "labeltext">Is Password Protected:</label>
     <input type="checkbox" id="is_password_protected" v-model="formData.is_password_protected">
     
+    <label for="password" class = "labeltext" v-if="formData.is_password_protected">Password:</label>
+    <!-- <v-card class = "custom-label hover-effect" v-if="formData.is_password_protected"> -->
+        <input type="password" id="password" v-model="formData.password" required class = "inputclass" v-if="formData.is_password_protected">
+    <!-- </v-card> -->
+
     <label for="description" class = "labeltext">Description:</label>
     <v-card class = "custom-label hover-effect">
         <textarea id="description" v-model="formData.description" required class = "inputclass"></textarea>
     </v-card>
     
     <label for="course_id" class = "labeltext">Course ID:</label>
-    <v-card class = "custom-label hover-effect">
+    <!-- <v-card class = "custom-label hover-effect"> -->
         <input type="text" id="course_id" v-model="formData.course_id" required class = "inputclass">
-    </v-card>
+    <!-- </v-card> -->
 
     <label for="publish_date" class = "labeltext">Publish Date:</label>
-    <v-card class = "custom-label hover-effect">
+    <!-- <v-card class = "custom-label hover-effect"> -->
         <input type="date" id="publish_date" v-model="formData.publish_date" required class = "inputclass">
-    </v-card>
+    <!-- </v-card> -->
 
     <label for="closing_date" class = "labeltext">Closing Date:</label>
-    <v-card class = "custom-label hover-effect">
+    <!-- <v-card class = "custom-label hover-effect"> -->
         <input type="date" id="closing_date" v-model="formData.closing_date" required class = "inputclass">
-    </v-card>
+    <!-- </v-card> -->
 
     <label for="duration" class = "labeltext">Duration (in seconds):</label>
-    <v-card class = "custom-label hover-effect">
+    <!-- <v-card class = "custom-label hover-effect"> -->
         <input type="number" id="duration" v-model="formData.duration" required class = "inputclass">
-    </v-card>
+    <!-- </v-card> -->
 
     <label for="islinear" class = "labeltext">Is Linear:</label>
     <input type="checkbox" id="islinear" v-model="formData.islinear">
 
     <label for="question" class = "labeltext">Question:</label>
-    <v-card class = "custom-label hover-effect">
+    <!-- <v-card class = "custom-label hover-effect"> -->
         <textarea id="Question" v-model="question" required class = "inputclass"></textarea>
-    </v-card>
+    <!-- </v-card> -->
 
     <div class = "container">
       <label class = "labeltext">Question Type:</label>
