@@ -152,16 +152,10 @@ quiz.value = [
   //               })
   //       }
   //       getQuizzes1();
-  
-//   quiz.value = [
-//   { description: 'Test Quiz 1 - 19CSE313', isComplete: false, dates: [new Date(2023,7,12)], color: 'green' },
-//   { description: 'Test Quiz 2 - 19CSE313', isComplete: false, dates: [new Date(2023,7,13)], color: 'green' },
-//   { description: 'Test Quiz 3 - 19CSE313', isComplete: false, dates: [new Date(2023,7,20)], color: 'green' }
-// ];
-  
- 
+
 
   </script> -->
+  
   <script setup>
   import { ref,computed } from 'vue';
   const quiz = ref([]);
@@ -181,27 +175,87 @@ quiz.value = [
   { description: 'Test Quiz 4 - 19CSE311', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' },
   { description: 'Test Quiz 3 - 19CSE314', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' }
 ];
-
 const attrs = computed(() => [
-// Attributes for todos
-...quiz.value.map(quiz => ({
-  dates: quiz.dates,
-  dot: {
-    color: quiz.color,
-    class: quiz.isComplete ? 'opacity-75' : '',
-  },
-  popover: {
-    label: quiz.description,
-    visibility: 'hover',
-  }
-})),
-]);
+      // Attributes for todos
+      ...quiz.value.map(quizItem => ({
+        dates: quizItem.dates,
+        dot: {
+          color: quizItem.color,
+          class: quizItem.isComplete ? 'opacity-75' : '',
+        },
+        popover: {
+          label: quizItem.description,
+          visibility: 'hover',
+        }
+      })),
+    ]);
+// const attrs = computed(() => [
+// // Attributes for todos
+// ...quiz.value.map(quiz => ({
+//   dates: quiz.dates,
+//   dot: {
+//     color: quiz.color,
+//     class: quiz.isComplete ? 'opacity-75' : '',
+//   },
+//   popover: {
+//     label: quiz.description,
+//     visibility: 'hover',
+//   }
+// })),
+// ]);
 </script>
 <script>
 import AvailCourses from './AvailCourses.vue';
   // import axios from 'axios';
   // import moment from 'moment';
 // import { onMounted } from 'vue';
+// async function getQuizzes1() {
+//               // console.log("In getQuizzes")
+//               var uri = 'http://34.16.135.44:3102/test/calendar/getall'
+//               // this.loading = true
+//               // console.log(this.loading)
+//               await axios.get(
+//                   uri,
+//               )
+//                   .then((res) => {
+//                       // this.loading = false
+//                       // console.log(this.loading)
+//                       console.log(res)
+//                       this.quizzes = res.data
+//                       var date=[this.quizzes.length]
+//                       var d=[this.quizzes.length]
+//                       var m = [this.quizzes.length]
+//                       var y =[this.quizzes.length]
+//                       var name=[this.quizzes.length]
+//                       var quizObject={}
+//                       for(var i=0;i<this.quizzes.length;i++)
+//                       {
+//                         date[i]=new Date(this.quizzes[i]['quiz_start_time'])
+//                         d[i] = date[i].getDate()
+//                         m[i] = date[i].getMonth()+1
+//                         y[i] = date[i].getFullYear()
+//                         name[i] = this.quizzes[i]['quiz_name']
+//                       }
+//                       console.log(d[0])
+//                       // console.log((moment(quizzes[0].quiz_start_time)).utcOffset('+05:30').format('hh:mm A'));
+//                       for (let i = 0; i <this.quizzes.length; i++) {
+//                           quizObject = {
+//                             description: name[i],
+//                             isComplete: false,
+//                             dates: [new Date(y[i], m[i], d[i])],
+//                             color: 'green'
+//                           };
+//                           this.q.value.push(quizObject);
+//                           return this.q
+//                         }
+//                         // quiz.value=q
+//                         // console.log(quiz.value)
+//                   })
+//                   .catch((err) => {
+//                       // this.loading = false
+//                       console.log(err)
+//                   })
+//           }
 export default {
   data() {
     return {
