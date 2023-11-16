@@ -185,13 +185,14 @@ export default {
                 //user http request
                 var result = '';
                 let uri = this.$url + "/student/login"
-                console.log(uri)
+                // console.log(uri)
                 // let uri="http://localhost:8080/student/login"
                 let password = CryptoJS.SHA256(this.password).toString()
                 console.log(password)
+                console.log(this.password)
                 let data = {
                     username: (this.rollno).toUpperCase(),
-                    pass: password,
+                    pass: this.password,
                     semester: this.semester
                 }
                 console.log(this.semester)

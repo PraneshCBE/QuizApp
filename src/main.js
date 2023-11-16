@@ -74,6 +74,6 @@ const app=createApp(App)
    initTabs(),
    initTooltips())
 
-app.config.globalProperties.$url='http://34.16.135.44:3102'
+app.config.globalProperties.$url='http://localhost:3102'
 app.config.globalProperties.$globalmethods=globalmethods
 app.config.globalProperties.$secretKey="lalithIsGay@9999!"

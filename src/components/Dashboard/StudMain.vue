@@ -169,11 +169,11 @@ quiz.value = [
   //     // Add more items as needed
   //   ];
   quiz.value = [
-  { description: 'Test Quiz 3 - 19CSE313', isComplete: false, dates: [new Date(2023,7,14)], color: 'green' },
-  { description: 'Test Quiz 2 - 19CSE312', isComplete: false, dates: [new Date(2023,7,13)], color: 'green' },
-  { description: 'Test Quiz 4 - 19CSE313', isComplete: false, dates: [new Date(2023,7,15)], color: 'green' },
-  { description: 'Test Quiz 2 - 19CSE311', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' },
-  { description: 'Test Quiz 3 - 19CSE314', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' }
+  { description: 'Test Quiz 3 - 19CSE313', isComplete: false, dates: [new Date(2023,9,31)], color: 'green' },
+  // { description: 'Test Quiz 2 - 19CSE312', isComplete: false, dates: [new Date(2023,7,13)], color: 'green' },
+  // { description: 'Test Quiz 4 - 19CSE313', isComplete: false, dates: [new Date(2023,7,15)], color: 'green' },
+  // { description: 'Test Quiz 2 - 19CSE311', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' },
+  // { description: 'Test Quiz 3 - 19CSE314', isComplete: false, dates: [new Date(2023,7,16)], color: 'green' }
 ];
 const attrs = computed(() => [
       // Attributes for todos
@@ -306,14 +306,11 @@ export default {
     if (selectedDate === this.dates[0]) {
       this.scheduledQuizzes = [
         { id: 1, name: 'Quiz 1' },
-        { id: 2, name: 'Quiz 2' },
-        { id: 3, name: 'Quiz 3' },
-        { id: 4, name: 'Quiz 4  ' },
       ];
     } else if (selectedDate === this.dates[1]) {
       this.scheduledQuizzes = [
-        { id: 4, name: 'Quiz 4' },
-        { id: 5, name: 'Quiz 5' },
+        // { id: 4, name: 'Quiz 4' },
+        // { id: 5, name: 'Quiz 5' },
       ];
     } else {
       this.scheduledQuizzes = [];
